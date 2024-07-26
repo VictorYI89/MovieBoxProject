@@ -1,0 +1,87 @@
+@charset "UTF-8";
+html{
+    overflow-X: hidden;
+}
+.main-top{
+    position: relative;
+    width: 100%;
+}
+.main-top .inner-container{
+    margin: auto;
+    width: 1100px;
+    margin-top: 100px;
+    
+}
+.main-top .inner-container .inner{
+    border: 3px solid #686571;
+    border-radius: 10px;
+    height: 300px;
+}
+.main-top .timetable{
+    margin-top: 25px;
+    border-top: 1px solid #d8d9db;    
+    border-bottom: 1px solid #d8d9db;    
+}
+.main-top .timetable{
+    display: flex;
+}
+
+.main-top .timetable .item{
+    width: 78px;
+    height: 78px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+.main-top .timetable .item div{
+    height: 50%;
+    text-align: center;
+    line-height: 35px;
+}
+.main-top .timetable .item div:first-child{
+    line-height: 45px;
+}
+.main-top .timetable .item .red{
+    color:red;
+}
+.main-top .timetable .item .blue{
+    color:blue;
+}
+
+.main-top .title span:last-child{
+    color: #503396;
+}
+.main-top .title span:first-child{
+    color: #037b94
+}
+.main-top .title{
+    font-size: 27px;
+    margin-top: 50px;
+}
+.main-top .movie-option{
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+    height: 50px;
+    margin: 10px 0;
+}
+.main-top .movie-option div{
+    display: inline;
+    font-size: 15px;
+}
+.main-top .city-theater{
+    display: flex;
+}
+.main-top .city-theater .item{
+    width: 150px;
+    border: 1px solid #d8d9db;
+    box-sizing: border-box;
+    font-size: 15px;
+    height: 40px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 10px 0;
+}
+.main-top .city-theater .item.selected{
+    color: #fff;
+    background-color: #555;
+}
