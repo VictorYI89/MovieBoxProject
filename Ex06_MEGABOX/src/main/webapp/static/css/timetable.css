@@ -15,13 +15,193 @@ html{
 .main-top .inner-container .inner{
     border: 3px solid #686571;
     border-radius: 10px;
-    height: 300px;
+    height: 315px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+.inner-container .left{
+    width: 170px;
+}
+.inner-container .left .item{
+    box-sizing: border-box;
+    padding: 35px 20px;
+    font-size: 1.2em;
+    background-color: #f2f4f5;
+    border: 1px solid #d8d9db;
+    cursor: pointer;
+}
+.inner-container .special-img{
+    width: 230px;
+    height: 400px;
+}
+li{
+    list-style-type: none;
+}
+.inner-container .left .item.selected{
+    color: #351f66;
+    background-color: white;
+    font-size: 1.2em;
+    border: none;
+}
+.inner-container .left .item:first-child.selected img{
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-tab-movie-on.png);
+    background-repeat: no-repeat;
+}
+.inner-container .left .item:nth(2)-child.selected img{
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-tab-theater-on.png);
+    background-repeat: no-repeat;
+}
+.inner-container .left .item:last-child.selected img{
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-tab-special-on.png);
+    background-repeat: no-repeat;
+}
+.inner-container .item .middle{
+    display: none;
+}
+.inner-container .item:first-child .middle{
+    display: block;
+}
+.inner-container .middle{
+    position: absolute;
+    top:30px;
+    width: 670px;
+    left:200px;
+    height: 100%;
+}
+.movie-list-content .right{
+    display: none;
+}
+.movie-list-content .selected .right{
+    display: block;
+}
+.special-list-content{
+    display: flex;
+    flex-flow: row wrap;
+    box-sizing: border-box;
+    margin-top: 15px;
+    list-style-type: none;
+    padding: 0;
+    color:black;
+}
+.special-list-content li{
+    width: 30%;
+    padding: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.inner-container .middle .special-list-content .selected{
+    color: #fff;
+    font-weight: 400;
+    background-color: #555;
+}
+.inner-container .middle .content{
+    /* position: relative; */
+    margin-top: 5px; 
+    height: 70%;
+    overflow-y: scroll;
+}
+.inner-container .content.special{
+    position: absolute;
+}
+.inner-container .category-title span{
+    padding-bottom: 7px;    
+    color: #555;
+    border-bottom: 1px solid #d8d9db;
+    font-size: 14px;
+}
+.inner-container .category-title .selected{
+    border-bottom: 1px solid #555;
+}
+
+.inner-container .middle .movie-list-content{
+    display: flex;
+    flex-flow: row wrap;
+    box-sizing: border-box;
+    margin-top: 15px;
+    list-style-type: none;
+    padding: 0;
+    color:black;
+
+}
+.inner-container .theater-content{
+    position: absolute;
+    display: none;
+}
+.inner-container .category-title.theater .selected>div{
+    display: block;
+}
+.inner-container .middle .movie-list-content li{
+    width: 30%;
+    padding: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.inner-container .middle .movie-list-content .selected{
+    color: #fff;
+    font-weight: 400;
+    background-color: #555;
+}
+.inner-container .middle .theater-list-content .selected{
+    color: #fff;
+    font-weight: 400;
+    background-color: #555;
+}
+.inner-container .theater-list-content{
+    display: flex;
+    width: 850px;
+    height: 230px;
+    overflow-y: scroll;
+    flex-flow: row wrap;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+.inner-container .theater-list-content li{
+    width: 210px;
+    font-size: 14px;
+    padding: 7px 0;
+}
+.inner-container .right{
+    position: absolute;
+    top:-30px;
+    right:-310px;
+}
+.inner-container .theater-list-content{
+    color: #444;
+}
+.inner-container .special-img-content{ 
+    position: absolute;
+    right:100px;
+    top:10px;
+    color:white;
+    font-size: 15px;
+    font-weight: bold;
+}
+.inner-container .special-img-content p{
+    padding: 10px 0;
+}
+.inner-container .special-img-content .special-img-title{
+    font-size: 1.7em;
+}
+.inner-container .content.special{
+    overflow: hidden;
 }
 .main-top .timetable{
     margin-top: 25px;
     border-top: 1px solid #d8d9db;    
     border-bottom: 1px solid #d8d9db;    
 }
+.inner-container .category-title.special{
+    width: 800px;
+}
+.inner-container .category-title.special div{
+    display: none;
+}
+.inner-container .category-title.special .selected>div{
+    display: block;
+}
+
 .main-top .timetable{
     display: flex;
 }

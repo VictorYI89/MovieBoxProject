@@ -10,14 +10,192 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/timetable.css">
 <script defer src="${pageContext.request.contextPath }/static/js/header.js"></script>
-<title>영화별 상영시간표 <상영시간표></title>
+<script defer src="${pageContext.request.contextPath }/static/js/timetable.js"></script>
+<title>영화별 상영시간표</title>
 </head>
 <body>
 	<jsp:include page="../include/header.jsp"/>
 	<div class="main-top">
 		<div class="inner-container">
 			<div class="inner">
-				
+				<div class="left">
+                    <div class="item selected">
+                        <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-tab-movie.png" alt="">
+                        <span>
+                            영화별
+                            <div class="middle">
+
+                                <div class="category-title">
+                                    <span class="selected">전체영화</span>
+                                    <span>큐레이션</span>
+                                </div>
+                                <div class="content">
+                                    <ul class="movie-list-content">
+                                        <li class="selected">데드풀과 울버린
+											<div class="right"><img src="https://img.megabox.co.kr/SharedImg/2024/07/19/ueQpxKKHF2osKzUwDMhOjnKeGN3Exv6S_316.jpg" alt=""></div>
+										</li>
+                                        <li>파일럿
+											<div class="right"><img src="https://img.megabox.co.kr/SharedImg/2024/07/08/HAHzCSec2Il5sMd4kcfMonbhCiHbEu2f_316.jpg" alt=""></div>
+										</li>
+                                        <li>슈퍼배드4
+											<div class="right"><img src="https://img.megabox.co.kr/SharedImg/2024/06/24/RZWMFjfujP4iNHOxih6UHFqE62ApTmbV_316.jpg" alt=""></div>
+										</li>
+                                        <li>리볼버
+											<div class="right"><img src="https://img.megabox.co.kr/SharedImg/2024/07/24/ZdrFYK4l97fhIitfIV56O4psYSNiQFIc_316.jpg" alt=""></div>
+
+										</li>
+                                        <li>인사이드 아웃2</li>
+                                        <li>탈주</li>
+                                        <li>사라으이 하츄핑</li>
+                                        <li>명탐정 코난:100만 달러의</li>
+                                        <li>하이퍼포커스:투모로우</li>
+                                        <li>우마무스메</li>
+                                        <li>핸섬가이즈</li>
+                                        <li>퍼펙트 데이즈</li>
+                                        <li>극장판 프리큐어 올스타즈</li>
+                                        <li>탈출 : 프로젝트 사일런스</li>
+                                        <li>더 퍼스트 슬램덩크</li>
+                                        <li>하이재킹</li>
+                                        <li>2024 브레겐츠 페스티벌</li>
+                                        <li>존 오브 인터레스트</li>
+                                        <li>큐어</li>
+                                        <li>비포 선라이즈</li>
+                                        <li>극장판 하이큐!!</li>
+                                        <li>박정희:경제대국을 꿈꾼 남자</li>
+                                        <li>마담 프루스트의 비밀정원</li>
+                                        <li>프렌치 수프</li>
+                                        <li>헤드윅</li>
+                                        <li>[2024 시테도슨트 시즌2</li>
+                                        <li>[로열오페라] 안드레아 세니에</li>
+                                        <li>너의 이름은</li>
+                                        <li>하이큐!! 땅VS하늘</li>
+                                        <li>[GET9] 커피와 담배</li>
+                                    </ul>
+                                </div>
+                                
+                            </div>
+                        </span>
+                    </div>
+                    <div class="item">
+                        <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-tab-theater.png" alt="">
+                        <span>극장별
+                            <div class="middle">
+                                <div class="category-title theater">
+                                    <span class="selected">서울(20)
+                                        <div class="theater-content">
+                                            <ul class="theater-list-content">
+                                                <li class="selected">강남</li>
+                                                <li>강동</li>
+                                                <li>군자</li>
+                                                <li>더 부티크 목동현대백화점</li>
+                                                <li>동대문</li>
+                                                <li>마곡</li>
+                                                <li>목동</li>
+                                                <li>브로드웨이(신사)</li>
+                                                <li>상봉</li>
+                                                <li>상암월드컵경기장</li>
+                                                <li>성수</li>
+                                                <li>센트럴</li>
+                                                <li>송파파크하비오</li>
+                                                <li>신촌</li>
+                                                <li>이수</li>
+                                                <li>창동</li>
+                                                <li>코엑스</li>
+                                                <li>홍대</li>
+                                                <li>화곡</li>
+                                                <li>ARTNINE</li>
+                                            </ul>
+                                        </div>
+                                    </span>
+                                    <span>경기(33)
+                                        <div class="theater-content">
+                                            <ul class="theater-list-content">
+                                                <li class="selected">고양스타필드</li>
+                                                <li>광명AK플라자</li>
+                                                <li>광명소하</li>
+                                                <li>금정 광명AK플라자</li>
+                                                <li>김포한강신도시</li>
+                                                <li>남양주</li>
+                                                <li>남양주현대아울렛 스페이스원</li>
+                                                <li>동탄</li>
+                                                <li>미사강변</li>
+                                                <li>백석벨라시타</li>
+                                                <li>별내</li>
+                                                <li>부천스타필드시티</li>
+                                                <li>분당</li>
+                                                <li>수원</li>
+                                                <li>수원AK플라자</li>
+                                                <li>수원남문</li>
+                                                <li>수원스타필드</li>
+                                                <li>수원인계</li>
+                                                <li>수원호매실</li>
+                                                <li>시흥배곧</li>
+                                                <li>안산중앙</li>
+                                                <li>안성스타필드</li>
+                                                <li>양주</li>
+                                                <li>용인기흥</li>
+                                                <li>용인테크노밸리</li>
+                                                <li>의정부민락</li>
+                                                <li>일산</li>
+                                                <li>킨텍스</li>
+                                                <li>파주금촌</li>
+                                                <li>파주운정</li>
+                                                <li>파주출판도시</li>
+                                                <li>평택비전</li>
+                                                <li>하남스타필드</li>
+                                            </ul>
+                                        </div>
+
+                                    </span>
+                                    <span>인천(6)</span>
+                                    <span>대전/충청/세종(17)</span>
+                                    <span>부산/대구/경상(26)</span>
+                                    <span>광주/전라(9)</span>
+                                    <span>강원(4)</span>
+                                    <span>제주(3)</span>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="item">
+                        <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-tab-special.png" alt="">
+                        <span>특별관
+                            <div class="middle">
+                                <div class="category-title special">
+                                    <span class="selected">DOLBYCINEMA(8)
+                                        <div class="content special">
+                                            <ul class="special-list-content">
+                                                <li class="selected">남양주현대아울렛 스페이스원</li>
+                                                <li>대구신세계(동대구)</li>
+                                                <li>대전신세계 아트앤사이언스</li>
+                                                <li>송도</li>
+                                                <li>수원AK플라자안성스타필드</li>
+                                                <li>안성스타필드</li>
+                                                <li>코엑스</li>
+                                                <li>하남스타필드</li>
+                                            </ul>
+                                        </div>
+
+                                    </span>
+                                    <span>MEGA | MX4D(2)</span>
+                                    <span>THE BOUTIQUE(8)</span>
+                                    <span>DOLBYATOMS(9)</span>
+                                    <span>COMFORT(69)</span>
+                                    <span>MEGABOXKIDS(2)</span>
+                                </div>
+                                <div class="right ">
+                                    <img class="special-img" src="https://img.megabox.co.kr/static/pc/images/reserve/img-theater-dolby.png" alt="">
+                                    <span class="special-img-content">
+                                        <p class="special-img-title">DOLBY</p>
+                                        <p>국내최초로 메가박스가</p>
+                                        <p>선보이는 세계최고</p>
+                                        <p>기술력의 몰입 시네마</p>
+                                    </span>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                </div>                
 			</div>
 			<div class="title"><span>데드풀과 울버린</span> <span>상영시간표</span></div>
 			<div class="timetable">

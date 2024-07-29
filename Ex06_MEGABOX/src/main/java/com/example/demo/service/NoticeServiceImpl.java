@@ -24,7 +24,6 @@ public class NoticeServiceImpl implements NoticeService{
 		List<NoticeDTO> pv = null;
 		try {
 			s = MybatisConnection.getSqlSessionFactory().openSession(false);
-			log.info("결과물 : {}",startNo);
 			
 			HashMap<String, Object> map = new HashMap<>();
 			map.put("startNo", startNo+1);
