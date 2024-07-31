@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +12,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/timetable.css">
 <script defer src="${pageContext.request.contextPath }/static/js/header.js"></script>
 <script defer src="${pageContext.request.contextPath }/static/js/timetable.js"></script>
+<script defer src="${pageContext.request.contextPath }/webjars/axios/1.7.2/dist/axios.min.js"></script>
+<script defer src="${pageContext.request.contextPath }/webjars/jquery/3.7.1/dist/jquery.min.js"></script>
 <title>영화별 상영시간표</title>
 </head>
 <body>
@@ -31,45 +34,25 @@
                                 </div>
                                 <div class="content">
                                     <ul class="movie-list-content">
-                                        <li class="selected">데드풀과 울버린
-											<div class="right"><img src="https://img.megabox.co.kr/SharedImg/2024/07/19/ueQpxKKHF2osKzUwDMhOjnKeGN3Exv6S_316.jpg" alt=""></div>
-										</li>
-                                        <li>파일럿
-											<div class="right"><img src="https://img.megabox.co.kr/SharedImg/2024/07/08/HAHzCSec2Il5sMd4kcfMonbhCiHbEu2f_316.jpg" alt=""></div>
-										</li>
-                                        <li>슈퍼배드4
-											<div class="right"><img src="https://img.megabox.co.kr/SharedImg/2024/06/24/RZWMFjfujP4iNHOxih6UHFqE62ApTmbV_316.jpg" alt=""></div>
-										</li>
-                                        <li>리볼버
-											<div class="right"><img src="https://img.megabox.co.kr/SharedImg/2024/07/24/ZdrFYK4l97fhIitfIV56O4psYSNiQFIc_316.jpg" alt=""></div>
-
-										</li>
-                                        <li>인사이드 아웃2</li>
-                                        <li>탈주</li>
-                                        <li>사라으이 하츄핑</li>
-                                        <li>명탐정 코난:100만 달러의</li>
-                                        <li>하이퍼포커스:투모로우</li>
-                                        <li>우마무스메</li>
-                                        <li>핸섬가이즈</li>
-                                        <li>퍼펙트 데이즈</li>
-                                        <li>극장판 프리큐어 올스타즈</li>
-                                        <li>탈출 : 프로젝트 사일런스</li>
-                                        <li>더 퍼스트 슬램덩크</li>
-                                        <li>하이재킹</li>
-                                        <li>2024 브레겐츠 페스티벌</li>
-                                        <li>존 오브 인터레스트</li>
-                                        <li>큐어</li>
-                                        <li>비포 선라이즈</li>
-                                        <li>극장판 하이큐!!</li>
-                                        <li>박정희:경제대국을 꿈꾼 남자</li>
-                                        <li>마담 프루스트의 비밀정원</li>
-                                        <li>프렌치 수프</li>
-                                        <li>헤드윅</li>
-                                        <li>[2024 시테도슨트 시즌2</li>
-                                        <li>[로열오페라] 안드레아 세니에</li>
-                                        <li>너의 이름은</li>
-                                        <li>하이큐!! 땅VS하늘</li>
-                                        <li>[GET9] 커피와 담배</li>
+                                        <c:forEach var="vo" items="${movieVO }" varStatus="index">
+                                            <c:if test="${index.index==0 }">
+                                                <li class="selected">${vo.name }
+                                                    <input type="hidden" id="movieTitle" value="${vo.name}">
+	                                    		<div class="right"><img src="${vo.image }"></div>
+                                            </li>
+                                    		</c:if>
+                                    		<c:if test="${index.index!=0 }">
+	                                    		<li>
+                                                    <c:if test="${fn:length(vo.name)>15}">
+                                                        ${fn:substring(vo.name,0,14)} ···
+                                                    </c:if>
+                                                    <c:if test="${fn:length(vo.name)<=15}">
+                                                        ${vo.name }
+                                                    </c:if>
+                                                    <input type="hidden" id="movieTitle" value="${vo.name}">
+	                                    		<div class="right"><img src="${vo.image }"></div></li>
+                                    		</c:if>
+                                    	</c:forEach>
                                     </ul>
                                 </div>
                                 
@@ -197,7 +180,7 @@
                     </div>
                 </div>                
 			</div>
-			<div class="title"><span>데드풀과 울버린</span> <span>상영시간표</span></div>
+			<div class="title"><span class="movieTitle">데드풀과 울버린</span> <span>상영시간표</span></div>
 			<div class="timetable">
 				<c:forEach var="vo" items="${vo }">
 					<div class="item">
@@ -267,6 +250,9 @@
 				<div class="item">강원</div>
 				<div class="item">제주</div>
 			</div>
+			<div class="theater-location">
+		        
+		    </div>
 		</div>
 	</div>
 	<jsp:include page="../include/footer.jsp"/>

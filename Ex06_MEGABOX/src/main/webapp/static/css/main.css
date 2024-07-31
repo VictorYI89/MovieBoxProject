@@ -42,7 +42,7 @@ header .container{
 .sup .sup-title a:hover{
     text-decoration: underline;
 }
-.sup .sup-title a{
+.sup .sup-title a,span{
     color:rgb(136,136,136);
 
 }
@@ -245,8 +245,10 @@ header .container{
     width: 80%;
     left:0;right:0;
     margin: auto;
+    text-align:center;
     font-size: 1em;
     color:white;
+    
 }
 .btn2{
     border-radius: 5px;
@@ -927,4 +929,9 @@ footer .footer-top{
 }
 .other-login img{
     position: relative;
+}
+.movieRate{
+	font-size: 1.6em;
+	margin-left:10px;
+    color: #59bec9;
 }
