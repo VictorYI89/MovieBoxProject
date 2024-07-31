@@ -13,4 +13,25 @@ public class NoticeDTO {
 	private String title;
 	private String content;
 	private Date regDate;
+	public int getIdx() {
+		return idx;
+	}
+	public int getRow_num() {
+		return row_num;
+	}
+	public String getName() {
+		return name;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public String getContent() {
+		return content;
+	}
+	public Date getRegDate() {
+		return regDate;
+	}
 }

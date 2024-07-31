@@ -67,7 +67,7 @@
                     <div class="sup">
                         <ul class="sup-title">
                             <li id="login"><a href="javascript:void(0)" >로그인</a></li>
-                            <li><a href="#">회원가입</a></li>
+                            <li><a href="/Ex06_MEGABOX/member/joinMembership_form.jsp">회원가입</a></li>
                             <li><a href="#">빠른예매</a></li>
                         </ul>
                         <div class="login-background"></div>

@@ -1,4 +1,14 @@
 <factorypath>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/webjars/npm/axios/1.7.2/axios-1.7.2.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/webjars/npm/follow-redirects/1.15.6/follow-redirects-1.15.6.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/webjars/npm/form-data/4.0.0/form-data-4.0.0.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/webjars/npm/asynckit/0.4.0/asynckit-0.4.0.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/webjars/npm/combined-stream/1.0.8/combined-stream-1.0.8.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/webjars/npm/delayed-stream/1.0.0/delayed-stream-1.0.0.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/webjars/npm/mime-types/2.1.35/mime-types-2.1.35.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/webjars/npm/mime-db/1.52.0/mime-db-1.52.0.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/webjars/npm/proxy-from-env/1.1.0/proxy-from-env-1.1.0.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/webjars/bower/bootstrap/5.3.3/bootstrap-5.3.3.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/webjars/webjars-locator-core/0.59/webjars-locator-core-0.59.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/io/github/classgraph/classgraph/4.8.173/classgraph-4.8.173.jar" enabled="true" runInBatchMode="false"/>

@@ -11,7 +11,7 @@ import com.example.demo.dto.NoticeDTO;
 import com.example.demo.mybatis.MybatisConnection;
 
 import lombok.extern.log4j.Log4j2;
-@Log4j2
+
 public class NoticeServiceImpl implements NoticeService{
 	private static NoticeServiceImpl instance = new NoticeServiceImpl();
 	private NoticeServiceImpl() {}
@@ -24,7 +24,7 @@ public class NoticeServiceImpl implements NoticeService{
 		List<NoticeDTO> pv = null;
 		try {
 			s = MybatisConnection.getSqlSessionFactory().openSession(false);
-			log.info("결과물 : {}",startNo);
+			
 			
 			HashMap<String, Object> map = new HashMap<>();
 			map.put("startNo", startNo+1);
@@ -32,7 +32,7 @@ public class NoticeServiceImpl implements NoticeService{
 			map.put("type", type);
 			map.put("title", title);
 			pv=NoticeDAOImpl.getInstance().selectAll(s,map);
-			log.info("결과물 : {}",pv);
+			
 			s.commit();
 		} catch (SQLException e) {
 			s.rollback();
