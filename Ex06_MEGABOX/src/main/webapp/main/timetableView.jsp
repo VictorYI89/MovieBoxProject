@@ -10,10 +10,10 @@
 <link rel="icon" href="https://www.megabox.co.kr/static/pc/images/favicon.ico">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/timetable.css">
-<script defer src="${pageContext.request.contextPath }/static/js/header.js"></script>
-<script defer src="${pageContext.request.contextPath }/static/js/timetable.js"></script>
 <script defer src="${pageContext.request.contextPath }/webjars/axios/1.7.2/dist/axios.min.js"></script>
 <script defer src="${pageContext.request.contextPath }/webjars/jquery/3.7.1/dist/jquery.min.js"></script>
+<script defer src="${pageContext.request.contextPath }/static/js/timetable.js"></script>
+<script defer src="${pageContext.request.contextPath }/static/js/header.js"></script>
 <title>영화별 상영시간표</title>
 </head>
 <body>
@@ -25,7 +25,7 @@
                     <div class="item selected">
                         <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-tab-movie.png" alt="">
                         <span>
-                            영화별
+                            <span class="category-title">영화별</span>
                             <div class="middle">
 
                                 <div class="category-title">
@@ -61,7 +61,8 @@
                     </div>
                     <div class="item">
                         <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-tab-theater.png" alt="">
-                        <span>극장별
+                        <span>
+                        	<span class="category-title">극장별</span>
                             <div class="middle">
                                 <div class="category-title theater">
                                     <span class="selected">서울(20)
@@ -142,7 +143,8 @@
                     </div>
                     <div class="item">
                         <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-tab-special.png" alt="">
-                        <span>특별관
+                        <span>
+                        	<span class="category-title">특별관</span>
                             <div class="middle">
                                 <div class="category-title special">
                                     <span class="selected">DOLBYCINEMA(8)

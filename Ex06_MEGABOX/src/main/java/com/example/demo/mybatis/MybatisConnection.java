@@ -23,4 +23,7 @@ public class MybatisConnection {
 	public static SqlSessionFactory getSqlSessionFactory() {
 		return sqlSessionFactory;
 	}
+	public static void main(String[] args) {
+		System.out.println(MybatisConnection.getSqlSessionFactory());
+	}
 }

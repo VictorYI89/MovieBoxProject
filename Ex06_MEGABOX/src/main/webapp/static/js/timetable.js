@@ -1,11 +1,21 @@
 const category = document.querySelectorAll(".main-top .left .item");
 let categoryIdx=0;
+let type='movie';
+let movieName='데드풀과 울버린';
+let currTime;
 category.forEach((item,index)=>{
     item.addEventListener('click',function(){
         category[categoryIdx].classList.remove("selected");
-        category[categoryIdx].children[1].children[0].style.display='none';
+        category[categoryIdx].children[1].children[1].style.display='none';
         this.classList.add("selected");
-        this.children[1].children[0].style.display='block';
+        this.children[1].children[1].style.display='block';
+        if(this.children[1].children[0].textContent=='영화별'){
+			type='movie';	
+	        getDataSource();
+		}else{
+			type='location';
+			$(".theater-location").html("");
+		}
         categoryIdx=index;
     })
 })
@@ -19,48 +29,77 @@ movieList.forEach((item,index)=>{
         movieList[idx].children[0].style.display='none';
         this.setAttribute("class","selected");
         document.querySelector(".movieTitle").textContent=item.children[0].value;
-        let content = (item.children[0].value);
+        movieName = (item.children[0].value);
         this.children[0].style.display='block';
         idx=index;
-        printCinema(content);
+        getDataSource();
     })    
 })
-async function printCinema(content){
-    let cinemaData ;
-    let a = document.querySelector(".timetable .item.selected .top");
-    let time = a.textContent.split('.');
-    let hour = String(time[0]).padStart(2,"0");
-    let min = String(time[1]).padStart(2,"0");
-    let d = hour+"-"+min;
-    let res = $("<div></div>");
-    await axios.get('cinemaLocationName.jsp?locationName='+content)
+function getData(){
+	return axios.get('cinemaLocationName.jsp?locationName='+movieName)
     .then(response=>{
-        cinemaData=response.data;
+        return response.data;
     })
-    .catch(error=>console.log(error))
-    cinemaData.forEach(item=>{
+    .catch(error=>{
+		console.log(error);
+		throw error;
+	})
+}
+function getDataSource(){
+	console.log(type,movieName,currTime);
+    
+    getData().then(async cinemaData => {
+    let res = $("<div></div>");
+
+    // cinemaData를 순회하며 각 요청을 동기적으로 처리
+    for (const item of cinemaData) {
         const container = $("<div class='theater-location'></div>");
-        let title = $("<div class='title'>"+item.location_name+"</div>");
-        let theaterBox = $("<div class='theater-box'></div>");
+        let title = $("<div class='title'>" + item.location_name + "</div>");
         container.append(title);
-        theaterBox.append($("<div class='theater-type'><div class='theater-name'>"+item.room_location+"</div><div class='chair'>총 232석</div></div>"));
-        let theaterArea = $("<div class='theater-area'></div>");
-        theaterBox.append(theaterArea);
         
-        axios.get(`selectMovieName.jsp?location_name=${item.location_name}&movie_idx=${item.movie_idx}&room_location=${item.room_location}&time=${d}`)
-        .then(response=>{
-            let result = response.data;
-            theaterArea.append($("<div class='item'>2D(자막)</div>"));
-            result.forEach(it=>{
-		        date = new Date(it.start_time);
-                theaterArea.append($("<div class='item'><div class='item-box'><div class='start-time'>"+String(date.getHours()).padStart(2,"0")+":"+String(date.getMinutes()).padStart(2,"0")+"</div><div class='remain-chair'>220석</div></div></div>"));
-            })
-            container.append(theaterBox);
-            res.append(container);
-            $(".theater-location").html(res);
-        })
-        .catch(error=>console.log(error))
-    })
+        let result;
+        try {
+            // 첫 번째 axios 요청
+            const response = await axios.get(`cinemaRoomLocation.jsp?name=${movieName}&location_name=${item.location_name}`);
+            result = response.data;
+
+            // 각 결과에 대해 동기적으로 처리
+            for (const it of result) {
+                console.log("result : " + it.location_name);
+                let theaterBox = $("<div class='theater-box'></div>");
+                
+                theaterBox.append($("<div class='theater-type'><div class='theater-name'>" + it.room_location + "</div><div class='chair'>총 232석</div></div>"));
+                const theaterArea = $("<div class='theater-area'></div>");
+                theaterBox.append(theaterArea);
+
+                // 두 번째 axios 요청
+                try {
+                    const response2 = await axios.get(`selectMovieName.jsp?type=${type}&location_name=${it.location_name}&movie_idx=${it.movie_idx}&room_location=${it.room_location}&time=${currTime}`);
+                    let result2 = response2.data;
+
+                    theaterArea.append($("<div class='item'>2D(자막)</div>"));
+
+                    for (const it2 of result2) {
+                        let date = new Date(it2.start_time);
+                        theaterArea.append($("<div class='item'><div class='item-box'><div class='start-time'>" + String(date.getHours()).padStart(2, "0") + ":" + String(date.getMinutes()).padStart(2, "0") + "</div><div class='remain-chair'>220석</div></div></div>"));
+                    }
+
+                    container.append(theaterBox);
+                    res.append(container);
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // 모든 요청이 완료된 후 DOM 업데이트
+    $(".theater-location").html(res);
+	}).catch(error => console.log(error));
+
+    
 }
 const categoryTitle = document.querySelectorAll(".theater>span");
 let categoryTitleIdx=0;
@@ -82,6 +121,7 @@ function theaterList(idx){
             this.classList.add("selected");
             document.querySelector(".movieTitle").textContent=this.textContent;
             ListIdx=index;
+            getDataSource();
         })
     })
 }
@@ -116,12 +156,24 @@ function specialList(idx){
 const selectedDate = document.querySelectorAll(".timetable .item");
 let selectedDateIdx=0;
 selectedDate.forEach((item,index)=>{
+	let time;
+	let hour,min;
 	if(index==0){
 		selectedDate[0].classList.add("selected");
+		time=selectedDate[0].children[0].textContent.split(".");
+	    hour = String(time[0]).padStart(2,"0");
+	    min = String(time[1]).padStart(2,"0");
+	    currTime=hour+"-"+min;
+	    if(type=='movie') getDataSource();
 	}
 	item.addEventListener("click",function(){
+		time = this.children[0].textContent.split(".");
+	    hour = String(time[0]).padStart(2,"0");
+	    min = String(time[1]).padStart(2,"0");
+	    currTime=hour+"-"+min;
 		selectedDate[selectedDateIdx].classList.remove("selected");
 		this.classList.add("selected");
 		selectedDateIdx=index;
+		getDataSource();
 	})
 })

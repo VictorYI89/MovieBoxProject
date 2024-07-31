@@ -17,16 +17,17 @@ public class TimeTableServiceImpl implements TimeTableService{
 		return instance;
 	}
 	@Override
-	public List<TimeTableDTO> selectMovieName(String location_name, int movie_idx, String room_location,String time) {
+	public List<TimeTableDTO> selectMovieName(String type,String location_name, int movie_idx, String room_location,String time) {
 		SqlSession s = null;
 		List<TimeTableDTO> vo = null;
 		try {
 			s = MybatisConnection.getSqlSessionFactory().openSession(false);
 			HashMap<String, Object> map = new HashMap<>();
+			map.put("type", type);
 			map.put("location_name", location_name);
 			map.put("movie_idx", movie_idx);
 			map.put("room_location", room_location);
-			map.put("time", time);
+			map.put("start_time", time);
 			vo = TimeTableDAOImpl.getInstance().selectMovieName(s, map);
 			s.commit();
 		} catch (SQLException e) {
