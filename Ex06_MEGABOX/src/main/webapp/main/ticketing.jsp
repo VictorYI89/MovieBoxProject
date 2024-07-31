@@ -1109,6 +1109,23 @@
                             </div>
                         </div>
                         <div class="time-menu-bottom">
+                            <div class="movie-time">
+                                <div class="time-show">
+                                    <div class="time">
+                                        <p>18:20</p>
+                                        <p>~20:37</p>
+                                    </div>
+                                    <div class="info">
+                                        <p>파일럿</p>
+                                        <p>2D</p>
+                                    </div>
+                                    <div class="area">
+                                        <p>강동</p>
+                                        <p>1관</p>
+                                        <p>236/249</p>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="bottom-menu">
                                 <div class="bottom-main">
                                     <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-movie-time.png" alt="">

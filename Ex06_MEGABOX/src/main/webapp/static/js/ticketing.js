@@ -381,16 +381,27 @@ document.querySelectorAll('.movie-menu .sub-middle-menu .first-menu-item').forEa
     });
 });
 
+const alert2Element = document.querySelector('.alert-message'); // 표시할 요소를 선택하세요
 
 document.querySelectorAll('.movie-menu .sub-middle-menu .second-menu-item').forEach(item => {
     item.addEventListener('click', function() {
-        document.querySelectorAll('.movie-menu .sub-middle-menu .second-menu-item').forEach(el => {
-            el.style.backgroundColor = '';
-            el.style.borderWidth = '';
-            el.style.borderStyle = '';
-            el.style.borderColor = '';
-        });
-        item.style.backgroundColor = 'rgb(102, 102, 102)';
+        if (selectedItems.has(item)) {
+            // 이미 선택된 항목을 클릭하면 선택 해제
+            selectedItems.delete(item);
+            item.style.backgroundColor = '';
+            item.style.borderWidth = '';
+            item.style.borderStyle = '';
+            item.style.borderColor = '';
+        } else {
+            // 선택된 항목이 최대 수 미만일 때만 추가 선택 가능
+            if (selectedItems.size < maxSelection) {
+                selectedItems.add(item);
+                item.style.backgroundColor = 'rgb(102, 102, 102)';
+            } else {
+                // 최대 선택 가능 항목 수를 초과하려고 할 때
+                alert2Element.style.display = 'block';
+            }
+        }
     });
 });
 
@@ -409,14 +420,58 @@ document.querySelectorAll('.theater-menu .sub-middle-menu .first-menu-item').for
     });
 });
 
+const alert3Element = document.querySelector('.alert-message'); // 표시할 요소를 선택하세요
+
 document.querySelectorAll('.theater-menu .sub-middle-menu .second-menu-item').forEach(item => {
     item.addEventListener('click', function() {
-        document.querySelectorAll('.theater-menu .sub-middle-menu .second-menu-item').forEach(el => {
-            el.style.backgroundColor = '';
-            el.style.borderWidth = '';
-            el.style.borderStyle = '';
-            el.style.borderColor = '';
-        });
-        item.style.backgroundColor = 'rgb(102, 102, 102)';
+        if (selectedItems.has(item)) {
+            // 이미 선택된 항목을 클릭하면 선택 해제
+            selectedItems.delete(item);
+            item.style.backgroundColor = '';
+            item.style.borderWidth = '';
+            item.style.borderStyle = '';
+            item.style.borderColor = '';
+        } else {
+            // 선택된 항목이 최대 수 미만일 때만 추가 선택 가능
+            if (selectedItems.size < maxSelection) {
+                selectedItems.add(item);
+                item.style.backgroundColor = 'rgb(102, 102, 102)';
+            } else {
+                // 최대 선택 가능 항목 수를 초과하려고 할 때
+                alert3Element.style.display = 'block';
+            }
+        }
+        const timeEl = document.querySelector('.time-menu .bottom-main')
+        timeEl.style.display = 'none'
+        const movieEl = document.querySelector('.time-menu .movie-time')
+        movieEl.style.display = 'block'
+    });
+});
+
+const alert4Element = document.querySelector('.alert-message'); // 표시할 요소를 선택하세요
+
+document.querySelectorAll('.theater-menu .sub-middleSecond-menu .second-menu-item').forEach(item => {
+    item.addEventListener('click', function() {
+        if (selectedItems.has(item)) {
+            // 이미 선택된 항목을 클릭하면 선택 해제
+            selectedItems.delete(item);
+            item.style.backgroundColor = '';
+            item.style.borderWidth = '';
+            item.style.borderStyle = '';
+            item.style.borderColor = '';
+        } else {
+            // 선택된 항목이 최대 수 미만일 때만 추가 선택 가능
+            if (selectedItems.size < maxSelection) {
+                selectedItems.add(item);
+                item.style.backgroundColor = 'rgb(102, 102, 102)';
+            } else {
+                // 최대 선택 가능 항목 수를 초과하려고 할 때
+                alert4Element.style.display = 'block';
+            }
+        }
+        const timeEl = document.querySelector('.time-menu .bottom-main')
+        timeEl.style.display = 'none'
+        const movieEl = document.querySelector('.time-menu .movie-time')
+        movieEl.style.display = 'block'
     });
 });
