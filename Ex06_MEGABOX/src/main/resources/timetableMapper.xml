@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="timetable">
+	<select id="selectMovieName" parameterType="hashmap" resultType="TimeTableDTO">
+		select * from timetable where location_name=#{location_name} and movie_idx=#{movie_idx} and room_location=#{room_location} and to_char(start_time,'MM-dd')=#{time} order by start_time
+	</select>
+</mapper>
