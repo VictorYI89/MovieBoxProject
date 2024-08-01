@@ -35,6 +35,7 @@ document.querySelector("#closeLogin").addEventListener('click',function(){
   document.querySelector(".login-box").style.display='none';
   document.querySelector(".login-background").style.display='none';
   document.querySelector(".main").style.overflow='auto';
+  
 })
 // 로그아웃
 const logout = document.querySelector("#logout");
@@ -53,6 +54,8 @@ if(userLogin){
 	  document.querySelector(".header-wrapper").style.display='none';
 	  supListContents.forEach(it=>it.style.display='none');
 	  document.querySelector(".main").style.overflow='hidden';
+	  document.querySelector(".logout-container").style.display='none';
+	  document.querySelector("#userLogin").setAttribute("src",'../static/images/user.svg');
 	})	
 }
 function login(){
@@ -99,4 +102,28 @@ container.addEventListener('click',function(){
         img.setAttribute('src','../static/images/menu.svg');
         menu.style.display='none';	
     }
+})
+
+
+// 사람이미지
+
+const userLoginImg = document.querySelector("#userLogin");
+userLoginImg.addEventListener('click',function(){
+	if(document.querySelector("#session_name").value.length==0){
+	  if(this.getAttribute("src").includes("user")){
+	    document.querySelector(".logout-container").style.display='block';
+	    this.setAttribute("src",'../static/images/cancel.svg');
+	  }else{
+	    document.querySelector(".logout-container").style.display='none';
+	    this.setAttribute("src",'../static/images/user.svg');	
+	  }		
+	}else{
+		if(this.getAttribute("src").includes("user")){
+	    document.querySelector(".login-container").style.display='block';
+	    this.setAttribute("src",'../static/images/cancel.svg');
+	  }else{
+	    document.querySelector(".login-container").style.display='none';
+	    this.setAttribute("src",'../static/images/user.svg');	
+	  }		
+	}
 })
