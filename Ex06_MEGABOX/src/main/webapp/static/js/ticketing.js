@@ -463,3 +463,64 @@ document.querySelectorAll('.theater-menu .sub-middleSecond-menu .second-menu-ite
         movieEl.style.display = 'block'
     });
 });
+
+
+//아래는 목록 클릭 시 데이터를 전송하여 영화와 영화관위치에 맞는 시간,영화제목을 리스트화 하기 위하여 클라스를 추가/삭제 해주는 이벤트
+
+// 모든 .contry 클래스를 가진 요소를 선택합니다.
+var contrys = document.querySelectorAll('.contry');         
+// 각 요소에 클릭 이벤트 리스너를 추가합니다.
+contrys.forEach(function(contry) {
+    contry.addEventListener('click', function() {
+        // 클릭한 요소에만 'checkedContry' 클래스를 추가합니다.
+        var checkedLocationName = document.querySelectorAll('.contry_location');
+        checkedLocationName.forEach(function(location)) {
+            location.classList.toggle('checkedLocation');
+        }
+    });
+});
+
+// 모든 .movie_title 클래스를 가진 요소를 선택합니다.
+var movies = document.querySelectorAll('.movie_title');
+// 각 요소에 클릭 이벤트 리스너를 추가합니다.
+movies.forEach(function(movie) {
+    movie.addEventListener('click', function() {
+        // 클릭한 요소에만 'checkedMovie' 클래스를 추가합니다.
+        this.classList.toggle('checkedMovie');
+    });
+});
+
+
+$(document).ready(function() {
+    $(".contry_location").click(function() {
+        getMovieList();
+    });
+    $(".movie_title").click(function() {
+        getMovieList();
+    });
+});
+
+function getMovieList() { // .nestedData 클래스를 가진 하위 요소의 텍스트를 가져옵니다.
+    var howManyCheckedContry = document.querySelectorAll('.checkedLocation');
+    if(howManyCheckedContry.length > 0) {
+        var checkedContrys = document.querySelectorAll('.checkedLocation');
+        var checkedMovies = document.querySelectorAll('.checkedMovie');
+
+        $.ajax({
+            url: 'getLocation.jsp', // 서버의 URL로 비동기 요청을 보냅니다.
+            type: 'POST', // 요청 방식을 POST로 설정합니다.
+            dataType: 'json',
+            data: {
+                // 하위 요소에서 가져온 데이터를 서버로 전송합니다.
+                nestedData: nestedData,
+            },
+            success: function(getLocation) {
+                // 서버로부터 성공적인 응답을 받았을 때 실행됩니다.
+            },
+            error: function(error) {
+                // 요청이 실패했을 때 실행됩니다.
+                console.log("에러: " + error); // 에러 정보를 콘솔에 출력합니다.
+            }
+        });
+    }
+};
