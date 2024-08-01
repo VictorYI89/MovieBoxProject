@@ -62,6 +62,7 @@
                     </div>
                     <div class="item">
                         <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-tab-theater.png" alt="">
+                        	<span>
                         	<span class="category-title">극장별</span>
                             <div class="middle">
                                 <div class="category-title theater">
@@ -143,6 +144,7 @@
                     </div>
                     <div class="item">
                         <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-tab-special.png" alt="">
+                        	<span>
                         	<span class="category-title">특별관</span>
                             <div class="middle">
                                 <div class="category-title special">

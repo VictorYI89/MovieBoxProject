@@ -65,11 +65,8 @@ li{
 .inner-container .middle{
     position: absolute;
     top:30px;
-<<<<<<< HEAD
     width: 650px;
-=======
     width: 670px;
->>>>>>> master
     left:200px;
     height: 100%;
 }
@@ -137,20 +134,16 @@ li{
 }
 .inner-container .middle .movie-list-content li{
     width: 30%;
-<<<<<<< HEAD
     padding: 7px 5px;
     font-size: 14px;
     cursor: pointer;
 }
 .movie-list-content .right img{
     width: 220px;
-}
-=======
     padding: 5px;
     font-size: 14px;
     cursor: pointer;
 }
->>>>>>> master
 .inner-container .middle .movie-list-content .selected{
     color: #fff;
     font-weight: 400;
@@ -179,11 +172,8 @@ li{
 .inner-container .right{
     position: absolute;
     top:-30px;
-<<<<<<< HEAD
     right:-325px;
-=======
     right:-310px;
->>>>>>> master
 }
 .inner-container .theater-list-content{
     color: #444;
@@ -209,8 +199,6 @@ li{
     margin-top: 25px;
     border-top: 1px solid #d8d9db;    
     border-bottom: 1px solid #d8d9db;    
-<<<<<<< HEAD
-=======
 }
 .inner-container .category-title.special{
     width: 800px;
@@ -223,7 +211,6 @@ li{
 }
 
 .main-top .timetable{
->>>>>>> master
     display: flex;
 }
 .inner-container .category-title.special{
