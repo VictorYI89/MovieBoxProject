@@ -31,7 +31,7 @@ public class NoticeServiceImpl implements NoticeService{
 			map.put("type", type);
 			map.put("title", title);
 			pv=NoticeDAOImpl.getInstance().selectAll(s,map);
-			log.info("결과물 : {}",pv);
+//			log.info("결과물 : {}",pv);
 			s.commit();
 		} catch (SQLException e) {
 			s.rollback();
