@@ -14,6 +14,7 @@
 <script defer src="${pageContext.request.contextPath }/webjars/jquery/3.7.1/dist/jquery.min.js"></script>
 <script defer src="${pageContext.request.contextPath }/static/js/timetable.js"></script>
 <script defer src="${pageContext.request.contextPath }/static/js/header.js"></script>
+<script defer src="${pageContext.request.contextPath }/static/js/timetable.js"></script>
 <title>영화별 상영시간표</title>
 </head>
 <body>
@@ -61,7 +62,6 @@
                     </div>
                     <div class="item">
                         <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-tab-theater.png" alt="">
-                        <span>
                         	<span class="category-title">극장별</span>
                             <div class="middle">
                                 <div class="category-title theater">
@@ -143,7 +143,6 @@
                     </div>
                     <div class="item">
                         <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-tab-special.png" alt="">
-                        <span>
                         	<span class="category-title">특별관</span>
                             <div class="middle">
                                 <div class="category-title special">
