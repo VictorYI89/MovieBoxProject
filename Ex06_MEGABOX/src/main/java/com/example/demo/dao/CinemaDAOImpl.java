@@ -22,5 +22,9 @@ public class CinemaDAOImpl implements CinemaDAO{
 	public List<CinemaDTO> selectRoomLocation(SqlSession s, HashMap<String, Object> map) throws SQLException {
 		return s.selectList("cinema.selectRoomLocation",map);
 	}
+	@Override
+	public String selectMovieNameByIdx(SqlSession s, int movieIdx) throws SQLException {
+		return s.selectOne("cinema.selectMovieNameByIdx",movieIdx);
+	}
 
 }
