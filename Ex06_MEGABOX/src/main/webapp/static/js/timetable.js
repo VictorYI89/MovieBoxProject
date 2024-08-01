@@ -2,6 +2,7 @@ const category = document.querySelectorAll(".main-top .left .item");
 let categoryIdx=0;
 let type='movie';
 let movieName='데드풀과 울버린';
+let location_name='강남';
 let currTime;
 category.forEach((item,index)=>{
     item.addEventListener('click',function(){
@@ -12,9 +13,9 @@ category.forEach((item,index)=>{
         if(this.children[1].children[0].textContent=='영화별'){
 			type='movie';	
 	        getDataSource();
-		}else{
+		}else if(this.children[1].children[0].textContent=='극장별'){
 			type='location';
-			$(".theater-location").html("");
+			getTheaterSource();
 		}
         categoryIdx=index;
     })
@@ -35,6 +36,7 @@ movieList.forEach((item,index)=>{
         getDataSource();
     })    
 })
+
 function getData(){
 	return axios.get('cinemaLocationName.jsp?locationName='+movieName)
     .then(response=>{
@@ -46,7 +48,7 @@ function getData(){
 	})
 }
 function getDataSource(){
-	console.log(type,movieName,currTime);
+	//console.log(type,movieName,currTime);
     
     getData().then(async cinemaData => {
     let res = $("<div></div>");
@@ -65,7 +67,6 @@ function getDataSource(){
 
             // 각 결과에 대해 동기적으로 처리
             for (const it of result) {
-                console.log("result : " + it.location_name);
                 let theaterBox = $("<div class='theater-box'></div>");
                 
                 theaterBox.append($("<div class='theater-type'><div class='theater-name'>" + it.room_location + "</div><div class='chair'>총 232석</div></div>"));
@@ -81,7 +82,10 @@ function getDataSource(){
 
                     for (const it2 of result2) {
                         let date = new Date(it2.start_time);
-                        theaterArea.append($("<div class='item'><div class='item-box'><div class='start-time'>" + String(date.getHours()).padStart(2, "0") + ":" + String(date.getMinutes()).padStart(2, "0") + "</div><div class='remain-chair'>220석</div></div></div>"));
+                        let startMovieTime = String(date.getHours()).padStart(2, "0") + ":" + String(date.getMinutes()).padStart(2, "0");
+                        let date2 = new Date(it2.end_time);
+                        let endMovieTime = String(date2.getHours()).padStart(2, "0") + ":" + String(date2.getMinutes()).padStart(2, "0");
+                        theaterArea.append($("<div class='item'><div class='item-wrapper'>"+startMovieTime+"~"+endMovieTime+"</div><div class='item-box'><div class='start-time'>" + String(date.getHours()).padStart(2, "0") + ":" + String(date.getMinutes()).padStart(2, "0") + "</div><div class='remain-chair'>220석</div></div></div>"));
                     }
 
                     container.append(theaterBox);
@@ -101,6 +105,7 @@ function getDataSource(){
 
     
 }
+// 극장별
 const categoryTitle = document.querySelectorAll(".theater>span");
 let categoryTitleIdx=0;
 categoryTitle.forEach((item,index)=>{
@@ -108,20 +113,75 @@ categoryTitle.forEach((item,index)=>{
         categoryTitle[categoryTitleIdx].classList.remove("selected");
         item.classList.add("selected");
         categoryTitleIdx=index;
+        console.log("result : "+categoryTitleIdx);
         theaterList(categoryTitleIdx);
     })
 })
-// 극장별
+function getTheater(){
+	return axios.get('selectTheater.jsp?location_name='+location_name)
+	.then(response=>{
+		return response.data;
+	}).catch(error=>{
+		throw error;
+	})
+}
+function getTheaterSource(){
+	
+	getTheater().then(async theaterData=>{
+		let res = $("<div></div>");
+		for(const theater of theaterData){
+			 const container = $("<div class='theater-location'></div>");
+	        let title = $("<div class='title'>" + theater.movie_idx + "</div>");
+	        container.append(title);
+	        const response = await axios.get('selectTheaterSecond.jsp?location_name='+encodeURIComponent(location_name)+`&movie_idx=${theater.movie_idx}&room_location=${theater.room_location}`);
+	        const result = response.data;
+	        for (const it of result) {
+                let theaterBox = $("<div class='theater-box'></div>");
+                
+                theaterBox.append($("<div class='theater-type'><div class='theater-name'>" + it.room_location + "</div><div class='chair'>총 232석</div></div>"));
+                const theaterArea = $("<div class='theater-area'></div>");
+                theaterBox.append(theaterArea);
+
+                // 두 번째 axios 요청
+                try {
+                    const response2 = await axios.get(`selectMovieName.jsp?type=${type}&location_name=${it.location_name}&movie_idx=${it.movie_idx}&room_location=${it.room_location}&time=${currTime}`);
+                    let result2 = response2.data;
+
+                    theaterArea.append($("<div class='item'>2D(자막)</div>"));
+
+                    for (const it2 of result2) {
+                        let date = new Date(it2.start_time);
+                        let startMovieTime = String(date.getHours()).padStart(2, "0") + ":" + String(date.getMinutes()).padStart(2, "0");
+                        let date2 = new Date(it2.end_time);
+                        let endMovieTime = String(date2.getHours()).padStart(2, "0") + ":" + String(date2.getMinutes()).padStart(2, "0");
+                        theaterArea.append($("<div class='item'><div class='item-wrapper'>"+startMovieTime+"~"+endMovieTime+"</div><div class='item-box'><div class='start-time'>" + String(date.getHours()).padStart(2, "0") + ":" + String(date.getMinutes()).padStart(2, "0") + "</div><div class='remain-chair'>220석</div></div></div>"));
+                   		}
+
+	                    container.append(theaterBox);
+	                    res.append(container);
+	                } catch (error) {
+	                    console.log(error);
+	                }
+                }
+                 $(".theater-location").html(res);
+		}
+	})
+}
 function theaterList(idx){
     const theaterListContent = categoryTitle[idx].querySelectorAll(" .theater-list-content>li");
     let ListIdx=0;
+    console.log(theaterListContent.length);
     theaterListContent.forEach((item,index)=>{
-        item.addEventListener('click',function(){
+        item.addEventListener('click',function(e){
             theaterListContent[ListIdx].classList.remove("selected");
             this.classList.add("selected");
             document.querySelector(".movieTitle").textContent=this.textContent;
+            location_name=this.textContent;
             ListIdx=index;
-            getDataSource();
+            e.stopPropagation();
+            if(type=='movie')getDataSource();
+            else if(type=='location')getTheaterSource();
+            
         })
     })
 }
@@ -140,7 +200,6 @@ contentSpecial.forEach((item,index)=>{
 })
 function specialList(idx){
     const theaterListContent = contentSpecial[idx].querySelectorAll(" .special-list-content>li");
-    console.log(theaterListContent);
     let ListIdx=0;
     theaterListContent.forEach((item,index)=>{
         item.addEventListener('click',function(){

@@ -194,6 +194,7 @@ li{
     margin-top: 25px;
     border-top: 1px solid #d8d9db;    
     border-bottom: 1px solid #d8d9db;    
+    display: flex;
 }
 .inner-container .category-title.special{
     width: 800px;
@@ -205,9 +206,6 @@ li{
     display: block;
 }
 
-.main-top .timetable{
-    display: flex;
-}
 
 .main-top .timetable .item{
     width: 78px;
