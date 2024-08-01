@@ -1,4 +1,7 @@
-<<<<<<< HEAD
+// 영화별
+
+const movieList = document.querySelectorAll('.movie-list-content>li');
+let idx=0;
 const category = document.querySelectorAll(".main-top .left .item");
 let categoryIdx=0;
 let type='movie';
@@ -21,20 +24,11 @@ category.forEach((item,index)=>{
         categoryIdx=index;
     })
 })
-
-// 영화별
-=======
-// 영화별
-
->>>>>>> master
-const movieList = document.querySelectorAll('.movie-list-content>li');
-let idx=0;
 movieList.forEach((item,index)=>{
     item.addEventListener('click',function(){
         movieList[idx].classList.remove("selected");
         movieList[idx].children[0].style.display='none';
         this.setAttribute("class","selected");
-<<<<<<< HEAD
         document.querySelector(".movieTitle").textContent=item.children[0].value;
         movieName = (item.children[0].value);
         this.children[0].style.display='block';
@@ -111,13 +105,6 @@ function getDataSource(){
 
     
 }
-=======
-        this.children[0].style.display='block';
-        idx=index;
-    })    
-})
-const category = document.querySelectorAll(".main-top .left .item");
-let categoryIdx=0;
 category.forEach((item,index)=>{
     item.addEventListener('click',function(){
         category[categoryIdx].classList.remove("selected");
@@ -128,7 +115,6 @@ category.forEach((item,index)=>{
     })
 })
 
->>>>>>> master
 // 극장별
 const categoryTitle = document.querySelectorAll(".theater>span");
 let categoryTitleIdx=0;
@@ -137,7 +123,6 @@ categoryTitle.forEach((item,index)=>{
         categoryTitle[categoryTitleIdx].classList.remove("selected");
         item.classList.add("selected");
         categoryTitleIdx=index;
-<<<<<<< HEAD
         console.log("result : "+categoryTitleIdx);
         theaterList(categoryTitleIdx);
     })
@@ -207,22 +192,9 @@ function theaterList(idx){
             if(type=='movie')getDataSource();
             else if(type=='location')getTheaterSource();
             
-=======
         theaterList(categoryTitleIdx);
     })
-})
-function theaterList(idx){
-    const theaterListContent = categoryTitle[idx].querySelectorAll(" .theater-list-content>li");
-    let ListIdx=0;
-    theaterListContent.forEach((item,index)=>{
-        item.addEventListener('click',function(){
-            theaterListContent[ListIdx].classList.remove("selected");
-            this.classList.add("selected");
-            ListIdx=index;
->>>>>>> master
-        })
-    })
-}
+})}
 
 // 특별관
 
@@ -238,16 +210,12 @@ contentSpecial.forEach((item,index)=>{
 })
 function specialList(idx){
     const theaterListContent = contentSpecial[idx].querySelectorAll(" .special-list-content>li");
-<<<<<<< HEAD
-=======
     console.log(theaterListContent);
->>>>>>> master
     let ListIdx=0;
     theaterListContent.forEach((item,index)=>{
         item.addEventListener('click',function(){
             theaterListContent[ListIdx].classList.remove("selected");
             this.classList.add("selected");
-<<<<<<< HEAD
             document.querySelector(".movieTitle").textContent=this.textContent;
             ListIdx=index;
         })
@@ -279,9 +247,3 @@ selectedDate.forEach((item,index)=>{
 		getDataSource();
 	})
 })
-=======
-            ListIdx=index;
-        })
-    })
-}
->>>>>>> master
