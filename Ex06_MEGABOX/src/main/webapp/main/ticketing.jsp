@@ -206,7 +206,7 @@
                                         <p class="contry_name">광주/전라</p>
                                         <p>(9)</p>
                                     </div>
-                                    <div onclick="theaterGangwon()" class="first-menu-item contry">
+                                    <div onclick="theaterGangwon()" class="first-menu-item contry"
                                         <p class="contry_name">강원</p>
                                         <p>(4)</p>
                                     </div>
