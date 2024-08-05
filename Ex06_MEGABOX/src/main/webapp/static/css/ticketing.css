@@ -333,6 +333,10 @@ main .box .ticketing-container .menu .theater-menu .theater-sub-menu .sub-middle
     overflow-y: auto;
 }
 
+main .box .ticketing-container .menu .theater-menu .theater-sub-menu .sub-middle-menu .middle-second-menu .location-area {
+    display: block;
+}
+
 main .box .ticketing-container .menu .theater-menu .theater-sub-menu .sub-middle-menu .middle-second-menu .seoul-area {
     display: none;
 }
