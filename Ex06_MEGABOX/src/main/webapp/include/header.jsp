@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri = "jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +17,70 @@
     <script defer src="../static/js/header.js"></script>
 </head>
 <body>
+    <input type="hidden" id="session_name" value="${sessionScope.name }" />
+    <c:if test="${sessionScope.name!=null }">
+        <div class="login-container">
+            <div class="login-inner">
+                <div class="box">
+                    <div class="mbimg"><img src="https://img.megabox.co.kr/static/pc/images/2023/01/member_WELCOME_2.png" alt="WELCOME"></div>
+                    <div class="name">${sessionScope.name}님</div>
+                    <a href="/mypage" class="linkBtn" title="나의  메가박스">나의  메가박스</a>
+                </div>
+                <div class="box">
+                    <div class="tit">
+                        <span>스페셜 멤버십</span>
+                    </div>
+                    <ul class="membership"><li class="txt">특별한 멤버십 혜택을 만나보세요!</li></ul>
+                </div>
+                <div class="box point">
+                    <div class="tit">
+                        <a class="linkA" href="/mypage/point-list" title="멤버십 포인트"><span>포인트</span></a>
+                    </div>
+                    <div class="count"><span class="text">0</span></div>
+                </div>
+                <div class="box coupon">
+                    <div class="tit">
+                        <a class="linkA" href="/mypage/discount-coupon" title="쿠폰"><span>쿠폰</span></a>
+                        <a class="linkA" href="/mypage/point-list" title="멤버십 포인트"></a>
+                    </div>
+
+                    <div title="쿠폰 수" class="count"><span class="text">1</span><span>장</span></div>
+                </div>
+                <div class="box movieTk">
+                    <div class="tit">
+                        <a class="linkA" href="/mypage/movie-coupon" title="관람권"><span>관람권</span></a>
+                        <a class="linkA" href="/mypage/point-list" title="멤버십 포인트"></a>
+                    </div>
+
+                    <div title="관람권 수" class="count"><span class="text">1</span><span>장</span></div>
+                </div>
+                <div class="box reserve">
+                    <div class="tit">
+                        <a class="linkA" href="/mypage/bookinglist" title="예매내역"><span>예매</span></a>
+                    </div>
+
+                    <div title="예매 수" class="count"><div class="txt">예매내역이 없어요!</div></div>
+                </div>
+                <div class="box buy">
+                    <div class="tit">
+                        <a class="linkA" href="/mypage/bookinglist?tab=02" title="구매내역"><span>구매</span></a>
+                    </div>
+
+                    <div class="count"><span class="text">1</span><span>건</span></div>
+                </div>
+            </div>
+        </div>
+    </c:if>
+     <c:if test="${sessionScope.name==null }">
+    <div class="logout-container">
+        <div class="login-inner">
+            <div class="wrap">
+                <div class="txt">영화를 사랑하는 당신을 위한 꼭 맞는 혜택까지 확인해 보세요!</div>
+                <div class='a-wrap'><a href="javascript:void(0)" id="moveLogin" title="로그인">로그인</a><a href="/join" class="link" title="혹시 아직 회원이 아니신가요?">혹시 아직 회원이 아니신가요?</a></div>
+            </div>
+        </div>
+    </div>
+    </c:if>
     <div class="search-container">
         <div class="inner">
             <div class="left">

@@ -18,8 +18,9 @@ public class DBManager {
 			Class.forName("oracle.jdbc.OracleDriver");				// 오라클 접속을 위한 Driver 사전작업
 
 			String url = "jdbc:oracle:thin:@1.220.247.78:1522:orcl";	// 오라클 접속할 위치값 저장
-			String username = "sunggun";		// 오라클 접속 계정id
-			String password = "sunggun";			// 오라클 접속 계정pw
+
+			String username = "semi_2405_team3";		// 오라클 접속 계정id
+			String password = "1234";			// 오라클 접속 계정pw
 			
 			// 실제 오라클 접속하여 접속을 다루는 객체를 받아서 Connection클래스 객체에 대입
 			conn = DriverManager.getConnection(url, username, password);					

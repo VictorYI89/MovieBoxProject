@@ -58,6 +58,6 @@
         e.printStackTrace();
     } finally {
         DBManager.dbClose(conn, pstmt, null);
-        response.sendRedirect("/Ex06_MEGABOX/main/mainView.jsp");
+        response.sendRedirect("/Ex06_MEGABOX/main/main.jsp");
     }
 %>

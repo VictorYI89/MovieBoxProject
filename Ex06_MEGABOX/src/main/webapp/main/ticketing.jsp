@@ -1,9 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<<<<<<< HEAD
 
     <%@ page import="java.util.Date" %>
     <%@ page import="com.utils.DBManager" %>
     <%@ page import="java.sql.*" %>
+=======
+<%@ page import="java.util.Date" %>
+<%@ page import="com.utils.DBManager" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.sql.*" %>
+>>>>>>> 07b4551a56543873d2fac7dd06b63e9c8fdf685f
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +31,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js" integrity="sha512-8E3KZoPoZCD+1dgfqhPbejQBnQfBXe8FuwL4z/c8sTrgeDMFEnoyTlH3obB4/fV+6Sg0a0XF+L/6xS4Xx1fUEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.js" integrity="sha512-BABFxitBmYt44N6n1NIJkGOsNaVaCs/GpaJwDktrfkWIBFnMD6p5l9m+Kc/4SLJSJ4mYf+cstX98NYrsG/M9ag==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.css" integrity="sha512-aMup4I6BUl0dG4IBb0/f32270a5XP7H1xplAJ80uVKP6ejYCgZWcBudljdsointfHxn5o302Jbnq1FXsBaMuoQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="../static/js/jquery-3.7.1.js"></script>
     <script defer src="../static/js/ticketing.js"></script>
 </head>
 <body>
@@ -131,7 +140,7 @@
                     <div class="date-image">
                         <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-calendar-w20.png" alt="">
                     </div>    
-                </div>
+                </div>   <!-- .movie-sub-menu .sub-middle-menu .middle-first-menu -->
                 <div class="menu">
                     <div class="movie-menu">
                         <h1>영화</h1>
@@ -143,8 +152,9 @@
                                 <div onclick="movieSecond()" class="top-second-menu">
                                     <p>큐레이션</p>
                                 </div>
-                            </div>
+                            </div> 
                             <div class="sub-middle-menu">
+<<<<<<< HEAD
                                 <div class="middle-first-menu">
                                     <div class="first-menu-item movie_title">
                                         <p>파일럿</p>
@@ -154,6 +164,30 @@
                                     <div class="second-menu-item movie_title">
                                         <p>수카바티: 극락축구단</p>
                                     </div>
+=======
+                                <div class="middle-first-menu movie-title-list">
+                                    <!-- <div class="first-menu-item">
+                                        <p>파일럿</p>
+                                    </div>
+                                    <div class="first-menu-item">
+                                        <p>데드풀과 울버린</p>
+                                    </div>
+                                    <div class="first-menu-item">
+                                        <p>리볼버</p>
+                                    </div> -->
+                                </div>
+                                <!-- .sub-middle-menu .middle-second-menu -->
+                                <div class="middle-second-menu movie-title-list">
+                                    <div class="second-menu-item">
+                                        <p>수카바티: 극락축구단</p>
+                                    </div>
+                                    <div class="first-menu-item">
+                                        <p>데드풀과 울버린</p>
+                                    </div>
+                                    <div class="first-menu-item">
+                                        <p>리볼버</p>
+                                    </div>
+>>>>>>> 07b4551a56543873d2fac7dd06b63e9c8fdf685f
                                 </div>
                             </div>
                             <div class="sub-bottom-menu">
@@ -176,12 +210,16 @@
                                 </div>
                             </div>
                             <div class="sub-middle-menu">
+<<<<<<< HEAD
 
 
 
 
 
                                 <div class="middle-first-menu">
+=======
+                             	<div class="middle-first-menu">
+>>>>>>> 07b4551a56543873d2fac7dd06b63e9c8fdf685f
                                     <div onclick="theaterSeoul()" class="first-menu-item contry">
                                         <p class="contry_name">서울</p>
                                         <p>(20)</p>
@@ -206,7 +244,11 @@
                                         <p class="contry_name">광주/전라</p>
                                         <p>(9)</p>
                                     </div>
+<<<<<<< HEAD
                                     <div onclick="theaterGangwon()" class="first-menu-item contry"
+=======
+                                    <div onclick="theaterGangwon()" class="first-menu-item contry">
+>>>>>>> 07b4551a56543873d2fac7dd06b63e9c8fdf685f
                                         <p class="contry_name">강원</p>
                                         <p>(4)</p>
                                     </div>
@@ -216,6 +258,7 @@
                                     </div>
                                 </div>
 
+<<<<<<< HEAD
 
 
                                 <div class="middle-second-menu">
@@ -258,6 +301,48 @@
                                         <div class="second-menu-item contry_location">
                                             <p>제주삼화</p>
                                         </div>
+=======
+                                <div class="middle-second-menu locationList">
+                                	<div class="seoul-area">
+                                        <!-- <div class="second-menu-item contry_location">
+                                            <p>강남</p>
+                                        </div> -->
+                                    </div>
+                                    <div class="gyeonggi-area">
+                                        <!-- <div class="second-menu-item contry_location">
+                                            <p>고양스타필드</p>
+                                        </div> -->
+                                    </div>
+                                    <div class="incheon-area">
+                                        <!-- <div class="second-menu-item contry_location">
+                                            <p>검단</p>
+                                        </div> -->
+                                    </div>
+                                    <div class="daejeon-area">
+                                        <!-- <div class="second-menu-item contry_location">
+                                            <p>공주</p>
+                                        </div> -->
+                                    </div>
+                                    <div class="busan-area">
+                                        <!-- <div class="second-menu-item contry_location">
+                                            <p>경북도청</p>
+                                        </div> -->
+                                    </div>
+                                    <div class="gwangju-area">
+                                        <!-- <div class="second-menu-item contry_location">
+                                            <p>광주상무</p>
+                                        </div> -->
+                                    </div>
+                                    <div class="gangwon-area">
+                                        <!-- <div class="second-menu-item contry_location">
+                                            <p>남춘천</p>
+                                        </div> -->
+                                    </div>
+                                    <div class="jeju-area">
+                                        <!-- <div class="second-menu-item contry_location">
+                                            <p>제주삼화</p>
+                                        </div> -->
+>>>>>>> 07b4551a56543873d2fac7dd06b63e9c8fdf685f
                                     </div>
                                 </div>
 
@@ -266,6 +351,7 @@
 
 
                             </div>
+                            
                             <div class="sub-middleSecond-menu">
                                 <div class="middle-first-menu">
                                     <div onclick="theaterDolbyCinema()" class="first-menu-item">

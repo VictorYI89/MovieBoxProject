@@ -838,7 +838,7 @@ footer .footer-top{
     margin: auto;
     display: none;
     top:20%;
-    z-index: 2;
+    z-index: 30;
 }
 .login-box img{
     position: absolute;
@@ -934,4 +934,163 @@ footer .footer-top{
 	font-size: 1.6em;
 	margin-left:10px;
     color: #59bec9;
+}
+
+
+
+
+.logout-container{
+    position: absolute;
+    left: 0;
+    top: 90px;
+    width: 100%;
+    height: 120px;
+    background-color: #333;
+    z-index: 10;
+    display: none;
+}
+.logout-container .wrap{
+    position: relative;
+    width: 1100px;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.logout-container .txt{
+    padding: 12px 0 12px;
+    font-size: 16px;
+    color: #fff;
+    line-height: 24px;
+    letter-spacing: -.01em;
+    text-align: center;
+    font-weight: bold;
+}
+.logout-container #moveLogin{
+    display: inline-block;
+    width: 108px;
+    height: 32px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 300;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    margin-right: 11px;
+    color: #fff;
+    text-decoration: none;
+}
+.logout-container .wrap .link{
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 13px;
+    width: 200px;
+    color: rgba(255, 255, 255, .5);
+    margin-top: 10px;
+    text-decoration: underline;
+}
+.logout-container .wrap .a-wrap{
+    display: flex;
+    justify-content: center;
+}
+.login-inner{
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 1080px;
+    margin: 15px auto;
+}
+.login-container{
+    position: absolute;
+    left: 0;
+    top: 90px;
+    width: 100%;
+    height: 120px;
+    background-color: #333;
+    z-index: 2;
+    display: none;
+}
+.login-container .login-inner .mbimg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 56px;
+    height: 56px;
+}
+.login-container .login-inner .mbimg img{
+    width: 100%;
+}
+.login-container .login-inner .name {
+    font-size: 20px;
+    line-height: 25px;
+    color: #fff;
+    font-weight: 300;
+    margin-bottom: 9px;
+}
+.login-container .login-inner .linkBtn {
+    display: block;
+    width: 83px;
+    height: 20px;
+    line-height: 18px;
+    border-radius: 3px;
+    border: 1px solid #fff;
+    padding: 0 0 0 6px;
+    background: url(https://img.megabox.co.kr/static/pc/images/2023/01/arrow_right_w.png) right 8px top 3px no-repeat;
+    background-size: 10px 10px;
+    color: #fff;
+    font-size: 10px;
+    letter-spacing: -.01em;
+}
+.login-container .box{
+    padding: 0 0 0 69px;
+    width: 264px;
+    margin-left: 0;
+}
+.login-container .box span{
+    color:white;
+    font-size: 14px;
+}
+.login-inner .box:nth-child(2) {
+    margin-left: 0;
+    width: 200px;
+}
+.login-inner .box:nth-child(3) {
+    margin-left: 0;
+}
+.login-inner .box:nth-child(4) {
+    position: relative;
+    min-width: 82px;
+    padding-top: 3px;
+    margin-left: 56px;
+}
+.login-inner .box:nth-child(5) {
+    position: relative;
+    min-width: 82px;
+    padding-top: 3px;
+    margin-left: 56px;
+}
+.login-inner .box:nth-child(6) {
+    position: relative;
+    min-width: 82px;
+    padding-top: 3px;
+    margin-left: 56px;
+}
+.login-inner .membership{
+    padding: 0;
+}
+.login-inner .membership .txt{
+    width: auto;
+    padding-top: 9px;
+    font-size: 11px;
+    font-weight: 300;
+    color: #999;
+    white-space: pre;
+}
+.login-inner .count .txt{
+    width: auto;
+    padding-top: 9px;
+    font-size: 11px;
+    font-weight: 300;
+    color: #999;
+    white-space: pre;
 }
