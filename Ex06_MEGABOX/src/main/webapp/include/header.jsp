@@ -114,7 +114,7 @@
                         <li>
                             <div class="sup-content">예매</div>
                             <ul class="sup-list-content">
-                                <li><a href="#">빠른예매</a></li>
+                                <li><a href="../main/ticketing.jsp">빠른예매</a></li>
                                 <li><a href="../main/timetable.jsp">상영시간표</a></li>
                                 <li><a href="#">더 부티크 프라이빗 예매</a></li>
                             </ul>
@@ -122,8 +122,8 @@
                         <li>
                             <div class="sup-content">극장</div>
                             <ul class="sup-list-content">
-                                <li><a href="#">전체극장</a></li>
-                                <li><a href="#">특별관</a></li>
+                                <li><a href="../main/totalTheater.jsp">전체극장</a></li>
+                                <li><a href="../main/cinema.jsp">특별관</a></li>
                             </ul>
                         </li>
                     </ul>

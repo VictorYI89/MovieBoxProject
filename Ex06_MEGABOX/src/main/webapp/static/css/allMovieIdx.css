@@ -305,3 +305,9 @@
     position: relative;
     top:50px;
 }
+#player{
+	position:absolute;
+	left: 250px;
+    top: 200px;
+	display: none;
+}

@@ -30,4 +30,8 @@ public class NoticeDAOImpl implements NoticeDAO{
 	public NoticeDTO selectPrevAndNext(SqlSession s, HashMap<String, Object> map) throws SQLException {
 		return s.selectOne("notice.selectPrevAndNext",map);
 	}
+	@Override
+	public List<NoticeDTO> selectTheaterNotice(SqlSession s) throws SQLException {
+		return s.selectList("notice.selectTheaterNotice");
+	}
 }

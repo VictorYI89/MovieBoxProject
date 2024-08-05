@@ -79,7 +79,7 @@ header .container{
     display: none;
     width: 100%;
     padding: 0;
-    top: 60px;
+    top: 65px;
 }
 .sup-list-content a{
     text-decoration: none;
@@ -139,7 +139,8 @@ header .container{
 .main{
     width: 100%;
     height: 750px;
-    background-color: rgb(66,63,73);
+    /*background-color: rgb(66,63,73);*/
+    background: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 1) 100%);
     /* background-color: #222; */
 }
 .main .conainer{
@@ -260,6 +261,10 @@ header .container{
     margin-top: 5px;
     column-gap: 10px;
 }
+.movie_button span{
+    position: relative;
+    top: -5px;
+}
 .movie_like{
     width: 68px;
     height: 34px;
@@ -282,6 +287,8 @@ header .container{
 }
 .movie_button img{
     margin-right: 5px;
+    position: relative;
+    top: 2px;
 }
 .search-container{
     position: absolute;
@@ -323,12 +330,13 @@ header .container{
 }
 .search-container .top-rank,a{
     color:white;
+    padding: 10px 0;
 }
 a:hover{
     text-decoration: underline;
 }
 .search-container .top-rank .item{
-    padding-bottom: 15px;
+    padding-bottom: 28px;
 }
 .search-container .right{
     position: absolute;
@@ -348,6 +356,8 @@ a:hover{
 }
 .search-container .right img{
     width: 30px;
+    position: relative;
+    top: 5px;
 }
 .search-container .right input::placeholder{
     color:white;
@@ -437,6 +447,8 @@ a:hover{
 }
 .bottom-container img{
     width: 35px;
+    position: relative;
+    top: 10px;
 }
 .bottom-container .item  .line{
     border-bottom: 1px solid rgb(167, 156, 156);
@@ -664,12 +676,12 @@ a:hover{
 .swiper-button-prev{
     position: absolute;
     left:80px;
-    top:200px;
+    top:210px;
 }
 .swiper-button-next{
     position: absolute;
-    right: 30px;
-    top:200px;
+    right: 20px;
+    top:210px;
 }
 .alarm-footer .item::before{
     width: 1px;
@@ -776,10 +788,10 @@ footer .footer-top{
     width: 230px;
 }
 .benefit{
-    width: 710px;height: 330px;
+    width: 710px;height: 350px;
     position: absolute;
     left:6%;
-    top:100px;
+    top:70px;
     overflow: hidden;
 
 }
@@ -789,7 +801,7 @@ footer .footer-top{
     height: 100px;
     transform: rotate(0deg);
     position: absolute;
-    top:270px;
+    top:320px;
 }
 .ad .title{
     color:#351f66;
@@ -827,7 +839,7 @@ footer .footer-top{
 }
 .ad .swiper-scrollbar{
     position: absolute;
-    top: 285px;
+    top: 330px;
     width: 150px;
 }
 

@@ -95,4 +95,20 @@ public class NoticeServiceImpl implements NoticeService{
 		}
 		return vo;
 	}
+	@Override
+	public List<NoticeDTO> selectTheaterNotice() {
+		SqlSession s = null;
+		List<NoticeDTO> vo = null;
+		try {
+			s = MybatisConnection.getSqlSessionFactory().openSession(false);
+			vo = NoticeDAOImpl.getInstance().selectTheaterNotice(s);
+			s.commit();
+		} catch (SQLException e) {
+			s.rollback();
+			e.printStackTrace();
+		} finally {
+			s.close();
+		}
+		return vo;
+	}
 }

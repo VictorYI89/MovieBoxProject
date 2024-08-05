@@ -353,11 +353,11 @@ function theaterMegaBoxKids() {
 
 const selectedItems = new Set();
 
-
+// 최대 선택 가능한 항목 수
 const maxSelection = 3;
 
-
-const alertElement = document.querySelector('.alert-message');
+// 특정 요소를 표시하기 위한 변수
+const alertElement = document.querySelector('.alert-message'); // 표시할 요소를 선택하세요
 
 document.querySelectorAll('.movie-menu .sub-middle-menu .first-menu-item').forEach(item => {
     item.addEventListener('click', function() {
@@ -368,17 +368,19 @@ document.querySelectorAll('.movie-menu .sub-middle-menu .first-menu-item').forEa
             item.style.borderStyle = '';
             item.style.borderColor = '';
         } else {
+            
             if (selectedItems.size < maxSelection) {
                 selectedItems.add(item);
                 item.style.backgroundColor = 'rgb(102, 102, 102)';
             } else {
+                
                 alertElement.style.display = 'block';
             }
         }
     });
 });
 
-const alert2Element = document.querySelector('.alert-message');
+const alert2Element = document.querySelector('.alert-message'); // 표시할 요소를 선택하세요
 
 document.querySelectorAll('.movie-menu .sub-middle-menu .second-menu-item').forEach(item => {
     item.addEventListener('click', function() {

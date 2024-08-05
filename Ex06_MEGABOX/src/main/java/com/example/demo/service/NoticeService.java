@@ -9,4 +9,5 @@ public interface NoticeService {
 	int selectCount(String title,String type);
 	NoticeDTO selectByIdx(int idx);
 	NoticeDTO selectPrevAndNext(String type,int idx);
+	List<NoticeDTO> selectTheaterNotice();
 }

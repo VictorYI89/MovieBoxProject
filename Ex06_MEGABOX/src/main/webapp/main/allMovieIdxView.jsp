@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/allMovieIdx.css">
 <script defer src="${pageContext.request.contextPath }/static/js/header.js"></script>
 <script defer src="${pageContext.request.contextPath }/static/js/allMovieIdx.js"></script>
+<script defer src="${pageContext.request.contextPath }/static/js/youtube.js"></script>
 </head>
 <body>
 	<jsp:include page="../include/header.jsp"/>
@@ -121,6 +122,7 @@
 				</div>
 				<div class="title-list">
 					<div class="item">예고편/스틸컷</div>
+					<div id="player"></div>
 					<div class="forecast"></div>
 				</div>
 			</div>

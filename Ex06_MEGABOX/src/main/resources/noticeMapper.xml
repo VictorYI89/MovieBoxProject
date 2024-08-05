@@ -35,4 +35,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from notice where <if test="type=='plus'">idx=#{idx}+1</if>
 		<if test="type=='minus'">idx=#{idx}-1</if>
 	</select>
+	
+	<select id="selectTheaterNotice" resultType="NoticeDTO">
+		select * from notice where <![CDATA[rownum<=5]]> and name!='메가박스'
+	</select>
 </mapper>

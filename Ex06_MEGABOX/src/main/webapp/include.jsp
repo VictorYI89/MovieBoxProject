@@ -5,12 +5,12 @@
 		p = Integer.parseInt(request.getParameter("p"));				
 	}catch(Exception e){}
 
-	int s = 10;
+	int s = 5;
 	try{
 		s = Integer.parseInt(request.getParameter("s"));				
 	}catch(Exception e){}
 	
-	int b = 10;
+	int b = 5;
 	try{
 		b = Integer.parseInt(request.getParameter("b"));				
 	}catch(Exception e){}

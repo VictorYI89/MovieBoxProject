@@ -209,7 +209,7 @@
 						<c:if test="${sessionScope.name==null }"><li id="login"><a href="javascript:void(0)" >로그인</a></li></c:if>
                         <c:if test="${sessionScope.name!=null }"><li id="logout"><a href="javascript:void(0)" >로그아웃</a></li></c:if>
 						<li><a href="#">회원가입</a></li>
-						<li><a href="#">빠른예매</a></li>
+						<li><a href="../main/ticketing.jsp">빠른예매</a></li>
 					</ul>
 				</div>
 				<div class="sub">

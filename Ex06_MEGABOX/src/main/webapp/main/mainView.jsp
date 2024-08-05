@@ -114,7 +114,7 @@
                             <li>
                                 <div class="sup-content">예매</div>
                                 <ul class="sup-list-content">
-                                    <li><a href="#">빠른예매</a></li>
+                                    <li><a href="ticketing.jsp">빠른예매</a></li>
                                     <li><a href="timetable.jsp">상영시간표</a></li>
                                     <li><a href="#">더 부티크 프라이빗 예매</a></li>
                                 </ul>
@@ -123,7 +123,7 @@
                                 <div class="sup-content">극장</div>
                                 <ul class="sup-list-content">
                                     <li><a href="cinema.jsp">전체극장</a></li>
-                                    <li><a href="#">특별관</a></li>
+                                    <li><a href="cinema.jsp">특별관</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -346,8 +346,8 @@
 	                                </div>
 	                            </div>
 	                            <div class="movie_button">
-	                                <button type="button" class="btn btn-dark movie_like"><img src="${pageContext.request.contextPath }/static/images/favorite.svg" alt="">${vo.movieLike }</button>
-	                                <button class="movie_reserve btn2 ">예매</button>
+	                                <button type="button" class="btn btn-dark movie_like"><img src="${pageContext.request.contextPath }/static/images/favorite.svg" alt=""><span>${vo.movieLike }</span></button>
+	                                <button class="movie_reserve btn2" onclick="location.href='ticketing.jsp'">예매</button>
 	                            </div>
                        		</div>
 	                    </c:forEach>
@@ -567,34 +567,7 @@
                     </div>
                 </div>
             </section>
-            <footer>
-                <div class="footer-container">
-                    <div class="footer-top">
-                        <div class="item"><a href="#">회사소개</a></div>
-                        <div class="item"><a href="#">인재채용</a></div>
-                        <div class="item"><a href="#">사회공헌</a></div>
-                        <div class="item"><a href="#">제휴/광고/부대사업문의</a></div>
-                        <div class="item"><a href="#">이용약관</a></div>
-                        <div class="item"><a href="#">위치기반서비스 이용약관</a></div>
-                        <div class="item"><a href="#">개인정보처리방침</a></div>
-                        <div class="item"><a href="#">윤리경영</a></div>
-                    </div>
-                    <div class="footer-bottom">
-                        <div class="footer-bottom-img"><img src="https://img.megabox.co.kr/static/pc/images/common/ci/logo-opacity_new2.png" alt=""></div>
-                        <div class="footer-bottom-text">
-                            서울특별시 성동구 왕십리로 50, 6층 (성수동1가, 메가박스 스퀘어) ARS 1544-0070 대표이메일 m.dreamcenter@partner.megabox.co.kr <br>
-        대표자명 홍정인 · 개인정보보호책임자 강병철 · 사업자등록번호 211-86-59478 · 통신판매업신고번호 2023-서울성동-0177 <br>
-        COPYRIGHT © MegaboxJoongAng, Inc. All rights reserved
-                        </div>
-                        <div class="footer-bottom-sns">
-                            <a href="#"><img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-youtubeN.png" alt=""></a>
-                            <a href="#"><img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-instagramN.png" alt=""></a>
-                            <a href="#"><img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-facebookN.png" alt=""></a>
-                            <a href="#"><img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-twitterN.png" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <jsp:include page="../include/footer.jsp"/>
         </section>
     </body>
     </html>

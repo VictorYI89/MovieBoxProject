@@ -22,7 +22,7 @@
 </head>
 <body>
     <%@ include file="../include/header.jsp" %>
-    <main>
+   <main>
         <div class="box">
             <h1>빠른예매</h1>
             <div class="ticketing-container">
@@ -1115,7 +1115,7 @@
                                         <p>18:20</p>
                                         <p>~20:37</p>
                                     </div>
-                                    <div class="info">
+                                    <div class="info" onclick="location.href='select.jsp'">
                                         <p>파일럿</p>
                                         <p>2D</p>
                                     </div>
