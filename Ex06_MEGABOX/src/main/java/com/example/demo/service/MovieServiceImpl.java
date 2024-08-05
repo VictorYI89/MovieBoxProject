@@ -48,5 +48,21 @@ public class MovieServiceImpl implements MovieService{
 		}
 		return vo;
 	}
+	@Override
+	public List<MovieDTO> selectMovieName(String name) {
+		SqlSession s = null;
+		List<MovieDTO> vo = null;
+		try {
+			s = MybatisConnection.getSqlSessionFactory().openSession(false);
+			vo = MovieDAOImpl.getInstance().selectMovieName(s,name);
+			s.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			s.rollback();
+		}finally {
+			s.close();
+		}
+		return vo;
+	}
 
 }

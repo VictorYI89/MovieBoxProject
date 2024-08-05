@@ -206,7 +206,7 @@ header .container{
     overflow: hidden;
     position: relative;
 }
-.main-item>.main-img>img{
+.main-item>.main-img img{
     width: 282px;
     height: 380px;
     border-radius: 5px;
@@ -226,6 +226,7 @@ header .container{
     position: relative;
     display: none;
     transition: 0;
+    cursor: pointer;
 }
 .movie_hidden .text{
     padding: 20px;
@@ -745,6 +746,7 @@ footer .footer-top{
     height: 550px;
     position: relative;
     margin: auto;
+    background-color:white;
 }
 .hyundai{
     position: absolute;

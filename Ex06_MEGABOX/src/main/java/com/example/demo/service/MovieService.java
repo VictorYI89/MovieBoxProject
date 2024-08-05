@@ -7,4 +7,5 @@ import com.example.demo.dto.MovieDTO;
 public interface MovieService {
 	List<MovieDTO> select();
 	MovieDTO selectByIdx(int idx);
+	List<MovieDTO> selectMovieName(String name);
 }

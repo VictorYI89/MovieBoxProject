@@ -66,7 +66,6 @@ li{
     position: absolute;
     top:30px;
     width: 650px;
-    width: 670px;
     left:200px;
     height: 100%;
 }
@@ -140,9 +139,6 @@ li{
 }
 .movie-list-content .right img{
     width: 220px;
-    padding: 5px;
-    font-size: 14px;
-    cursor: pointer;
 }
 .inner-container .middle .movie-list-content .selected{
     color: #fff;
@@ -173,7 +169,6 @@ li{
     position: absolute;
     top:-30px;
     right:-325px;
-    right:-310px;
 }
 .inner-container .theater-list-content{
     color: #444;
@@ -199,18 +194,6 @@ li{
     margin-top: 25px;
     border-top: 1px solid #d8d9db;    
     border-bottom: 1px solid #d8d9db;    
-}
-.inner-container .category-title.special{
-    width: 800px;
-}
-.inner-container .category-title.special div{
-    display: none;
-}
-.inner-container .category-title.special .selected>div{
-    display: block;
-}
-
-.main-top .timetable{
     display: flex;
 }
 .inner-container .category-title.special{

@@ -10,4 +10,5 @@ import com.example.demo.dto.MovieDTO;
 public interface MovieDAO {
 	List<MovieDTO> select(SqlSession s)throws SQLException;
 	MovieDTO selectByIdx(SqlSession s, int idx)throws SQLException;
+	List<MovieDTO> selectMovieName(SqlSession s,String name)throws SQLException;
 }

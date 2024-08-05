@@ -107,7 +107,7 @@
                             <li>
                                 <div class="sup-content">영화</div>
                                 <ul class="sup-list-content">
-                                    <li><a href="">전체영화</a></li>
+                                    <li><a href="allMovie.jsp">전체영화</a></li>
                                     <li><a href="#">무비포스트</a></li>
                                 </ul>
                             </li>
@@ -115,7 +115,7 @@
                                 <div class="sup-content">예매</div>
                                 <ul class="sup-list-content">
                                     <li><a href="#">빠른예매</a></li>
-                                    <li><a href="#">상영시간표</a></li>
+                                    <li><a href="timetable.jsp">상영시간표</a></li>
                                     <li><a href="#">더 부티크 프라이빗 예매</a></li>
                                 </ul>
                             </li>
@@ -207,13 +207,11 @@
                             })
                         </script>
                         <div class="sub">
-                            <div class="top-img"><img src="https://img.megabox.co.kr/SharedImg/2024/07/08/HAHzCSec2Il5sMd4kcfMonbhCiHbEu2f_316.jpg" alt=""></div>
+                            <div class="top-img"><img src="${movie[0].image }" alt="" onclick="location.href=`allMovieIdx.jsp?movieIdx=${movie[0].movieIdx}`"></div>
                             <div class="top-rank">
-                                <div class="item"><em>1</em><a href="#">데드풀과 울버린</a></div>
-                                <div class="item"><em>2</em><a href="#">파일럿</a></div>
-                                <div class="item"><em>3</em><a href="#">슈퍼배드</a></div>
-                                <div class="item"><em>4</em><a href="#">리볼버</a></div>
-                                <div class="item"><em>5</em><a href="#">명탐정 코난:100만 달러의 펜타그램</a></div>
+                            	<c:forEach  var="vo" items="${movie }" begin="0" end="4" step="1" varStatus="status">
+                                	<div class="item"><em>${status.index+1 }</em><a href="allMovieIdx.jsp?movieIdx=${vo.movieIdx }">${vo.name }</a></div>                            	
+                            	</c:forEach>
                             </div>
                         </div>
                     </div>
@@ -230,7 +228,7 @@
                         <div class="item">
                             <h2>영화</h2>
                             <ul>
-                                <li>전체영화</li>
+                                <li><a href="allMovie.jsp">전체영화</a></li>
                                 <li>무비포스트</li>
                             </ul>
                         </div>
@@ -328,7 +326,7 @@
                 <div class="main-top">
                     <div class="main-title">박스오피스</div>
                     <div class="main-more">
-                        <div class="more-text"><a href="#">더 많은 영화보기</a></div>
+                        <div class="more-text"><a href="allMovie.jsp">더 많은 영화보기</a></div>
                         <div class="more-img"><img src="${pageContext.request.contextPath}/static/images/add.svg" alt=""></div>
                     </div>
                 </div>
@@ -338,7 +336,7 @@
 	                    	<div class="main-item">
 	                            <div class="main-img">
 	                                <img src="${vo.image }" alt="">
-	                                <div class="movie_hidden">
+	                                <div class="movie_hidden" onclick="location.href='allMovieIdx.jsp?movieIdx=${vo.movieIdx}'">
 	                                    <div class="text"></div>
 	                                    <div class="sub-text">${vo.content }</div>
 	                                    <div class="rate">관람평 <span class="movieRate">

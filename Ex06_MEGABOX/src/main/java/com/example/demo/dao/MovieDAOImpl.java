@@ -22,4 +22,8 @@ public class MovieDAOImpl implements MovieDAO{
 	public MovieDTO selectByIdx(SqlSession s, int idx) throws SQLException {
 		return s.selectOne("movie.selectByIdx",idx);
 	}
+	@Override
+	public List<MovieDTO> selectMovieName(SqlSession s, String name) throws SQLException {
+		return s.selectList("movie.selectMovieName",name);
+	}
 }

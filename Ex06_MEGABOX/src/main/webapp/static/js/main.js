@@ -41,7 +41,6 @@ document.querySelector("#closeLogin").addEventListener('click',function(){
 const logout = document.querySelector("#logout");
 if(logout){
 	logout.addEventListener('click',function(){
-		alert("로그아웃이 되었습니다.");
 		location.href="logoutAccess.jsp";
 	})	
 }
@@ -60,28 +59,27 @@ if(userLogin){
 }
 function login(){
 	const id = document.querySelector("#id").value;
-	const pw = document.querySelector("#pw").value;
+	const pw = document.querySelector("#pw");
 	axios.get('selectLogin.jsp?memberId='+id)
 	.then(response=>{
 		let data = response.data;
+		console.log(data);
+		if(data==null){
+			alert("아이디 혹은 비밀번호가 다릅니다.");
+			pw.value="";
+			return false;
+		}
+		data.chk=false;
 		if(document.querySelector("#chk").checked){
 			data.chk=true;
 		}
-		else {
-			data.chk=false;
-			console.log("unchecked");
-		}
 		console.log(data);
-		if(pw==data.password){
-			alert("로그인 성공");
-			return axios.post('loginAccess.jsp',data).then(response=>{
-					if(response){
-						location.href="loginAccess.jsp";
-					}
-				})
-		}else{
-			alert("아이디 혹은 비밀번호가 다릅니다.");
-		}
+		return axios.post('loginAccess.jsp',data).then(response=>{
+				if(response){
+					location.href="loginAccess.jsp";
+				}
+			})
+		
 	})
 	
 	.catch(error=>console.log(error))
@@ -126,4 +124,22 @@ userLoginImg.addEventListener('click',function(){
 	    this.setAttribute("src",'../static/images/user.svg');	
 	  }		
 	}
+})
+
+document.querySelector("#moveLogin").addEventListener('click',function(){
+	document.querySelector(".login-box").style.display='block';
+	document.querySelector(".logout-container").style.display='none';	
+	document.querySelector(".logout-container").style.display='none';	
+	document.querySelector("#userLogin").setAttribute("src","../static/images/user.svg");
+})
+
+//영화 검색
+const movieSearch = document.querySelector(".search-container .right");
+movieSearch.children[1].addEventListener("click",function(){
+	location.href='allMovie.jsp?name='+movieSearch.children[0].value;
+})
+
+const movieSearch2 = document.querySelector(".bottom-container .item .line");
+movieSearch2.children[1].addEventListener("click",function(){
+	location.href='allMovie.jsp?name='+movieSearch2.children[0].value;
 })

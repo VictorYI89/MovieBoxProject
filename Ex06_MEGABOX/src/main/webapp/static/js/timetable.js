@@ -4,6 +4,7 @@ let type='movie';
 let movieName='데드풀과 울버린';
 let location_name='강남';
 let currTime;
+// 메인
 category.forEach((item,index)=>{
     item.addEventListener('click',function(){
         category[categoryIdx].classList.remove("selected");
@@ -38,7 +39,6 @@ movieList.forEach((item,index)=>{
         getDataSource();
     })    
 })
-
 function getData(){
 	return axios.get('cinemaLocationName.jsp?locationName='+movieName)
     .then(response=>{
@@ -181,7 +181,7 @@ function theaterList(idx){
             location_name=this.textContent;
             ListIdx=index;
             e.stopPropagation();
-            if(type=='movie')getDataSource();
+            if(type=='movie')debounce(getDataSource(),1000);
             else if(type=='location')getTheaterSource();
             
         })
@@ -216,27 +216,26 @@ function specialList(idx){
 // 날짜 클릭 이벤트
 const selectedDate = document.querySelectorAll(".timetable .item");
 let selectedDateIdx=0;
+let hour,min;
 selectedDate.forEach((item,index)=>{
-	let time;
-	let hour,min;
 	if(index==0){
 		selectedDate[0].classList.add("selected");
-		time=selectedDate[0].children[0].textContent.split(".");
-	    hour = String(time[0]).padStart(2,"0");
-	    min = String(time[1]).padStart(2,"0");
-	    currTime=hour+"-"+min;
-	    if(type=='movie') getDataSource();
-	    else if(type=='location')getTheaterSource();
+		const time=selectedDate[0].children[0].textContent.split(".");
+	    publicSelectedDate(time);
 	}
 	item.addEventListener("click",function(){
-		time = this.children[0].textContent.split(".");
-	    hour = String(time[0]).padStart(2,"0");
-	    min = String(time[1]).padStart(2,"0");
-	    currTime=hour+"-"+min;
+		const time = this.children[0].textContent.split(".");
 		selectedDate[selectedDateIdx].classList.remove("selected");
 		this.classList.add("selected");
 		selectedDateIdx=index;
-		if(type=='movie') getDataSource();
-	    else if(type=='location')getTheaterSource();
+		publicSelectedDate(time);
 	})
 })
+function publicSelectedDate(time){
+	hour = String(time[0]).padStart(2,"0");
+    min = String(time[1]).padStart(2,"0");
+    currTime=hour+"-"+min;
+    if(type=='movie') getDataSource();
+    else if(type=='location')getTheaterSource();
+}
+
