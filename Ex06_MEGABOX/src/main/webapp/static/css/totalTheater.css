@@ -115,7 +115,7 @@ main .inner .sub-city-container li:nth-child(4n)::after{
     display: flex;
 }
 .notice-list .item{
-    flex-grow: 1;
+    width: 20%;
     height: 45px;
     padding: 3px 10px;
     color: #222;
@@ -126,15 +126,18 @@ main .inner .sub-city-container li:nth-child(4n)::after{
     line-height: 40px;
 }
 .notice-list .item:nth-child(2){
-    flex-grow: 3;
+    width: 50%;
 }
 .notice-board .item{
-    flex-grow: 1;
+    width: 20%;
     height: 45px;
     padding: 3px 10px;
     text-align: center;
     line-height: 40px;
 }
+.notice-board .item a{
+    color: #222;
+}
 .notice-board .item:nth-child(2){
-    flex-grow: 3;
+    width: 50%;
 }

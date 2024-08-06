@@ -48,7 +48,7 @@
 			<div class="img-box">
 				<img src="${vo.image }" alt="">
 				<div class="button-group2">
-					<button class="button-reserve">예매</button>
+					<button class="button-reserve" onclick="location.href='ticketing.jsp?name=${vo.name}'">예매</button>
 					<button class="button-reserve2">Dolby <br>CINEMA</button>
 				</div>
 			</div>
@@ -106,7 +106,7 @@
 								<p>관람일 기준 7일 이내 등록 시 50P 가 적립됩니다.</p>
 								<p>포인트는 관람평 최대 10편 지급가능합니다.</p>
 							</div>
-							<div class="info-btn"><a>관람평쓰기</a></div>
+							<div class="info-btn"><a href="javascript:void(0)" onclick='review_insert("${sessionScope.name}")'>관람평쓰기</a></div>
 						</div>
 						<div class="review-main">
 							<div class="review-img"><img src="https://img.megabox.co.kr/static/pc/images/mypage/bg-profile.png" alt=""><p>MEGABOX</p></div>

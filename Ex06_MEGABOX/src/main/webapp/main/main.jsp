@@ -1,3 +1,7 @@
+<%@page import="com.google.gson.reflect.TypeToken"%>
+<%@page import="com.google.gson.Gson"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.io.BufferedReader"%>
 <%@page import="com.example.demo.service.MovieServiceImpl"%>
 <%@page import="com.example.demo.dto.MovieDTO"%>
 <%@page import="java.util.List"%>
@@ -23,5 +27,11 @@
 	List<MovieDTO> movie = MovieServiceImpl.getInstance().select();
 	request.setAttribute("vo", vo);
 	request.setAttribute("movie", movie);
+	
+	
+	
+	
+	
 	pageContext.forward("mainView.jsp");
+	
 %>

@@ -1,5 +1,8 @@
+<%@page import="com.example.demo.calendar.Calendar"%>
+<%@page import="com.example.demo.calendar.CalendarDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri = "jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +23,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.css" integrity="sha512-aMup4I6BUl0dG4IBb0/f32270a5XP7H1xplAJ80uVKP6ejYCgZWcBudljdsointfHxn5o302Jbnq1FXsBaMuoQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script defer src="../static/js/ticketing.js"></script>
 </head>
+<%
+	List<MovieDTO> vo = MovieServiceImpl.getInstance().select();
+	List<CalendarDTO> calendar = Calendar.prn2(2024, 8, 6);
+	pageContext.setAttribute("calendar", calendar);
+	String name = request.getParameter("name");
+	pageContext.setAttribute("name", name);
+	request.setAttribute("vo", vo);
+%>
 <body>
     <%@ include file="../include/header.jsp" %>
    <main>
@@ -34,87 +45,11 @@
                     </div>
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <p>1&bull;월</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>2&bull;화</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>3&bull;수</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>4&bull;목</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>5&bull;금</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>6&bull;토</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>7&bull;일</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>8&bull;월</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>9&bull;화</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>10&bull;수</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>11&bull;목</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>12&bull;금</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>13&bull;토</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>14&bull;일</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>15&bull;월</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>16&bull;화</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>17&bull;수</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>18&bull;목</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>19&bull;금</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>20&bull;토</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>21&bull;일</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>22&bull;월</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>23&bull;화</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>24&bull;수</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>25&bull;목</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>26&bull;금</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p>27&bull;토</p>
-                            </div>
+                        	<c:forEach var="calendar" items="${calendar }">
+	                            <div class="swiper-slide">
+	                                <p>${calendar.day}&bull;${calendar.dayOfWeek }</p>
+	                            </div>                        	
+                        	</c:forEach>
                         </div>
                         <!-- <div class="swiper-pagination"></div> -->
                     </div>
@@ -141,48 +76,19 @@
                             </div>
                             <div class="sub-middle-menu">
                                 <div class="middle-first-menu">
-                                    <div class="first-menu-item">
-                                        <p>파일럿</p>
-                                    </div>
-                                    <div class="first-menu-item">
-                                        <p>데드풀과 울버린</p>
-                                    </div>
-                                    <div class="first-menu-item">
-                                        <p>리볼버</p>
-                                    </div>
-                                    <div class="first-menu-item">
-                                        <p>슈퍼배드 4</p>
-                                    </div>
-                                    <div class="first-menu-item">
-                                        <p>사랑의 하츄핑</p>
-                                    </div>
-                                    <div class="first-menu-item">
-                                        <p>인사이드 아웃2</p>
-                                    </div>
-                                    <div class="first-menu-item">
-                                        <p>탈주</p>
-                                    </div>
-                                    <div class="first-menu-item">
-                                        <p>명탐정 코난: 100만 달러의 펜타그램</p>
-                                    </div>
-                                    <div class="first-menu-item">
-                                        <p>하이퍼포커스: 투모로우바이투게더 브이알 콘서트</p>
-                                    </div>
-                                    <div class="first-menu-item">
-                                        <p>행복의 나라</p>
-                                    </div>
-                                    <div class="first-menu-item">
-                                        <p>빅토리</p>
-                                    </div>
-                                    <div class="first-menu-item">
-                                        <p>우마무스메 PRETTY DERBY 새로운 시대의 문</p>
-                                    </div>
-                                    <div class="first-menu-item">
-                                        <p>극장판 프리큐어 올스타즈 F</p>
-                                    </div>
-                                    <div class="first-menu-item">
-                                        <p>핸섬가이즈</p>
-                                    </div>
+                                	<c:forEach var="vo" items="${vo }">
+                                		<c:if test="${vo.name==name }">
+		                                    <div class="first-menu-item selected">
+		                                        <p>${vo.name }</p>
+		                                    </div>
+                                		</c:if>
+                                		<c:if test="${vo.name!=name }">
+		                                    <div class="first-menu-item">
+		                                        <p>${vo.name }</p>
+		                                    </div>
+		                                </c:if>
+                                	
+                                	</c:forEach>
                                 </div>
                                 <div class="middle-second-menu">
                                     <div class="second-menu-item">
@@ -1115,7 +1021,7 @@
                                         <p>18:20</p>
                                         <p>~20:37</p>
                                     </div>
-                                    <div class="info" onclick="location.href='select.jsp'">
+                                    <div class="info" onclick="selectFunction('${sessionScope.name}')">
                                         <p>파일럿</p>
                                         <p>2D</p>
                                     </div>

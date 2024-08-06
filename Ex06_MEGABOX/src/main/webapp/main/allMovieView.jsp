@@ -159,7 +159,7 @@
 	                        </div>
 	                        <div class="movie-util">
 	                            <button> <img alt="" src="${pageContext.request.contextPath }/static/images/like.svg"><span class="movieLike">${vo.movieLike }</span> </button>
-	                            <a href="">
+	                            <a href="${pageContext.request.contextPath }/main/ticketing.jsp?name=${vo.name}">
 	                                <div class="movie-ticketing">예매</div>
 	                            </a>
 	                        </div>

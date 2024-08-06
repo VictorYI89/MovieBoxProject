@@ -41,6 +41,7 @@ header .container{
 }
 .sup .sup-title a:hover{
     text-decoration: underline;
+    color:rgb(76,75,78);
 }
 .sup .sup-title a{
     color:black;
@@ -86,6 +87,7 @@ header .container{
 }
 .sup-list-content a:hover{
     text-decoration: underline;
+    color:rgb(76,75,78);
 }
 .left .sub-title>li:first-child{
     padding: 10px 10px 10px 0;
@@ -319,9 +321,6 @@ header .container{
 }
 .search-container .top-rank,a{
     color:white;
-}
-a:hover{
-    text-decoration: underline;
 }
 .search-container .top-rank .item{
     padding-bottom: 15px;

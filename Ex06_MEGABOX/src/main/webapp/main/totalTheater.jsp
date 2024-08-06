@@ -203,7 +203,7 @@
                 <c:forEach var="vo" items="${vo }">
                 	<div class="notice-board">
                         <div class="item">${vo.name}</div>
-                        <div class="item">${vo.title}</div>
+                        <div class="item"><a href="${pageContext.request.contextPath }/notice/noticeDetail.jsp?idx=${vo.idx}">${vo.title}</a></div>
                         <div class="item">경기</div>
                         <div class="item"><fmt:formatDate value="${vo.regDate }" pattern="yyyy.MM.dd"/> </div>
                     </div>

@@ -122,7 +122,7 @@
                             <li>
                                 <div class="sup-content">극장</div>
                                 <ul class="sup-list-content">
-                                    <li><a href="cinema.jsp">전체극장</a></li>
+                                    <li><a href="totalTheater.jsp">전체극장</a></li>
                                     <li><a href="cinema.jsp">특별관</a></li>
                                 </ul>
                             </li>
@@ -235,16 +235,16 @@
                         <div class="item">
                             <h2>예매</h2>
                             <ul>
-                                <li>빠른예매</li>
-                                <li>상영시간표</li>
+                                <li><a href="ticketing.jsp">빠른예매</a></li>
+                                <li><a href="timetable.jsp">상영시간표</a></li>
                                 <li>더 부티크 프라이빗 예매</li>
                             </ul>
                         </div>
                         <div class="item">
                             <h2>극장</h2>
                             <ul>
-                                <li>전체극장</li>
-                                <li>특별관</li>
+                                <li><a href="totalTheater.jsp">전체극장</a></li>
+                                <li><a href="cinema.jsp">특별관</a></li>
                             </ul>
                         </div>
                         <div class="item">
@@ -347,7 +347,7 @@
 	                            </div>
 	                            <div class="movie_button">
 	                                <button type="button" class="btn btn-dark movie_like"><img src="${pageContext.request.contextPath }/static/images/favorite.svg" alt=""><span>${vo.movieLike }</span></button>
-	                                <button class="movie_reserve btn2" onclick="location.href='ticketing.jsp'">예매</button>
+	                                <button class="movie_reserve btn2" onclick="location.href='ticketing.jsp?name=${vo.name}'">예매</button>
 	                            </div>
                        		</div>
 	                    </c:forEach>

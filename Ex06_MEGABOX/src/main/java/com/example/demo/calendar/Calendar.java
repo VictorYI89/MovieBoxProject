@@ -110,6 +110,31 @@ public class Calendar {
 		}
 		return li;
 	}
+	public static List<CalendarDTO> prn2(int year, int month, int day) {
+		// 달력 윗부분 출력
+		
+		List<CalendarDTO> li = new ArrayList<>();
+		// 시작 요일
+		// 마지막 날짜
+		int last = getDate(year, month);
+		
+		int start = Calendar.getDayOfWeek(year, month);
+		System.out.println("start : "+start);
+		// 달력출력
+		for (int i = day; i <= last; i++) {
+			if(li.size()>=21)break;
+			li.add(new CalendarDTO(month,i,dayKorea((i+start-1)%7)));
+		}
+		if (li.size() < 21) {
+			int end2 = Calendar.getDate(year, month + 1);
+			int start2 = Calendar.getDayOfWeek(year, month+1);
+			for (int i = 1; i <= end2; i++) {
+				if(li.size()>=14)break;
+				li.add(new CalendarDTO(month+1,i,dayKorea((i+start2-1)%7)));
+			}
+		}
+		return li;
+	}
 	public static String dayKorea(int day) {
 		String result = "";
 		switch(day) {

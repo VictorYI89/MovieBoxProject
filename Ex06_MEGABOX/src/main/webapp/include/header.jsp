@@ -230,23 +230,23 @@
                     <div class="item">
                         <h2>영화</h2>
                         <ul>
-                            <li>전체영화</li>
+                            <li><a href="../main/tickeing.jsp">전체영화</a></li>
                             <li>무비포스트</li>
                         </ul>
                     </div>
                     <div class="item">
                         <h2>예매</h2>
                         <ul>
-                            <li>빠른예매</li>
-                            <li>상영시간표</li>
+                            <li><a href="${pageContext.request.contextPath }/main/ticketing.jsp">빠른예매</a></li>
+                            <li><a href="${pageContext.request.contextPath }/main/timetable.jsp">상영시간표</a></li>
                             <li>더 부티크 프라이빗 예매</li>
                         </ul>
                     </div>
                     <div class="item">
                         <h2>극장</h2>
                         <ul>
-                            <li>전체극장</li>
-                            <li>특별관</li>
+                            <li><a href="${pageContext.request.contextPath }/main/totalTheater.jsp">전체극장</a></li>
+                            <li><a href="${pageContext.request.contextPath }/main/cinema.jsp">특별관</a></li>
                         </ul>
                     </div>
                     <div class="item">
