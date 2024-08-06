@@ -1,8 +1,7 @@
 <%@page import="com.google.gson.Gson"%>
 <%@page import="com.example.demo.service.CinemaServiceImpl"%>
 <%@page import="com.example.demo.dto.CinemaDTO"%>
-<%@page import="com.example.demo.dto.MovieDTO"%>
-<%@page import="java.util.List"%>
+ 
 <%@ page language="java" contentType="application/json; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%

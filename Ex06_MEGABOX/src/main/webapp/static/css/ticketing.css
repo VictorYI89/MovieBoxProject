@@ -757,6 +757,12 @@ main .home-menu .select-menu .select2 .material-symbols-outlined {
     top: 2px;
 }
 
+/* 빠른예매 영화 타이틀지역 체크 테스트용 */
+.checkedValue/* ,
+.movie-menu .sub-middle-menu .first-menu-item */ {
+	background-color : red;
+}
+
 /* 전체 스크롤바 스타일링 */
 ::-webkit-scrollbar {
     width: 5px;

@@ -60,7 +60,7 @@ function movieFrist() {
     secondEl.style.borderStyle = 'solid';
     secondEl.style.borderColor = '#222';
     
-    /* 이성근 작업중 */
+    /* 이성근 작업ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
     $.ajax({
             url: 'getMovieTitleList.jsp',
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',       
@@ -119,7 +119,7 @@ function movieFrist() {
                 console.log("Error:", error);
             }
         });
-        /* */
+        /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 
     const firstMenuEl = document.querySelector('.movie-menu .middle-first-menu')
     firstMenuEl.style.display = 'block'
@@ -429,7 +429,8 @@ function theaterMegaBoxKids() {
     sixthEl.style.display = 'block'
 }
 
-const selectedItems = new Set();
+const selectedMovieItems = new Set();
+const selectedLocationItems = new Set();
 
 
 const maxSelection = 3;
@@ -437,24 +438,66 @@ const maxSelection = 3;
 
 const alertElement = document.querySelector('.alert-message');
 
+/* 이전 코드 (이성근)
 document.querySelectorAll('.movie-menu .sub-middle-menu .first-menu-item').forEach(item => {
     item.addEventListener('click', function() {
-        if (selectedItems.has(item)) {
-            selectedItems.delete(item);
-            item.style.backgroundColor = '';
-            item.style.borderWidth = '';
-            item.style.borderStyle = '';
-            item.style.borderColor = '';
+		console.log('clicked')*/
+document.querySelector('.movie-menu .sub-middle-menu').addEventListener('click', function(event) {
+// 클릭된 요소를 기준으로 가장 가까운 .first-menu-item 클래스를 가진 조상을 찾음
+const item = event.target.closest('.first-menu-item');
+
+//클릭된 내용 가져오는 테스트코드
+const pElement = item.querySelector('p');
+const pText = pElement ? pElement.textContent : null;
+
+// 만약 클릭된 요소가 .first-menu-item 클래스를 가지지 않은 경우 함수 종료
+if (!item) return; 
+
+// 콘솔에 'clicked' 문자열을 출력하여 클릭 이벤트가 발생했는지 확인
+console.log('clicked : ' + pText);
+    if (selectedMovieItems.has(item)) {
+        selectedMovieItems.delete(item);
+        item.style.backgroundColor = '';
+        item.style.borderWidth = '';
+        item.style.borderStyle = '';
+        item.style.borderColor = '';
+    } else {
+        if (selectedMovieItems.size < maxSelection) {
+            selectedMovieItems.add(item);
+            item.style.backgroundColor = 'rgb(102, 102, 102)';
         } else {
-            if (selectedItems.size < maxSelection) {
-                selectedItems.add(item);
-                item.style.backgroundColor = 'rgb(102, 102, 102)';
-            } else {
-                alertElement.style.display = 'block';
-            }
+            //alertElement.style.display = 'block'; 요소를 찾을 수 없어 오류 발생하여 아래의 알림창으로 수정 (이성근)
+            alert("최대 3개까지만 선택이 가능합니다.");
         }
-    });
+    }
 });
+
+document.querySelector('.theater-menu .middle-second-menu').addEventListener('click', function(event) {
+// 클릭된 요소를 기준으로 가장 가까운 .first-menu-item 클래스를 가진 조상을 찾음
+const item = event.target.closest('.second-menu-item');
+
+// 만약 클릭된 요소가 .first-menu-item 클래스를 가지지 않은 경우 함수 종료
+if (!item) return; 
+
+// 콘솔에 'clicked' 문자열을 출력하여 클릭 이벤트가 발생했는지 확인
+console.log('clicked');
+    if (selectedLocationItems.has(item)) {
+        selectedLocationItems.delete(item);
+        item.style.backgroundColor = '';
+        item.style.borderWidth = '';
+        item.style.borderStyle = '';
+        item.style.borderColor = '';
+    } else {
+        if (selectedLocationItems.size < maxSelection) {
+            selectedLocationItems.add(item);
+            item.style.backgroundColor = 'rgb(102, 102, 102)';
+        } else {
+            //alertElement.style.display = 'block'; 요소를 찾을 수 없어 오류 발생하여 아래의 알림창으로 수정 (이성근)
+            alert("최대 3개까지만 선택이 가능합니다.");
+        }
+    }
+});
+
 
 const alert2Element = document.querySelector('.alert-message');
 
@@ -507,8 +550,8 @@ document.querySelectorAll('.theater-menu .sub-middle-menu .first-menu-item').for
         });
         item.style.backgroundColor = 'rgb(235, 235, 235)';
         item.style.borderWidth = '1px 0 1px 0';
-        item.style.borderStyle = 'solid'
-        item.style.borderColor = '#333'
+        item.style.borderStyle = 'solid';
+        item.style.borderColor = '#333';
     });
 });
 
@@ -565,69 +608,7 @@ document.querySelectorAll('.theater-menu .sub-middleSecond-menu .second-menu-ite
     });
 });
 
-
-<<<<<<< HEAD
-//아래는 목록 클릭 시 데이터를 전송하여 영화와 영화관위치에 맞는 시간,영화제목을 리스트화 하기 위하여 클라스를 추가/삭제 해주는 이벤트
-
-// 모든 .contry 클래스를 가진 요소를 선택합니다.
-var contrys = document.querySelectorAll('.contry');         
-// 각 요소에 클릭 이벤트 리스너를 추가합니다.
-contrys.forEach(function(contry) {
-    contry.addEventListener('click', function() {
-        // 클릭한 요소에만 'checkedContry' 클래스를 추가합니다.
-        var checkedLocationName = document.querySelectorAll('.contry_location');
-        checkedLocationName.forEach(function(location)) {
-            location.classList.toggle('checkedLocation');
-        }
-    });
-});
-
-// 모든 .movie_title 클래스를 가진 요소를 선택합니다.
-var movies = document.querySelectorAll('.movie_title');
-// 각 요소에 클릭 이벤트 리스너를 추가합니다.
-movies.forEach(function(movie) {
-    movie.addEventListener('click', function() {
-        // 클릭한 요소에만 'checkedMovie' 클래스를 추가합니다.
-        this.classList.toggle('checkedMovie');
-    });
-});
-
-
-$(document).ready(function() {
-    $(".contry_location").click(function() {
-        getMovieList();
-    });
-    $(".movie_title").click(function() {
-        getMovieList();
-    });
-});
-
-function getMovieList() { // .nestedData 클래스를 가진 하위 요소의 텍스트를 가져옵니다.
-    var howManyCheckedContry = document.querySelectorAll('.checkedLocation');
-    if(howManyCheckedContry.length > 0) {
-        var checkedContrys = document.querySelectorAll('.checkedLocation');
-        var checkedMovies = document.querySelectorAll('.checkedMovie');
-
-        $.ajax({
-            url: 'getLocation.jsp', // 서버의 URL로 비동기 요청을 보냅니다.
-            type: 'POST', // 요청 방식을 POST로 설정합니다.
-            dataType: 'json',
-            data: {
-                // 하위 요소에서 가져온 데이터를 서버로 전송합니다.
-                nestedData: nestedData,
-            },
-            success: function(getLocation) {
-                // 서버로부터 성공적인 응답을 받았을 때 실행됩니다.
-            },
-            error: function(error) {
-                // 요청이 실패했을 때 실행됩니다.
-                console.log("에러: " + error); // 에러 정보를 콘솔에 출력합니다.
-            }
-        });
-    }
-};
-=======
-//컨트리를 누르면 로케이션 이름을 표기하는 프로세스 (SungGeun)
+//컨트리를 누르면 로케이션 이름을 표기하는 프로세스 (SungGeun)ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 var location1 = document.querySelectorAll('.contry');
 location1.forEach(function(checkLocation) {
     checkLocation.addEventListener('click', function() {
@@ -750,69 +731,66 @@ document.querysquerySelectorAll('.second-menu-item.contry_location').forEach(loc
 			
 			
 			$.ajax({
-            url: 'getMovieTimeTable.jsp',
-            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',       
-            type: 'POST',
-            data: 	
-            
-            success: function(response) {
-                console.log('location1 response', response);
-                
-                // response가 이미 JSON 객체로 파싱된 상태일 수 있습니다.
-                // 확인 후 JSON 파싱을 시도합니다.
-                var jsonResponse;
-                if (typeof response === 'string') {
-                    try {
-                        jsonResponse = JSON.parse(response);
-                    } catch (e) {
-                        console.error('Failed to parse JSON:', e);
-                        return;
-                    }
-                } else {
-                    jsonResponse = response;
-                }
-
-                // "locations" 키에서 데이터 추출
-                var data = jsonResponse.locations;
-
-                if (!Array.isArray(data)) {
-                    console.error('Expected an array but received:', data);
-                    console.log("test : is not Array")
-                    return;
-                }
-                console.log("test : it is Array")
-                
-                var container = document.querySelector(divClassName); // HTML을 삽입할 대상 클래스
-                
-                // 기존 내용 제거
-                container.innerHTML = '';
-    
-                // 데이터 배열을 반복하여 HTML 생성
-                data.forEach(function(item) {
-                    var divElement = document.createElement('div'); // 새로운 div 요소 생성
-    				divElement.classList.add('second-menu-item');
-    
-                    var pElement = document.createElement('p'); // 새로운 p 요소 생성
-                    pElement.textContent = item; // p 태그의 텍스트 설정
-    
-                    // div 요소에 p 태그 추가
-                    divElement.appendChild(pElement);
-    
-                    // container에 div 요소 추가
-                    container.appendChild(divElement);
-                console.log("Server response:", item);
-                });
-                
-            },
-            error: function(error) {
-                // 요청 실패 시 처리할 로직을 작성합니다.
-                console.log("Error:", error);
-            }
-        });
+	            url: 'getMovieTimeTable.jsp',
+	            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',       
+	            type: 'POST',
+	            data: 	{},
+	            success: function(response) {
+	                console.log('location1 response', response);
+	                
+	                // response가 이미 JSON 객체로 파싱된 상태일 수 있습니다.
+	                // 확인 후 JSON 파싱을 시도합니다.
+	                var jsonResponse;
+	                if (typeof response === 'string') {
+	                    try {
+	                        jsonResponse = JSON.parse(response);
+	                    } catch (e) {
+	                        console.error('Failed to parse JSON:', e);
+	                        return;
+	                    }
+	                } else {
+	                    jsonResponse = response;
+	                }
+	
+	                // "locations" 키에서 데이터 추출
+	                var data = jsonResponse.locations;
+	
+	                if (!Array.isArray(data)) {
+	                    console.error('Expected an array but received:', data);
+	                    console.log("test : is not Array")
+	                    return;
+	                }
+	                console.log("test : it is Array")
+	                
+	                var container = document.querySelector(divClassName); // HTML을 삽입할 대상 클래스
+	                
+	                // 기존 내용 제거
+	                container.innerHTML = '';
+	    
+	                // 데이터 배열을 반복하여 HTML 생성
+	                data.forEach(function(item) {
+	                    var divElement = document.createElement('div'); // 새로운 div 요소 생성
+	    				divElement.classList.add('second-menu-item');
+	    
+	                    var pElement = document.createElement('p'); // 새로운 p 요소 생성
+	                    pElement.textContent = item; // p 태그의 텍스트 설정
+	    
+	                    // div 요소에 p 태그 추가
+	                    divElement.appendChild(pElement);
+	    
+	                    // container에 div 요소 추가
+	                    container.appendChild(divElement);
+	                console.log("Server response:", item);
+	                });
+	                
+	            },
+	            error: function(error) {
+	                // 요청 실패 시 처리할 로직을 작성합니다.
+	                console.log("Error:", error);
+	            }
+	        });
 		})
 		
 		
 	})
 })
-
->>>>>>> 07b4551a56543873d2fac7dd06b63e9c8fdf685f

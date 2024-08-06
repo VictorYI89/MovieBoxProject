@@ -154,6 +154,14 @@
 			<version>1.2</version>
 		</dependency> -->
 		<!--  톰캣 10부터는 다음을 쓴다.  -->
+		<!--
+		https://mvnrepository.com/artifact/jakarta.servlet.jsp.jstl/jakarta.servlet.jsp.jstl-api -->
+		<dependency>
+			<groupId>jakarta.servlet.jsp.jstl</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
 		<dependency>
 			<groupId>jakarta.servlet</groupId>
 			<artifactId>jakarta.servlet-api</artifactId>
@@ -198,5 +206,46 @@
 			<artifactId>mybatis</artifactId>
 			<version>3.5.11</version>
 		</dependency>
+		
+		
+		
+		
+		
+		<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
+		
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>javax.servlet-api</artifactId>
+		    <version>4.0.1</version> <!-- 적절한 버전을 사용하세요 -->
+		    <scope>provided</scope> <!-- 서블릿 컨테이너(Tomcat 등)가 이 라이브러리를 제공하기 때문에 provided 범위로 설정합니다 -->
+		</dependency>
+		<dependency>
+		    <groupId>com.googlecode.json-simple</groupId>
+		    <artifactId>json-simple</artifactId>
+		    <version>1.1.1</version> <!-- 최신 버전으로 변경할 수 있습니다 -->
+		</dependency>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	</dependencies>
 </project>
