@@ -351,115 +351,219 @@ function theaterMegaBoxKids() {
     sixthEl.style.display = 'block'
 }
 
-const selectedItems = new Set();
+// const selectedItems = new Set();
+
+// // 최대 선택 가능한 항목 수
+// const maxSelection = 3;
+
+// // 특정 요소를 표시하기 위한 변수
+// const alertElement = document.querySelector('.alert-message'); // 표시할 요소를 선택하세요
+
+// document.querySelectorAll('.movie-menu .sub-middle-menu .first-menu-item').forEach(item => {
+//     item.addEventListener('click', function() {
+//         if (selectedItems.has(item)) {
+//             selectedItems.delete(item);
+//             item.style.backgroundColor = '';
+//             item.style.borderWidth = '';
+//             item.style.borderStyle = '';
+//             item.style.borderColor = '';
+//         } else {
+            
+//             if (selectedItems.size < maxSelection) {
+//                 selectedItems.add(item);
+//                 item.style.backgroundColor = 'rgb(102, 102, 102)';
+//             } else {
+                
+//                 alertElement.style.display = 'block';
+//             }
+//         }
+//     });
+// });
+
+// const alert2Element = document.querySelector('.alert-message'); // 표시할 요소를 선택하세요
+
+// document.querySelectorAll('.movie-menu .sub-middle-menu .second-menu-item').forEach(item => {
+//     item.addEventListener('click', function() {
+//         if (selectedItems.has(item)) {
+//             selectedItems.delete(item);
+//             item.style.backgroundColor = '';
+//             item.style.borderWidth = '';
+//             item.style.borderStyle = '';
+//             item.style.borderColor = '';
+//         } else {
+//             if (selectedItems.size < maxSelection) {
+//                 selectedItems.add(item);
+//                 item.style.backgroundColor = 'rgb(102, 102, 102)';
+//             } else {
+//                 alert2Element.style.display = 'block';
+//             }
+//         }
+//     });
+// });
+
+// document.querySelectorAll('.theater-menu .sub-middle-menu .first-menu-item').forEach(item => {
+//     item.addEventListener('click', function() {
+//         document.querySelectorAll('.theater-menu .sub-middle-menu .first-menu-item').forEach(el => {
+//             el.style.backgroundColor = '';
+//             el.style.borderWidth = '';
+//             el.style.borderStyle = '';
+//             el.style.borderColor = '';
+//         });
+//         item.style.backgroundColor = 'rgb(235, 235, 235)';
+//         item.style.borderWidth = '1px 0 1px 0';
+//         item.style.borderStyle = 'solid'
+//         item.style.borderColor = '#333'
+//     });
+// });
+
+// const alert3Element = document.querySelector('.alert-message'); // 표시할 요소를 선택하세요
+
+// document.querySelectorAll('.theater-menu .sub-middle-menu .second-menu-item').forEach(item => {
+//     item.addEventListener('click', function() {
+//         if (selectedItems.has(item)) {
+//             selectedItems.delete(item);
+//             item.style.backgroundColor = '';
+//             item.style.borderWidth = '';
+//             item.style.borderStyle = '';
+//             item.style.borderColor = '';
+//         } else {
+//             if (selectedItems.size < maxSelection) {
+//                 selectedItems.add(item);
+//                 item.style.backgroundColor = 'rgb(102, 102, 102)';
+//             } else {
+//                 alert3Element.style.display = 'block';
+//             }
+//         }
+//         const timeEl = document.querySelector('.time-menu .bottom-main')
+//         timeEl.style.display = 'none'
+//         const movieEl = document.querySelector('.time-menu .movie-time')
+//         movieEl.style.display = 'block'
+//     });
+// });
+
+// const alert4Element = document.querySelector('.alert-message'); // 표시할 요소를 선택하세요
+
+// document.querySelectorAll('.theater-menu .sub-middleSecond-menu .second-menu-item').forEach(item => {
+//     item.addEventListener('click', function() {
+//         if (selectedItems.has(item)) {
+//             selectedItems.delete(item);
+//             item.style.backgroundColor = '';
+//             item.style.borderWidth = '';
+//             item.style.borderStyle = '';
+//             item.style.borderColor = '';
+//         } else {
+//             if (selectedItems.size < maxSelection) {
+//                 selectedItems.add(item);
+//                 item.style.backgroundColor = 'rgb(102, 102, 102)';
+//             } else {
+//                 alert4Element.style.display = 'block';
+//             }
+//         }
+//         const timeEl = document.querySelector('.time-menu .bottom-main')
+//         timeEl.style.display = 'none'
+//         const movieEl = document.querySelector('.time-menu .movie-time')
+//         movieEl.style.display = 'block'
+//     });
+// });
 
 
-const maxSelection = 3;
+//-------------------------------------------영화-----------------------------------------------------------------------
+let movieFirstMaxNumber = 0;
 
-
-const alertElement = document.querySelector('.alert-message');
-
-document.querySelectorAll('.movie-menu .sub-middle-menu .first-menu-item').forEach(item => {
+document.querySelectorAll('.movie-menu .sub-middle-menu .first-menu-item').forEach(function(item){
     item.addEventListener('click', function() {
-        if (selectedItems.has(item)) {
-            selectedItems.delete(item);
-            item.style.backgroundColor = '';
-            item.style.borderWidth = '';
-            item.style.borderStyle = '';
-            item.style.borderColor = '';
-        } else {
-            if (selectedItems.size < maxSelection) {
-                selectedItems.add(item);
-                item.style.backgroundColor = 'rgb(102, 102, 102)';
-            } else {
-                alertElement.style.display = 'block';
-            }
+        var computedStyle = getComputedStyle(item);
+        if(computedStyle.backgroundColor === 'rgb(51, 51, 51)') {
+            item.classList.remove('selected');
+            movieFirstMaxNumber--;
+            return;
         }
-    });
+        if(movieFirstMaxNumber < 3) {
+            item.classList.add('selected');
+            movieFirstMaxNumber++
+            console.log('movieFirstMaxNumber: ' + movieFirstMaxNumber);
+        } else {
+            alert('최대개수를 선택하였습니다');
+        }
+    })
 });
 
-const alert2Element = document.querySelector('.alert-message');
-
-document.querySelectorAll('.movie-menu .sub-middle-menu .second-menu-item').forEach(item => {
+document.querySelectorAll('.movie-menu .sub-middle-menu .second-menu-item').forEach(function(item){
     item.addEventListener('click', function() {
-        if (selectedItems.has(item)) {
-            selectedItems.delete(item);
-            item.style.backgroundColor = '';
-            item.style.borderWidth = '';
-            item.style.borderStyle = '';
-            item.style.borderColor = '';
-        } else {
-            if (selectedItems.size < maxSelection) {
-                selectedItems.add(item);
-                item.style.backgroundColor = 'rgb(102, 102, 102)';
-            } else {
-                alert2Element.style.display = 'block';
-            }
+        var computedStyle = getComputedStyle(item);
+        if(computedStyle.backgroundColor === 'rgb(51, 51, 51)') {
+            item.classList.remove('selected');
+            movieFirstMaxNumber--;
+            return;
         }
-    });
+        if(movieFirstMaxNumber < 3) {
+            item.classList.add('selected');
+            movieFirstMaxNumber++
+            console.log('movieFirstMaxNumber: ' + movieFirstMaxNumber);
+        } else {
+            alert('최대개수를 선택하였습니다');
+        }
+    })
 });
 
-document.querySelectorAll('.theater-menu .sub-middle-menu .first-menu-item').forEach(item => {
+//-------------------------------------------극장-----------------------------------------------------------------------
+const firstItem = document.querySelectorAll('.theater-menu .sub-middle-menu .first-menu-item')
+document.querySelectorAll('.theater-menu .sub-middle-menu .first-menu-item').forEach(function(item){
     item.addEventListener('click', function() {
-        document.querySelectorAll('.theater-menu .sub-middle-menu .first-menu-item').forEach(el => {
-            el.style.backgroundColor = '';
-            el.style.borderWidth = '';
-            el.style.borderStyle = '';
-            el.style.borderColor = '';
-        });
-        item.style.backgroundColor = 'rgb(235, 235, 235)';
-        item.style.borderWidth = '1px 0 1px 0';
-        item.style.borderStyle = 'solid'
-        item.style.borderColor = '#333'
-    });
+        firstItem.forEach(function(entire){
+            entire.classList.remove('selected');
+        })
+        item.classList.add('selected');
+    })
 });
 
-const alert3Element = document.querySelector('.alert-message'); // 표시할 요소를 선택하세요
-
-document.querySelectorAll('.theater-menu .sub-middle-menu .second-menu-item').forEach(item => {
+const secondItem = document.querySelectorAll('.theater-menu .sub-middleSecond-menu .first-menu-item')
+document.querySelectorAll('.theater-menu .sub-middleSecond-menu .first-menu-item').forEach(function(item){
     item.addEventListener('click', function() {
-        if (selectedItems.has(item)) {
-            selectedItems.delete(item);
-            item.style.backgroundColor = '';
-            item.style.borderWidth = '';
-            item.style.borderStyle = '';
-            item.style.borderColor = '';
-        } else {
-            if (selectedItems.size < maxSelection) {
-                selectedItems.add(item);
-                item.style.backgroundColor = 'rgb(102, 102, 102)';
-            } else {
-                alert3Element.style.display = 'block';
-            }
-        }
-        const timeEl = document.querySelector('.time-menu .bottom-main')
-        timeEl.style.display = 'none'
-        const movieEl = document.querySelector('.time-menu .movie-time')
-        movieEl.style.display = 'block'
-    });
+        secondItem.forEach(function(entire){
+            entire.classList.remove('selected');
+        })
+        item.classList.add('selected');
+    })
 });
 
-const alert4Element = document.querySelector('.alert-message'); // 표시할 요소를 선택하세요
 
-document.querySelectorAll('.theater-menu .sub-middleSecond-menu .second-menu-item').forEach(item => {
+
+
+let theaterSecondMaxNumber = 0;
+
+document.querySelectorAll('.theater-menu .sub-middle-menu .second-menu-item').forEach(function(item){
     item.addEventListener('click', function() {
-        if (selectedItems.has(item)) {
-            selectedItems.delete(item);
-            item.style.backgroundColor = '';
-            item.style.borderWidth = '';
-            item.style.borderStyle = '';
-            item.style.borderColor = '';
-        } else {
-            if (selectedItems.size < maxSelection) {
-                selectedItems.add(item);
-                item.style.backgroundColor = 'rgb(102, 102, 102)';
-            } else {
-                alert4Element.style.display = 'block';
-            }
+        var computedStyle = getComputedStyle(item);
+        if(computedStyle.backgroundColor === 'rgb(51, 51, 51)') {
+            item.classList.remove('selected');
+            theaterSecondMaxNumber--;
+            return;
         }
-        const timeEl = document.querySelector('.time-menu .bottom-main')
-        timeEl.style.display = 'none'
-        const movieEl = document.querySelector('.time-menu .movie-time')
-        movieEl.style.display = 'block'
-    });
+        if(theaterSecondMaxNumber < 3) {
+            item.classList.add('selected');
+            theaterSecondMaxNumber++
+            console.log('theaterSecondMaxNumber: ' + theaterSecondMaxNumber);
+        } else {
+            alert('최대개수를 선택하였습니다');
+        }
+    })
+});
+
+document.querySelectorAll('.theater-menu .sub-middleSecond-menu .second-menu-item').forEach(function(item){
+    item.addEventListener('click', function() {
+        var computedStyle = getComputedStyle(item);
+        if(computedStyle.backgroundColor === 'rgb(51, 51, 51)') {
+            item.classList.remove('selected');
+            theaterSecondMaxNumber--;
+            return;
+        }
+        if(theaterSecondMaxNumber < 3) {
+            item.classList.add('selected');
+            theaterSecondMaxNumber++
+            console.log('theaterSecondMaxNumber: ' + theaterSecondMaxNumber);
+        } else {
+            alert('최대개수를 선택하였습니다');
+        }
+    })
 });

@@ -1,0 +1,11 @@
+@charset "UTF-8";
+main {
+	width: 100%;
+	position: relative;
+}
+
+main .select-container {
+	width: 200px;
+	height: 800px;
+	background-color: red;
+}
