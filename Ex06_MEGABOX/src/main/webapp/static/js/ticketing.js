@@ -429,10 +429,9 @@ function theaterMegaBoxKids() {
     sixthEl.style.display = 'block'
 }
 
+//const selectedItems = new Set(); - 영화와 지역 둘다 누를 수 있어야 하기 때문에 두개로 나눔
 const selectedMovieItems = new Set();
 const selectedLocationItems = new Set();
-
-
 const maxSelection = 3;
 
 
@@ -662,8 +661,10 @@ location1.forEach(function(checkLocation) {
                         console.error('Failed to parse JSON:', e);
                         return;
                     }
+                    console.log('parsing')
                 } else {
                     jsonResponse = response;
+                    console.log('no parsing')
                 }
 
                 // "locations" 키에서 데이터 추출
@@ -694,8 +695,9 @@ location1.forEach(function(checkLocation) {
     
                     // container에 div 요소 추가
                     container.appendChild(divElement);
-                console.log("Server response:", item);
+                	console.log("Server response:", item);
                 });
+                selectLocation();
                 
             },
             error: function(error) {
@@ -706,91 +708,53 @@ location1.forEach(function(checkLocation) {
     });
 });
 
-
-var cleckedLocationList = [];
-
-document.querysquerySelectorAll('.second-menu-item.contry_location').forEach(location => {
-	location.addEventListener('click', function() {
-		location.classList.toggle('checkedLocation'); //클릭한 요소 클라스 추가하거나 이미 추가되어 있다면 삭제
-		
-		document.querySelectorAll('.checkedLocation').forEach(eachLocation => {
-			cleckedLocationList.push(eachLocation);
-			var checkedMovie = document.querySelectorAll('.checkedMovie');
+// 지점을 클릭할 경우 해당 지점의 타임리스트를 가져와서 표기함
+function selectLocation(){
+	document.querySelectorAll('.second-menu-item.contry_location').forEach(location => {
+		location.addEventListener('click', function() {
 			
-			var encodedData = null;
-			if(checkedMovie === 0){
-				encodedData = cleckedLocationList.map(function(item) {
-	  				return 'data[]=' + encodeURIComponent(item); // 배열 항목을 URL 인코딩
-				}).join('&'); // '&'로 구분하여 URL 쿼리 문자열 형식으로 변환
-			} else {
-				encodedData = cleckedLocationList.map(function(item) {
-	  				return 'data[]=' + encodeURIComponent(item); // 배열 항목을 URL 인코딩
-				}).join('&'); // '&'로 구분하여 URL 쿼리 문자열 형식으로 변환
-				var encodedDataMovieList = checkedMovie.map
-			}
-			
-			
+		console.log('contry_location clicked');
+		var locationList = Array.from(selectedLocationItems);
+		var movieList = Array.from(selectedMovieItems);
+	
+			var output = '';
 			$.ajax({
-	            url: 'getMovieTimeTable.jsp',
-	            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',       
-	            type: 'POST',
-	            data: 	{},
-	            success: function(response) {
-	                console.log('location1 response', response);
-	                
-	                // response가 이미 JSON 객체로 파싱된 상태일 수 있습니다.
-	                // 확인 후 JSON 파싱을 시도합니다.
-	                var jsonResponse;
-	                if (typeof response === 'string') {
-	                    try {
-	                        jsonResponse = JSON.parse(response);
-	                    } catch (e) {
-	                        console.error('Failed to parse JSON:', e);
-	                        return;
-	                    }
-	                } else {
-	                    jsonResponse = response;
-	                }
-	
-	                // "locations" 키에서 데이터 추출
-	                var data = jsonResponse.locations;
-	
-	                if (!Array.isArray(data)) {
-	                    console.error('Expected an array but received:', data);
-	                    console.log("test : is not Array")
-	                    return;
-	                }
-	                console.log("test : it is Array")
-	                
-	                var container = document.querySelector(divClassName); // HTML을 삽입할 대상 클래스
-	                
-	                // 기존 내용 제거
-	                container.innerHTML = '';
-	    
-	                // 데이터 배열을 반복하여 HTML 생성
-	                data.forEach(function(item) {
-	                    var divElement = document.createElement('div'); // 새로운 div 요소 생성
-	    				divElement.classList.add('second-menu-item');
-	    
-	                    var pElement = document.createElement('p'); // 새로운 p 요소 생성
-	                    pElement.textContent = item; // p 태그의 텍스트 설정
-	    
-	                    // div 요소에 p 태그 추가
-	                    divElement.appendChild(pElement);
-	    
-	                    // container에 div 요소 추가
-	                    container.appendChild(divElement);
-	                console.log("Server response:", item);
-	                });
-	                
-	            },
-	            error: function(error) {
-	                // 요청 실패 시 처리할 로직을 작성합니다.
-	                console.log("Error:", error);
-	            }
-	        });
+		        url: 'getMovieTimeTable.jsp',
+		        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',       
+		        type: 'POST',
+		        data: {
+					locationList: locationList,
+					movieList: movieList
+				},
+		        success: function(response) {
+		            console.log('timeList response : ', response);
+		            
+					
+					response.forEach(function(item) {
+					    output += '<div class="time">';
+					    // 각 데이터 항목의 속성을 테이블의 셀로 변환합니다.
+					    // <td> 태그는 테이블의 셀을 나타내며, 데이터 항목의 ID, 이름, 나이, 주소를 각 셀에 넣습니다.
+					    output += '<p>' + item.startTime + '</p>';
+					    output += '<p>' + '~' + item.endTime + '</p>';
+					    output += '</div>';
+					    output += '<div class="info">';
+					    output += '<p>' + item.movieName + '</p>';
+					    output += '<p>' + '2D' + '</p>';
+					    output += '</div>';
+					    output += '<div class="area">';
+					    output += '<p>' + item.locationName + '</p>';
+					    output += '<p>' + item.roomLocation + '</p>';
+					    output += '</div>';
+					});
+					
+					document.querySelector('.movie-time .time-show').innerHTML = output;
+		                
+		        },
+		        error: function(error) {
+		            // 요청 실패 시 처리할 로직을 작성합니다.
+		            console.log("Error:", error);
+		        }
+		    });
 		})
-		
-		
 	})
-})
+}

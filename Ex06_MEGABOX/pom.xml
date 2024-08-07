@@ -211,7 +211,7 @@
 		
 		
 		
-		<!--ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
+		<!-- 이성근ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
 		
 		<dependency>
 		    <groupId>javax.servlet</groupId>
@@ -224,25 +224,24 @@
 		    <artifactId>json-simple</artifactId>
 		    <version>1.1.1</version> <!-- 최신 버전으로 변경할 수 있습니다 -->
 		</dependency>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		<!-- Jackson Databind -->
+	    <dependency>
+	        <groupId>com.fasterxml.jackson.core</groupId>
+	        <artifactId>jackson-databind</artifactId>
+	        <version>2.15.2</version>
+	    </dependency>
+	    <!-- Jackson Core -->
+	    <dependency>
+	        <groupId>com.fasterxml.jackson.core</groupId>
+	        <artifactId>jackson-core</artifactId>
+	        <version>2.15.2</version>
+	    </dependency>
+	    <!-- Jackson Annotations -->
+	    <dependency>
+	        <groupId>com.fasterxml.jackson.core</groupId>
+	        <artifactId>jackson-annotations</artifactId>
+	        <version>2.15.2</version>
+	    </dependency>
 		
 		
 		

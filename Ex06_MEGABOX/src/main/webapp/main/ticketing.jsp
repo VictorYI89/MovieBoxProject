@@ -723,14 +723,9 @@
                         </div>
                         <div class="time-menu-bottom">
 
-
-<%
-                        
-%>
-
                             
                             <!-- 영화 예매가능 리스트 표기 -->
-                            <div class="movie-time">
+                            <!-- <div class="movie-time">
                                 <div class="time-show">
                                     <div class="time">
                                         <p>18:20</p>
@@ -746,11 +741,7 @@
                                         <p>236/249</p>
                                     </div>
                                 </div>
-                            </div>
-
-
-<%
-%>
+                            </div> -->
 
 
                             <div class="bottom-menu">
