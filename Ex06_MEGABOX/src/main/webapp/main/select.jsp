@@ -21,304 +21,434 @@
 </head>
 <body>
     <%@ include file="../include/header.jsp" %>
-    <main>
+     <main>
         <div class="container">
-            <h1>결제하기</h1>
-            <div class="ticket-info">
-                <div class="ticket-container">
-                    <h1>예매정보</h1>
-                    <img src="https://www.megabox.co.kr/SharedImg/2024/08/01/BUsWispT4T7lkUapLBCGyK17FuX5kKk6_150.jpg" alt="영화이미지">
-                    <p>파일럿</p>
-                    <div class="movie-date">
-                        <p>2024.08.05(월)</p>
-                        <p>10:00~12:01</p>
-                    </div>
-                    <div class="movie-area">
-                        <p>군자/9관&bullet;2D</p>
-                    </div>
-                    <div class="select-people">
-                        <p>경로 1</p>
-                    </div>
-                </div>
-            </div>
-            <div class="discount">
-                <div class="dicount-container">
-                    <h1>할인적용</h1>
-                    <div class="reset">
+            <h1>빠른예매</h1>
+            <div class="select-people">
+                <div class="top-menu">
+                    <p>관람인원선택</p>
+                    <button onclick="reset()">
+                        <div class="material-symbols-outlined">
+                            cached
+                        </div>
                         <p>초기화</p>
+                    </button>
+                </div>
+                <div class="bottom-menu">
+                    <div onclick="closeScreen()" class="screen">
+                        <div class="material-symbols-outlined">
+                            keyboard_double_arrow_up
+                        </div>
+                        <p>관람인원을 선택하십시요</p>
                     </div>
-                    <div class="discount-select-menu">
-                        <div class="select-main">
-                            <div class="first-main">
-                                <p onclick="firstShow()">쿠폰/관람권/기타</p>
-                            </div>
-                            <div class="second-main">
-                                <p onclick="secondShow()">포인트</p>
-                            </div>
-                        </div>
-                        <div class="select-sub">
-                            <div class="first-sub">
-                                <div class="first-sub-container">
-                                    <div class="first-sub-item">
-                                        <p>할인쿠폰</p>
-                                    </div>
-                                    <div class="first-sub-item">
-                                        <p>VIP 영화쿠폰</p>
-                                    </div>
-                                    <div class="first-sub-item">
-                                        <p>메가박스 관람권</p>
-                                    </div>
-                                    <div class="first-sub-item">
-                                        <p>스토어 교환권</p>
-                                    </div>
-                                    <div class="first-sub-item">
-                                        <p>모바일 관람권</p>
-                                    </div>
-                                    <div class="first-sub-item">
-                                        <p>페이즈 금액권</p>
-                                    </div>
-                                    <div class="first-sub-item">
-                                        <p>중앙패밀리</p>
-                                    </div>
+                    <div class="top">
+                        <div class="item">
+                            <p>성인</p>
+                            <div class="math">
+                                <div class="subtract">
+                                    <P>-</P>
                                 </div>
-                                <p>&bullet;기프트콘, 기프티쇼, 아이넘버, 도넛북, 스마트콘, 스마일콘, G마켓 예매권은 [모바일관람권]에서 사용하실 수 있습니다.</p>
-                            </div>
-                            <div class="second-sub">
-                                <div class="second-sub-container">
-                                    <div class="second-sub-item">
-                                        <p>멤버십 포인트</p>
-                                    </div>
-                                    <div class="second-sub-item">
-                                        <p>U+ 멤버십</p>
-                                    </div>
-                                    <div class="second-sub-item">
-                                        <p>OK캐시백</p>
-                                    </div>
-                                    <div class="second-sub-item">
-                                        <p>L.POINT</p>
-                                    </div>
-                                    <div class="second-sub-item">
-                                        <p>GS&POINT</p>
-                                    </div>
-                                    <div class="second-sub-item">
-                                        <p>HD현대오일뱅크</p>
-                                    </div>
-                                    <div class="second-sub-item">
-                                        <p>해피포인트</p>
-                                    </div>
-                                    <div class="second-sub-item">
-                                        <p>블루멤버스 포인트</p>
-                                    </div>
-                                    <div class="second-sub-item">
-                                        <p>기아멤버스포인트</p>
-                                    </div>
-                                    <div class="second-sub-item">
-                                        <p>현대M포인트</p>
-                                    </div>
-                                    <div class="second-sub-item">
-                                        <p>북앤라이프캐시</p>
-                                    </div>
-                                    <div class="second-sub-item">
-                                        <p>컬쳐캐쉬</p>
-                                    </div>
-                                    <div class="second-sub-item">
-                                        <p>문화누리카드</p>
-                                    </div>
-                                    <div class="second-sub-item">
-                                        <p>중앙멤버십</p>
-                                    </div>
+                                <div class="number">
+                                    <p>0</p>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="payment-method">
-                            <h1>결제수단</h1>
-                            <div class="pay-menu">
-                                <div class="top">
-                                    <p>JoongAng PAY</p>
-                                </div>
-                                <div class="bottom">
+                                <div class="add">
                                     <p>+</p>
-                                    <p>자주 사용하는 카드 등록하고</p>
-                                    <p>더욱 빠르게 결제하세요!</p>
                                 </div>
                             </div>
-                            <div class="settlement-method">
-                                <div onclick="cardPay()" class="set-item">
-                                    <p>신용/체크카드</p>
+                        </div>
+                        <div class="item2">
+                            <p>청소년</p>
+                            <div class="math">
+                                <div class="subtract">
+                                    <P>-</P>
                                 </div>
-                                <div onclick="easyPay()" class="set-item">
-                                    <p>간편결제</p>
+                                <div class="number">
+                                    <p>0</p>
                                 </div>
-                                <div onclick="phonePay()" class="set-item">
-                                    <p>휴대폰결제</p>
-                                </div>
-                                <div onclick="bankPay()" class="set-item">
-                                    <p>내통장결제</p>
-                                </div>
-                            </div>
-                            <div class="bottom-menu">
-                                <div class="card-select">
-                                    <p>카드사 선택</p>
-                                    <select name="" id="">
-                                        <option value="">선택</option>
-                                        <option value="">비씨카드</option>
-                                        <option value="">국민카드</option>
-                                        <option value="">신한카드</option>
-                                        <option value="">삼성카드</option>
-                                        <option value="">롯데카드</option>
-                                        <option value="">농협카드</option>
-                                        <option value="">하나카드</option>
-                                        <option value="">현대카드</option>
-                                        <option value="">씨티카드</option>
-                                        <option value="">제주카드</option>
-                                        <option value="">우리카드</option>
-                                        <option value="">수협카드</option>
-                                        <option value="">전북카드</option>
-                                        <option value="">광주카드</option>
-                                        <option value="">신협카드</option>
-                                        <option value="">카카오뱅크</option>
-                                        <option value="">케이뱅크</option>
-                                        <option value="">우체국카드</option>
-                                        <option value="">토스카드</option>
-                                        <option value="">SC제일은행 비씨카드</option>
-                                        <option value="">SC제일은행 삼성카드</option>
-                                        <option value="">IBK기업은행 카드</option>
-                                    </select>
-                                    <label>
-                                        <input type="radio" name="payment" value="ISP" checked>
-                                        ISP
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="payment" value="일반결제">
-                                        일반결제
-                                    </label>
-                                </div>
-                                <div class="easy-select">
-                                    <label>
-                                        <input type="radio" name="payment" value="네이버페이" checked>
-                                        네이버페이
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="payment" value="카카오페이">
-                                        카카오페이
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="payment" value="페이코" checked>
-                                        페이코
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="payment" value="KB-PAY">
-                                        KB PAY
-                                    </label>
-                                </div>
-                                <div class="phone-select">
-                                    <p>&bullet;결제하신 금액은 익월 휴대폰 요금에 합산되어 청구되며, 휴대폰 결제한도는 통산사별 월 누적 이용 제한에 따라 적용됩니다.</p>
-                                    <p>&bullet;매월 말일 23시30분 ~ 익월 00시 10분까지(40분간)는 시스템 점검시간으로 이용이 어려울 수 있습니다.</p>
-                                    <p>&bullet;휴대폰 결제와 관련된 추가 안내는 FAQ를 참조해주세요.</p>
-                                </div>
-                                <div class="bank-select">
-                                    <p>&bullet;내통장결제는 본인명의의 계좌를 최초 1회 등록 후 비밀번호 입력만으로 가편하게 이용할 수 있는 현금결제 서비스 입니다.</p>
-                                    <p>&bullet;은행 점검시간의 경우 내통장결제서비스 이용이 불가합니다.</p>
-                                </div>
-                                <div class="pop-up">
-                                    <h1>결제 프로모션</h1>
-                                    <img src="https://img.megabox.co.kr/SharedImg/payPromt/2024/08/01/2JDSeyX2akPAxnrVQ5la7si7t4ESsESX.png" alt="pay">
-                                    <p>네이버페이 1만원 이상 결제 시 500원 적립!</p>
-                                    <img src="https://img.megabox.co.kr/SharedImg/payPromt/2024/07/05/z9Amz4ohMGa2jOgT6zJZtcchh0qcWAr6.png" alt="toss">
-                                    <p>토스페이 첫 결제 시 2천원 토스포인트 적립</p>
-                                </div>
-                                <div class="agreement">
-                                    <label class="custom-checkbox">
-                                        <input type="checkbox" name="payment" value="agree">
-                                        결제대행 서비스 약관 필수 동의
-                                    </label>
-                                    <div class="first-content">
-                                        <p>전자금융거래 기본약관</p>
-                                        <p>내용보기</p>
-                                    </div>
-                                    <div class="second-content">
-                                        <p>개인정보 수집 및 이용에 대한 동의</p>
-                                        <p>내용보기</p>
-                                    </div>
-                                    <div class="third-content">
-                                        <p>개인정보의 제 3자 제공 동의</p>
-                                        <p>내용보기</p>
-                                    </div>
-                                    <div class="fourth-content">
-                                        <p>개인정보의 처리 위탁 동의</p>
-                                        <p>내용보기</p>
-                                    </div>
+                                <div class="add">
+                                    <p>+</p>
                                 </div>
                             </div>
+                        </div>
+                        <div class="item3">
+                            <p>경로</p>
+                            <div class="math">
+                                <div class="subtract">
+                                    <P>-</P>
+                                </div>
+                                <div class="number">
+                                    <p>0</p>
+                                </div>
+                                <div class="add">
+                                    <p>+</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item4">
+                            <p>우대</p>
+                            <div class="math">
+                                <div class="subtract">
+                                    <P>-</P>
+                                </div>
+                                <div class="number">
+                                    <p>0</p>
+                                </div>
+                                <div class="add">
+                                    <p>+</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="line">
+                            <img src="https://www.megabox.co.kr/static/pc/images/reserve/img-theater-screen.png" alt="screen">    
+                        </div>
+                        <div class="left">
+                            <img src="https://www.megabox.co.kr/static/pc/images/reserve/img-door-left.png" alt="left">
+                        </div>
+                        <div class="seat-main-area">
+                            <div class="area-number">
+                                <p>A</p>
+                            </div>
+                            <div class="area-number">
+                                <p>B</p>
+                            </div>
+                            <div class="area-number">
+                                <p>C</p>
+                            </div>
+                            <div class="area-number">
+                                <p>D</p>
+                            </div>
+                            <div class="area-number">
+                                <p>E</p>
+                            </div>
+                            <div class="area-number">
+                                <p>F</p>
+                            </div>
+                            <div class="area-number">
+                                <p>G</p>
+                            </div>
+                        </div>
+                        <div class="seat-sub-area">
+                            <div class="area-number number1">
+                                <p>1</p>
+                            </div>
+                            <div class="area-number number2">
+                                <p>2</p>
+                            </div>
+                            <div class="area-number number3">
+                                <p>3</p>
+                            </div>
+                            <div class="area-number number4">
+                                <p>4</p>
+                            </div>
+                            <div class="area-number number5">
+                                <p>5</p>
+                            </div>
+                            <div class="area-number number6">
+                                <p>6</p>
+                            </div>
+                            <div class="area-number number7">
+                                <p>7</p>
+                            </div>
+                            <div class="area-number number8">
+                                <p>8</p>
+                            </div>
+                            <div class="area-number number9">
+                                <p>9</p>
+                            </div>
+                            <div class="area-number number10">
+                                <p>10</p>
+                            </div>
+                            <div class="area-number number11">
+                                <p>11</p>
+                            </div>
+                            <div class="area-number number12">
+                                <p>12</p>
+                            </div>
+                            <div class="area-number number13">
+                                <p>13</p>
+                            </div>
+                            <div class="area-number number14">
+                                <p>14</p>
+                            </div>
+                            <div class="area-number number15">
+                                <p>15</p>
+                            </div>
+                            <div class="area-number number16">
+                                <p>16</p>
+                            </div>
+                            <div class="area-number number17">
+                                <p>17</p>
+                            </div>
+                            <div class="area-number number18">
+                                <p>18</p>
+                            </div>
+                            <div class="area-number number19">
+                                <p>19</p>
+                            </div>
+                            <div class="area-number number20">
+                                <p>20</p>
+                            </div>
+                            <div class="area-number number21">
+                                <p>21</p>
+                            </div>
+                            <div class="area-number number22">
+                                <p>22</p>
+                            </div>
+                            <div class="area-number number23">
+                                <p>23</p>
+                            </div>
+                            <div class="area-number number24">
+                                <p>24</p>
+                            </div>
+                            <div class="area-number number25">
+                                <p>25</p>
+                            </div>
+                            <div class="area-number number26">
+                                <p>26</p>
+                            </div>
+                            <div class="area-number number27">
+                                <p>27</p>
+                            </div>
+                            <div class="area-number number28">
+                                <p>28</p>
+                            </div>
+                            <div class="area-number number29">
+                                <p>29</p>
+                            </div>
+                            <div class="area-number number30">
+                                <p>30</p>
+                            </div>
+                            <div class="area-number number31">
+                                <p>31</p>
+                            </div>
+                            <div class="area-number number32">
+                                <p>32</p>
+                            </div>
+                            <div class="area-number number33">
+                                <p>33</p>
+                            </div>
+                            <div class="area-number number34">
+                                <p>34</p>
+                            </div>
+                            <div class="area-number number35">
+                                <p>35</p>
+                            </div>
+                        </div>
+                        <div class="up">
+                            <img src="https://www.megabox.co.kr/static/pc/images/reserve/img-door-top.png" alt="up">
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="pay-info">
-                <h1>결제금액</h1>
-                <div class="money-info">
-                    <div class="people-type">
-                        <p>성인</p>
-                        <p>12000</p>
+            <div class="info">
+                <div class="title">
+                    <p>박정희:경제대국을 꿈꾼 남자</p>
+                    <p>2D</p>
+                </div>
+                <div class="area">
+                    <div class="main-area">
+                        <p>강동</p>
+                        <p>9관</p>
+                        <p>2024.08.01(목)</p>
                     </div>
-                    <div class="people-type">
-                        <p>청소년</p>
-                        <p>9000</p>
-                    </div>
-                    <div class="people-type">
-                        <p>경로</p>
-                        <p>5000</p>
-                    </div>
-                    <div class="people-type">
-                        <p>우대</p>
-                        <p>3000</p>
-                    </div>
-                    <div class="line"></div>
-                    <div class="money">
-                        <p>금액</p>
-                        <p>25,000원</p>
+                    <select name="" id="">
+                        <option value="">11:40~14:14</option>
+                        <option value="">14:50~16:30</option>
+                        <option value="">17:00~18:30</option>
+                    </select>
+                    <div class="movie-image">
+                        <img src="https://www.megabox.co.kr/SharedImg/2024/06/10/DnGUkUegvQKoodvnWYS1dXBSbH5bHZWu_150.jpg" alt="영화">
                     </div>
                 </div>
-                <div class="subtract">
-                    <p>-</p>
+                <div class="select-menu">
+                    <div class="select-info">
+                        <div class="select-option">
+                            <div class="select">
+                                <div class="shape">
+
+                                </div>
+                                <p>선택</p>
+                            </div>
+                            <div class="ticket-complete">
+                                <div class="shape">
+
+                                </div>
+                                <p>예매완료</p>
+                            </div>
+                            <div class="select-impossible">
+                                <div class="shape">
+
+                                </div>
+                                <p>선택불가</p>
+                            </div>
+                            <div class="normal">
+                                <div class="shape">
+
+                                </div>
+                                <p>일반</p>
+                            </div>
+                            <div class="disabled-seat">
+                                <div class="shape">
+
+                                </div>
+                                <p>장애인석</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="select-seat">
+                        <div class="select-seat-top">
+                            <p>선택좌석</p>    
+                        </div>
+                        <div class="seat-menu">
+                            <div class="seat-item">
+                                <p>-</p>
+                            </div>
+                            <div class="seat-item">
+                                <p>-</p>
+                            </div>
+                            <div class="seat-item">
+                                <p>-</p>
+                            </div>
+                            <div class="seat-item">
+                                <p>-</p>
+                            </div>
+                            <div class="seat-item">
+                                <p>-</p>
+                            </div>
+                            <div class="seat-item">
+                                <p>-</p>
+                            </div>
+                            <div class="seat-item">
+                                <p>-</p>
+                            </div>
+                            <div class="seat-item">
+                                <p>-</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="apply-discount">
-                    <p>할인적용</p>
-                    <p>0원</p>
+                <div class="people-menu">
+                    <div class="people-type">
+                        <p></p>
+                    </div>
+                    <div class="people-type">
+                        <p></p>
+                    </div>
+                    <div class="people-type">
+                        <p></p>
+                    </div>
+                    <div class="people-type">
+                        <p></p>
+                    </div>
                 </div>
-                <div class="difference">
-                    <p>추가 차액</p>
-                    <p>0</p>
-                </div>
-                <div class="final-payment">
+                <div class="payment-money">
                     <p>최종결제금액</p>
-                    <p>50,000원</p>
+                    <div class="money">
+                        <p>0</p>
+                        <p>원</p>
+                    </div>
                 </div>
-                <div class="line"></div>
-                <div class="pay-method">
-                    <p>결제수단</p>
-                    <p>신용/체크카드</p>
-                </div>
-                <div class="prev-next">
+                <div class="prev-next-menu">
                     <div class="prev">
-                        <a href="#">이전</a>
+                        <p>이전</p>
                     </div>
                     <div class="next">
-                        <a onclick="payComplete()" href="./megaBox-allMovie.html">결제</a>
+                        <p>다음</p>
                     </div>
                 </div>
             </div>
-            <a href="#">
-                <img src="https://img.megabox.co.kr/SharedImg/cpBanner/2024/07/31/or8CL8PK3znFeIJP6xfivIxyxaT8baWv.png" alt="광고">
-            </a>
         </div>
-        <div onclick="sTo()" class="top">
-            <div class="top-show">
+        <div class="home-menu">
+            <div class="select-menu">
                 <div class="material-symbols-outlined">
-                    arrow_drop_up
+                    home
                 </div>
-                <div class="top-text">
-                    TOP
+                <div class="select1">
+                    <a href="#">
+                        <div class="material-symbols-outlined">
+                            chevron_right
+                        </div>
+                        <p>예매</p>
+                    </a>
+                </div>
+                <div class="select2">
+                    <a href="#">
+                        <div class="material-symbols-outlined">
+                            chevron_right
+                        </div>
+                        <p>빠른예매</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="select-pop-up">
+        </div>
+        <div class="sub-pop">
+            <div class="pop-up">
+                <div class="top">
+                    <p>알림</p>
+                    <div onclick="closeSubPop()" class="material-symbols-outlined">
+                        close
+                    </div>
+                </div>
+                <div class="bottom">
+                    <p>관람하실 인원을 먼저 선택해주세요.</p>
+                    <div onclick="closeSubPop()" class="check">
+                        <p>확인</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="seat-pop">
+            <div class="pop-up">
+                <div class="top">
+                    <p>알림</p>
+                    <div onclick="closeSeatPop()" class="material-symbols-outlined">
+                        close
+                    </div>
+                </div>
+                <div class="bottom">
+                    <p>좌석 선택이 완료되었습니다.</p>
+                    <div onclick="closeSeatPop()" class="check">
+                        <p>확인</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cancel-pop">
+            <div class="pop-up">
+                <div class="top">
+                    <p>알림</p>
+                    <div onclick="closeCancelPop()" class="material-symbols-outlined">
+                        close
+                    </div>
+                </div>
+                <div class="bottom">
+                    <p>선택하신 좌석을 모두 취소하고 다시 선택하시겠습니까?</p>
+                    <div onclick="closeCancelPop()" class="cancel">
+                        <p>취소</p>
+                    </div>
+                    <div onclick="reset()" class="check">
+                        <p>확인</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="complete-pop">
+            <div class="pop-up">
+                <div class="top">
+                    <p>알림</p>
+                    <div onclick="closeCompletePop()" class="material-symbols-outlined">
+                        close
+                    </div>
+                </div>
+                <div class="bottom">
+                    <p>인원선택은 총 8명까지 가능합니다.</p>
+                    <div onclick="closeCompletePop()" class="check">
+                        <p>확인</p>
+                    </div>
                 </div>
             </div>
         </div>

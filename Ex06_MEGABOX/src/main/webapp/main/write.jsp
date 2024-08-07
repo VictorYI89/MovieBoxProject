@@ -21,59 +21,35 @@
 </head>
 <body>
     <%@ include file="../include/header.jsp" %>
-    <main>
-        <div class="container">
-            <div class="text-area">
-                <p>내용</p>
-                <textarea name="" id="" placeholder="영화는 재미있게 보셨나요? 영화의 어떤 점이 좋았는지 이야기해주세요.&#10;관람일 기준 7일 이내 등록 시 50P가 적립됩니다.&#10;포인트는 관람평 최대 10편 지급가능합니다."></textarea>
+     <main>
+        <form action="./write_form.jsp" method="post">
+            <div class="container">
+                <h1>내가 본 영화</h1>
+                <div class="text-area">
+                    <p>내용</p>
+                    <textarea name="review" id="" placeholder="영화는 재미있게 보셨나요? 영화의 어떤 점이 좋았는지 이야기해주세요.&#10;관람일 기준 7일 이내 등록 시 50P가 적립됩니다.&#10;포인트는 관람평 최대 10편 지급가능합니다."></textarea>
+                </div>
+                <div class="movie-score">
+                    <h1>관람평</h1>
+                    <select name="score" id="">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+                <div class="select">
+                    <input type="submit" value="등록">
+                    <button><a href="#">취소</a></button>
+                </div>
             </div>
-            <div class="movie-score">
-                <label>
-                    1점
-                    <input type="radio" name="score" value="1">
-                </label>
-                <label>
-                    2점
-                    <input type="radio" name="score" value="2">
-                </label>
-                <label>
-                    3점
-                    <input type="radio" name="score" value="3">
-                </label>
-                <label>
-                    4점
-                    <input type="radio" name="score" value="4">
-                </label>
-                <label>
-                    5점
-                    <input type="radio" name="score" value="5">
-                </label>
-                <label>
-                    6점
-                    <input type="radio" name="score" value="6">
-                </label>
-                <label>
-                    7점
-                    <input type="radio" name="score" value="7">
-                </label>
-                <label>
-                    8점
-                    <input type="radio" name="score" value="8">
-                </label>
-                <label>
-                    9점
-                    <input type="radio" name="score" value="9">
-                </label>
-                <label>
-                    10점
-                    <input type="radio" name="score" value="10">
-                </label>
-            </div>
-            <div class="select">
-                <input type="submit" value="등록">
-                <button><a href="#">취소</a></button>
-            </div>
-        </div>
+        </form>
     </main>
   	<%@ include file="../include/footer.jsp" %> 
 </body>

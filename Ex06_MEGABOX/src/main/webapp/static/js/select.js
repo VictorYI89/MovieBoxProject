@@ -322,7 +322,7 @@ function disableNextButton() {
 
 // 다음 페이지로 이동하는 함수
 function goToNextPage() {
-    window.location.href = '../megaBox-pay.html';
+    window.location.href = '/Ex06_MEGABOX/main/pay.jsp';
     
 };
 
