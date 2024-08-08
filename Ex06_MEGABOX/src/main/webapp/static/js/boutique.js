@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
             spaceBetween: 10,
             loop: true,
         });
+		
     });
 
 const slide = document.querySelectorAll(".swiper-slide.calendar");
@@ -86,3 +87,23 @@ function secondShow() {
             firstRoom.style.color = '#fff';
             firstRoom.style.backgroundColor = '#503396';
         });
+
+
+		
+const reserveButtons = document.querySelectorAll('.reserve-movie-button');
+        reserveButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // 숨겨진 input 요소에서 영화 정보 가져오기
+                const movieName = this.parentElement.querySelector('.movie-name').value;
+                const movieImage = this.parentElement.querySelector('.movie-image').value;
+
+                // 선택된 영화 정보로 결제 화면 업데이트
+                document.getElementById('smallImage').src = movieImage;
+                document.getElementById('smallImage').alt = movieName;
+                document.getElementById('movieTitle').innerText = movieName;
+
+                // 결제 화면 표시
+                document.querySelector('.payment-box').style.display = 'block';
+				
+    });
+});

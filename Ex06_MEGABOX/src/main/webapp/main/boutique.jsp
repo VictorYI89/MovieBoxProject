@@ -97,57 +97,25 @@ pageContext.setAttribute("calendar", calendar);
 				ResultSet rs = null;
 				
 				try{
-					String selectSql = "SELECT NAME, IMAGE FROM MOVIE WHERE MOVIEIDX < 6";
+					String selectSql = "SELECT NAME, IMAGE FROM MOVIE WHERE MOVIEIDX < 7";
 					pstmt = conn.prepareStatement(selectSql);
 					
 					rs = pstmt.executeQuery();
-					
-					
+				
 				while (rs.next()) {
+					  String movieName = rs.getString("NAME");
+                      String movieImage = rs.getString("IMAGE");
 			%>
 						<div class="swiper-slide">
-							<img
-								src=<%= rs.getString("IMAGE") %>
-								alt="">
-							<div class="movie-title"><%= rs.getString("NAME") %></div>
-							<button class="reserve-movie-button">선택</button>
+							 <img src="<%= movieImage %>" alt="<%= movieName %>">
+							<div class="movie-title"><%= movieName %></div>
+							<input type="hidden" class="movie-name" value="<%= movieName %>">
+                            <input type="hidden" class="movie-image" value="<%= movieImage %>">
+							<button class="reserve-movie-button">
+								선택
+							</button>
 						</div>
-						<!-- <div class="swiper-slide">
-							<img
-								src="https://www.megabox.co.kr/SharedImg/2024/07/03/QaslTt607PkNH8mPWm6ZUH3UwDx2bHoH_420.jpg"
-								alt="">
-							<div class="movie-title">사라의 하츄핑</div>
-							<button class="reserve-movie-button">선택</button>
-						</div>
-						<div class="swiper-slide">
-							<img
-								src="https://www.megabox.co.kr/SharedImg/2024/08/01/BUsWispT4T7lkUapLBCGyK17FuX5kKk6_420.jpg"
-								alt="">
-							<div class="movie-title">파일럿</div>
-							<button class="reserve-movie-button">선택</button>
-						</div>
-						<div class="swiper-slide">
-							<img
-								src="https://www.megabox.co.kr/SharedImg/2024/07/19/ueQpxKKHF2osKzUwDMhOjnKeGN3Exv6S_420.jpg"
-								alt="">
-							<div class="movie-title">데드풀과 울버린</div>
-							<button class="reserve-movie-button">선택</button>
-						</div>
-						<div class="swiper-slide">
-							<img
-								src="https://www.megabox.co.kr/SharedImg/2024/06/24/RZWMFjfujP4iNHOxih6UHFqE62ApTmbV_420.jpg"
-								alt="">
-							<div class="movie-title">슈퍼배드 4</div>
-							<button class="reserve-movie-button">선택</button>
-						</div>
-						<div class="swiper-slide">
-							<img
-								src="https://www.megabox.co.kr/SharedImg/2024/06/17/bAW9rJyLUHvBLY6x9MNMbU19K2B565sy_420.jpg"
-								alt="">
-							<div class="movie-title">인사이드 아웃2</div>
-							<button class="reserve-movie-button">선택</button>
-						</div> -->
-																<%
+			<%
 				}
 			}	catch (Exception e) {
 				System.out.println("자료 조회 오류: " + e.getMessage());
@@ -401,14 +369,12 @@ pageContext.setAttribute("calendar", calendar);
 			<div class="paymentArea">
 				<div class="info">
 					<div class="img">
-						<img id="smallImage"
-							src="https://www.megabox.co.kr/SharedImg/2024/07/03/QaslTt607PkNH8mPWm6ZUH3UwDx2bHoH_420.jpg"
-							alt="사랑의 하츄핑">
+						<img id="smallImage" src="" alt="">
 					</div>
 					<ul class="dot_list">
 						<li id="selectTheabNo"><span>극장 </span>코엑스 더 부티크 프라이빗 2호</li>
 						<li id="selectTime"><span>일시 </span>2024. 08. 08(내일) 10:00</li>
-						<li id="selectMovie"><span>영화 </span>사랑의 하츄핑 2D</li>
+						<li id="selectMovie"><span>영화 </span><span id="movieTitle">원하시는 영화를 선택해주세요.</span></li>
 					</ul>
 				</div>
 
