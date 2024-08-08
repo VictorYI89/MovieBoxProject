@@ -1,5 +1,5 @@
-const pageSize=10;
-const pageBottom=10;
+const pageSize=5;
+const pageBottom=5;
 getData(1,pageSize,pageBottom,'','all');
 function getData(p,s,b,title,name){
     s=pageSize;

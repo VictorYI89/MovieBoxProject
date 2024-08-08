@@ -52,195 +52,195 @@ COPYRIGHT © MegaboxJoongAng, Inc. All rights reserved
             </div>
         </div>
         <div class="sub-menu">
-            <div class="sub-menu-container">
-                <div class="top-bar">
-                    <h1>메가박스 극장 찾기</h1>
-                    <div onclick="closeMenu()" class="close">
-                        <div class="close-menu">
-                            <div class="material-symbols-outlined">
-                                close
+                <div class="sub-menu-container">
+                    <div class="top-bar">
+                        <h1>메가박스 극장 찾기</h1>
+                        <div onclick="closeMenu()" class="close">
+                            <div class="close-menu">
+                                <div class="material-symbols-outlined">
+                                    close
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom-bar">
+                        <div class="area">
+                            <div class="main-area">
+                                <p>서울</p>
+                            </div>
+                            <div class="sub-area">
+                                <a href="#">강남</a>
+                                <a href="#">강동</a>
+                                <a href="#">군자</a>
+                                <a href="#">더 부티크 목동현대백화점</a>
+                                <a href="#">동대문</a>
+                                <a href="#">마곡</a>
+                                <a href="#">목동</a>
+                                <a href="#">브로드웨이(신사)</a>
+                                <a href="#">상봉</a>
+                                <a href="#">상암월드컵경기장</a>
+                                <a href="#">성수</a>
+                                <a href="#">센트럴</a>
+                                <a href="#">송파파크하비오</a>
+                                <a href="#">신촌</a>
+                                <a href="#">이수</a>
+                                <a href="#">창동</a>
+                                <a href="#">코엑스</a>
+                                <a href="#">홍대</a>
+                                <a href="#">화곡</a>
+                                <a href="#">ARTNINE</a>
+                            </div>
+                        </div>
+                        <div class="area">
+                            <div class="main-area">
+                                <p>경기</p>
+                            </div>
+                            <div class="sub-area">
+                                <a href="#">고양스타필드</a>
+                                <a href="#">광명AK플라자</a>
+                                <a href="#">광명소하</a>
+                                <a href="#">금정AK플라자</a>
+                                <a href="#">김포한강신도시</a>
+                                <a href="#">남양주</a>
+                                <a href="#">남양주현대아울렛 스페이스원</a>
+                                <a href="#">동탄</a>
+                                <a href="#">미사강변</a>
+                                <a href="#">백석벨라시타</a>
+                                <a href="#">별내</a>
+                                <a href="#">부천스타필드시티</a>
+                                <a href="#">분당</a>
+                                <a href="#">수원</a>
+                                <a href="#">수원AK플라자</a>
+                                <a href="#">수원남문</a>
+                                <a href="#">수원스타필드</a>
+                                <a href="#">수원인계</a>
+                                <a href="#">수원호매실</a>
+                                <a href="#">시흥배곧</a>
+                                <a href="#">안산중앙</a>
+                                <a href="#">안성스타필드</a>
+                                <a href="#">양주</a>
+                                <a href="#">용인 기흥</a>
+                                <a href="#">용인 테크노밸리</a>
+                                <a href="#">의정부민락</a>
+                                <a href="#">일산</a>
+                                <a href="#">킨텍스</a>
+                                <a href="#">파주금촌</a>
+                                <a href="#">파주운정</a>
+                                <a href="#">파주출판도시</a>
+                                <a href="#">평택비전</a>
+                                <a href="#">하남스타필드</a>
+                            </div>
+                        </div>
+                        <div class="area">
+                            <div class="main-area">
+                                <p>인천</p>
+                            </div>
+                            <div class="sub-area">
+                                <a href="#">검단</a>
+                                <a href="#">송도</a>
+                                <a href="#">영종</a>
+                                <a href="#">영종하늘도시</a>
+                                <a href="#">인천논현</a>
+                                <a href="#">청라지젤</a>
+                            </div>
+                        </div>
+                        <div class="area">
+                            <div class="main-area">
+                                <p>대전/충청/세종</p>
+                            </div>
+                            <div class="sub-area">
+                                <a href="#">공주</a>
+                                <a href="#">논산</a>
+                                <a href="#">대전</a>
+                                <a href="#">대전신세계 아트앤사이언스</a>
+                                <a href="#">대전유성</a>
+                                <a href="#">대전중앙로</a>
+                                <a href="#">대전현대아울렛</a>
+                                <a href="#">세종(조치원)</a>
+                                <a href="#">세종나성</a>
+                                <a href="#">세종청사</a>
+                                <a href="#">오창</a>
+                                <a href="#">진천</a>
+                                <a href="#">천안</a>
+                                <a href="#">청주사창</a>
+                                <a href="#">청주성안길</a>
+                                <a href="#">충주연수</a>
+                                <a href="#">홍성내포</a>
+                            </div>
+                        </div>
+                        <div class="area">
+                            <div class="main-area">
+                                <p>부산/대구/경상</p>
+                            </div>
+                            <div class="sub-area">
+                                <a href="#">경북도청</a>
+                                <a href="#">경산하양</a>
+                                <a href="#">구미강동</a>
+                                <a href="#">김천</a>
+                                <a href="#">남포항</a>
+                                <a href="#">대구세븐밸리(칠곡)</a>
+                                <a href="#">대구신세계(동대구)</a>
+                                <a href="#">대구이시아</a>
+                                <a href="#">대구프리미엄만경관</a>
+                                <a href="#">덕천</a>
+                                <a href="#">마산(경남대)</a>
+                                <a href="#">문경</a>
+                                <a href="#">부산극장</a>
+                                <a href="#">부산대</a>
+                                <a href="#">북대구(칠곡)</a>
+                                <a href="#">사상</a>
+                                <a href="#">삼천포</a>
+                                <a href="#">양산</a>
+                                <a href="#">양산증산</a>
+                                <a href="#">울산</a>
+                                <a href="#">정관</a>
+                                <a href="#">진주(중안)</a>
+                                <a href="#">창원</a>
+                                <a href="#">창원내서</a>
+                                <a href="#">포항</a>
+                                <a href="#">해운대(장산)</a>
+                            </div>
+                        </div>
+                        <div class="area">
+                            <div class="main-area">
+                                <p>광주/전라</p>
+                            </div>
+                            <div class="sub-area">
+                                <a href="#">광주상무</a>
+                                <a href="#">광주하남</a>
+                                <a href="#">목포하당(포르모)</a>
+                                <a href="#">순천</a>
+                                <a href="#">여수웅천</a>
+                                <a href="#">전대(광주)</a>
+                                <a href="#">전주객사</a>
+                                <a href="#">전주혁신</a>
+                                <a href="#">첨단</a>
+                            </div>
+                        </div>
+                        <div class="area">
+                            <div class="main-area">
+                                <p>강원</p>
+                            </div>
+                            <div class="sub-area">
+                                <a href="#">남춘천</a>
+                                <a href="#">속초</a>
+                                <a href="#">원주혁신</a>
+                                <a href="#">춘천석사</a>
+                            </div>
+                        </div>
+                        <div class="area">
+                            <div class="main-area">
+                                <p>제주</p>
+                            </div>
+                            <div class="sub-area">
+                                <a href="#">제주삼화</a>
+                                <a href="#">제주서귀포</a>
+                                <a href="#">제주아라</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="bottom-bar">
-                    <div class="area">
-                        <div class="main-area">
-                            <p>서울</p>
-                        </div>
-                        <div class="sub-area">
-                            <a href="#">강남</a>
-                            <a href="#">강동</a>
-                            <a href="#">군자</a>
-                            <a href="#">더 부티크 목동현대백화점</a>
-                            <a href="#">동대문</a>
-                            <a href="#">마곡</a>
-                            <a href="#">목동</a>
-                            <a href="#">브로드웨이(신사)</a>
-                            <a href="#">상봉</a>
-                            <a href="#">상암월드컵경기장</a>
-                            <a href="#">성수</a>
-                            <a href="#">센트럴</a>
-                            <a href="#">송파파크하비오</a>
-                            <a href="#">신촌</a>
-                            <a href="#">이수</a>
-                            <a href="#">창동</a>
-                            <a href="#">코엑스</a>
-                            <a href="#">홍대</a>
-                            <a href="#">화곡</a>
-                            <a href="#">ARTNINE</a>
-                        </div>
-                    </div>
-                    <div class="area">
-                        <div class="main-area">
-                            <p>경기</p>
-                        </div>
-                        <div class="sub-area">
-                            <a href="#">고양스타필드</a>
-                            <a href="#">광명AK플라자</a>
-                            <a href="#">광명소하</a>
-                            <a href="#">금정AK플라자</a>
-                            <a href="#">김포한강신도시</a>
-                            <a href="#">남양주</a>
-                            <a href="#">남양주현대아울렛 스페이스원</a>
-                            <a href="#">동탄</a>
-                            <a href="#">미사강변</a>
-                            <a href="#">백석벨라시타</a>
-                            <a href="#">별내</a>
-                            <a href="#">부천스타필드시티</a>
-                            <a href="#">분당</a>
-                            <a href="#">수원</a>
-                            <a href="#">수원AK플라자</a>
-                            <a href="#">수원남문</a>
-                            <a href="#">수원스타필드</a>
-                            <a href="#">수원인계</a>
-                            <a href="#">수원호매실</a>
-                            <a href="#">시흥배곧</a>
-                            <a href="#">안산중앙</a>
-                            <a href="#">안성스타필드</a>
-                            <a href="#">양주</a>
-                            <a href="#">용인 기흥</a>
-                            <a href="#">용인 테크노밸리</a>
-                            <a href="#">의정부민락</a>
-                            <a href="#">일산</a>
-                            <a href="#">킨텍스</a>
-                            <a href="#">파주금촌</a>
-                            <a href="#">파주운정</a>
-                            <a href="#">파주출판도시</a>
-                            <a href="#">평택비전</a>
-                            <a href="#">하남스타필드</a>
-                        </div>
-                    </div>
-                    <div class="area">
-                        <div class="main-area">
-                            <p>인천</p>
-                        </div>
-                        <div class="sub-area">
-                            <a href="#">검단</a>
-                            <a href="#">송도</a>
-                            <a href="#">영종</a>
-                            <a href="#">영종하늘도시</a>
-                            <a href="#">인천논현</a>
-                            <a href="#">청라지젤</a>
-                        </div>
-                    </div>
-                    <div class="area">
-                        <div class="main-area">
-                            <p>대전/충청/세종</p>
-                        </div>
-                        <div class="sub-area">
-                            <a href="#">공주</a>
-                            <a href="#">논산</a>
-                            <a href="#">대전</a>
-                            <a href="#">대전신세계 아트앤사이언스</a>
-                            <a href="#">대전유성</a>
-                            <a href="#">대전중앙로</a>
-                            <a href="#">대전현대아울렛</a>
-                            <a href="#">세종(조치원)</a>
-                            <a href="#">세종나성</a>
-                            <a href="#">세종청사</a>
-                            <a href="#">오창</a>
-                            <a href="#">진천</a>
-                            <a href="#">천안</a>
-                            <a href="#">청주사창</a>
-                            <a href="#">청주성안길</a>
-                            <a href="#">충주연수</a>
-                            <a href="#">홍성내포</a>
-                        </div>
-                    </div>
-                    <div class="area">
-                        <div class="main-area">
-                            <p>부산/대구/경상</p>
-                        </div>
-                        <div class="sub-area">
-                            <a href="#">경북도청</a>
-                            <a href="#">경산하양</a>
-                            <a href="#">구미강동</a>
-                            <a href="#">김천</a>
-                            <a href="#">남포항</a>
-                            <a href="#">대구세븐밸리(칠곡)</a>
-                            <a href="#">대구신세계(동대구)</a>
-                            <a href="#">대구이시아</a>
-                            <a href="#">대구프리미엄만경관</a>
-                            <a href="#">덕천</a>
-                            <a href="#">마산(경남대)</a>
-                            <a href="#">문경</a>
-                            <a href="#">부산극장</a>
-                            <a href="#">부산대</a>
-                            <a href="#">북대구(칠곡)</a>
-                            <a href="#">사상</a>
-                            <a href="#">삼천포</a>
-                            <a href="#">양산</a>
-                            <a href="#">양산증산</a>
-                            <a href="#">울산</a>
-                            <a href="#">정관</a>
-                            <a href="#">진주(중안)</a>
-                            <a href="#">창원</a>
-                            <a href="#">창원내서</a>
-                            <a href="#">포항</a>
-                            <a href="#">해운대(장산)</a>
-                        </div>
-                    </div>
-                    <div class="area">
-                        <div class="main-area">
-                            <p>광주/전라</p>
-                        </div>
-                        <div class="sub-area">
-                            <a href="#">광주상무</a>
-                            <a href="#">광주하남</a>
-                            <a href="#">목포하당(포르모)</a>
-                            <a href="#">순천</a>
-                            <a href="#">여수웅천</a>
-                            <a href="#">전대(광주)</a>
-                            <a href="#">전주객사</a>
-                            <a href="#">전주혁신</a>
-                            <a href="#">첨단</a>
-                        </div>
-                    </div>
-                    <div class="area">
-                        <div class="main-area">
-                            <p>강원</p>
-                        </div>
-                        <div class="sub-area">
-                            <a href="#">남춘천</a>
-                            <a href="#">속초</a>
-                            <a href="#">원주혁신</a>
-                            <a href="#">춘천석사</a>
-                        </div>
-                    </div>
-                    <div class="area">
-                        <div class="main-area">
-                            <p>제주</p>
-                        </div>
-                        <div class="sub-area">
-                            <a href="#">제주삼화</a>
-                            <a href="#">제주서귀포</a>
-                            <a href="#">제주아라</a>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
     </footer>    
 </body>
 </html>

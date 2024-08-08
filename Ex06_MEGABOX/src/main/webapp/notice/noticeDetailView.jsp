@@ -109,7 +109,7 @@
                             <div class="sup-content">극장</div>
                             <ul class="sup-list-content">
                                 <li><a href="#">전체극장</a></li>
-                                <li><a href="#">특별관</a></li>
+                                <li><a href="../main/cinema.jsp">특별관</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -121,7 +121,7 @@
                     <ul class="sup-title">
                         <li id="login"><a href="javascript:void(0)">로그인</a></li>
                         <li><a href="#">회원가입</a></li>
-                        <li><a href="#">빠른예매</a></li>
+                        <li><a href="../main/ticketing.jsp">빠른예매</a></li>
                     </ul>
                 </div>
                 <div class="sub">

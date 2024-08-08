@@ -31,7 +31,7 @@ public class NoticeServiceImpl implements NoticeService{
 			map.put("type", type);
 			map.put("title", title);
 			pv=NoticeDAOImpl.getInstance().selectAll(s,map);
-//			log.info("결과물 : {}",pv);
+			log.info("결과물 : {}",pv);
 			s.commit();
 		} catch (SQLException e) {
 			s.rollback();
@@ -86,6 +86,22 @@ public class NoticeServiceImpl implements NoticeService{
 			map.put("type", type);
 			map.put("idx", idx);
 			vo = NoticeDAOImpl.getInstance().selectPrevAndNext(s,map);
+			s.commit();
+		} catch (SQLException e) {
+			s.rollback();
+			e.printStackTrace();
+		} finally {
+			s.close();
+		}
+		return vo;
+	}
+	@Override
+	public List<NoticeDTO> selectTheaterNotice() {
+		SqlSession s = null;
+		List<NoticeDTO> vo = null;
+		try {
+			s = MybatisConnection.getSqlSessionFactory().openSession(false);
+			vo = NoticeDAOImpl.getInstance().selectTheaterNotice(s);
 			s.commit();
 		} catch (SQLException e) {
 			s.rollback();

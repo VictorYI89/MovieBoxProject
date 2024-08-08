@@ -322,8 +322,17 @@ function disableNextButton() {
 
 // 다음 페이지로 이동하는 함수
 function goToNextPage() {
-    window.location.href = '/Ex06_MEGABOX/main/pay.jsp';
-    
+	let movieName = sessionStorage.getItem("movieName");
+	axios.post('/Ex06_MEGABOX/main/payProcess.jsp',{
+		adultNumber,
+		teenagerNumber,
+		routeNumber,
+		'movieName' : ''+movieName
+	})
+	.then(()=>{
+	    window.location.href = '../main/pay.jsp';
+		
+	}).catch(error=>console.log(error));
 };
 
 // 좌석이 선택될 때마다 버튼 상태를 업데이트하는 함수
@@ -476,3 +485,15 @@ function reset() {
     location.reload();
     
 };
+
+
+document.addEventListener("DOMContentLoaded",function(){
+	let movieName = sessionStorage.getItem("movieName");
+	let div = document.querySelector(".info image");
+	document.querySelector(".info").children[0].children[0].textContent=movieName;
+	axios.get('allMovieIdxMovieName.jsp?name='+movieName)
+	.then(response=>{
+		console.log(response.data);
+		$(".movie-image").html($("<img src='"+response.data[0].image+"'/>"));
+	})
+})

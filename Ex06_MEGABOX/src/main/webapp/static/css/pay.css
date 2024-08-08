@@ -1,4 +1,3 @@
-@charset "UTF-8";
 main {
     width: 100%;
     height: 1600px;
@@ -48,6 +47,7 @@ main .container .ticket-info .ticket-container img {
     top: 65px;
     left: 0;
     cursor: default;
+    width: 100px;
 }
 
 main .container .ticket-info .ticket-container > p {
@@ -771,7 +771,7 @@ main .container .pay-info .prev-next {
     width: 100%;
     height: 50px;
     position: relative;
-    top: 121px;
+    top: 193px;
     border-radius: 10px;
     display: flex;
 }

@@ -78,7 +78,7 @@
     height: 60px;
     line-height: 60px;
 }
-.reserve-location .room{
+.reserve-location .room2{
     width: 90%;
     height: 70px;
     padding: 10px 0;
@@ -87,10 +87,20 @@
     border: 1px solid #e0d4d4;
     box-sizing: border-box;
 }
-.reserve-location .room.on{
+.reserve-location .room2:hover{
     background-color: #503396;
     color: #fff;
     border: none;
+}
+.reserve-location .room1{
+    border: none;
+     width: 90%;
+    height: 70px;
+    padding: 10px 0;
+    line-height: 26px;
+    text-align: center;
+    box-sizing: border-box;
+    border: 1px solid #e0d4d4;
 }
 .reserve-date{
     width: 120px;
@@ -117,7 +127,32 @@
     text-align: center;
     border: 1px solid #e0e0e0;
 }
+.reserve-date-title2{
+    font-size: 1.2em;
+    height: 60px;
+    line-height: 60px;
+    width: 80%;
+    margin: 0 auto;
+    display: none;
+}
 
+.reserve-date-box2{
+	display: none;
+}
+.reserve-date-box2 .item{
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    padding: 0;
+    line-height: 68px;
+    width: 80%;
+    height: 58px;
+    font-size: 18px;
+    color: #666;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    
+}
 .rental-info{
     margin-top: 40px;
 }

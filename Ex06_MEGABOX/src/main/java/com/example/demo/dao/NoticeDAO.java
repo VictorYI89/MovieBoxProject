@@ -13,4 +13,5 @@ public interface NoticeDAO {
 	int selectCount(SqlSession s,HashMap<String, Object> map)throws SQLException;
 	NoticeDTO selectByIdx(SqlSession s,int idx)throws SQLException;
 	NoticeDTO selectPrevAndNext(SqlSession s,HashMap<String, Object> map)throws SQLException;
+	List<NoticeDTO> selectTheaterNotice(SqlSession s)throws SQLException;
 }

@@ -4,6 +4,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@page import="java.sql.*"%>
+<%@page import="com.dbManager.dbManager"%>
 <%
 List<CalendarDTO> calendar = Calendar.prn(2024, 8, 7);
 pageContext.setAttribute("calendar", calendar);
@@ -60,11 +62,11 @@ pageContext.setAttribute("calendar", calendar);
 		<div class="reserve-box">
 			<div class="reserve-location">
 				<div class="reserve-location-title">상영관</div>
-				<div class="room on">
+				<div onclick="firstShow()" class="room1">
 					<p>프라이빗2호</p>
 					(10석)
 				</div>
-				<div class="room">
+				<div onclick="secondShow()" class="room2">
 					<p>프라이빗1호</p>
 					(8석)
 				</div>
@@ -77,7 +79,29 @@ pageContext.setAttribute("calendar", calendar);
 					<div class="item">18:00</div>
 					<div class="item">22:00</div>
 				</div>
+				<div class="reserve-date-title2">시간</div>
+				<div class="reserve-date-box2">
+					<div class="item">09:00</div>
+					<div class="item">13:00</div>
+					<div class="item">17:00</div>
+					<div class="item">21:00</div>
+				</div>
 			</div>
+			<%
+				Connection conn = dbManager.getDBConnection();
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				
+				try{
+					
+					
+				}catch (Exception e) {
+					e.printStackTrace();
+				}finally{
+					dbManager.dbClose(conn, pstmt, rs);
+				}
+				
+			%>
 			<div class="reserve-movie">
 				<div class="reserve-movie-title">영화</div>
 				<div class="swiper movieSwiper">

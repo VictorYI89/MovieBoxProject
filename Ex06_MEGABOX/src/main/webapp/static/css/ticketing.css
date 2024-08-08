@@ -608,7 +608,7 @@ main .box .ticketing-container .menu .time-menu .time-menu-bottom {
 main .box .ticketing-container .menu .time-menu .time-menu-bottom .movie-time {
     width: 100%;
     height: 99%;
-    display: none;
+    display: block;
     overflow-y: auto;
 }
 

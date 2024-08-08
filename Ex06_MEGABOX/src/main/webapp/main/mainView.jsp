@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri = "jakarta.tags.core" %>
+    <%@ taglib prefix="fmt" uri = "jakarta.tags.fmt" %>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -8,15 +10,16 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="icon" href="https://www.megabox.co.kr/static/pc/images/favicon.ico">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath }/webjars/axios/1.7.2/dist/axios.min.js"></script>
         <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/main.css">
         <script defer src="${pageContext.request.contextPath }/static/js/main.js"></script>
         <script defer src="${pageContext.request.contextPath }/static/js/swiper.js"></script>
@@ -24,6 +27,70 @@
     </head>
     <body>
         <header>
+        <input type="hidden" id="session_name" value="${sessionScope.name }" />
+        	<c:if test="${sessionScope.name!=null }">
+	            <div class="login-container">
+	                <div class="login-inner">
+                        <div class="box">
+                            <div class="mbimg"><img src="https://img.megabox.co.kr/static/pc/images/2023/01/member_WELCOME_2.png" alt="WELCOME"></div>
+                            <div class="name">${sessionScope.name}님</div>
+                            <a href="/mypage" class="linkBtn" title="나의  메가박스">나의  메가박스</a>
+                        </div>
+                        <div class="box">
+                            <div class="tit">
+                                <span>스페셜 멤버십</span>
+                            </div>
+                            <ul class="membership"><li class="txt">특별한 멤버십 혜택을 만나보세요!</li></ul>
+                        </div>
+                        <div class="box point">
+                            <div class="tit">
+                                <a class="linkA" href="/mypage/point-list" title="멤버십 포인트"><span>포인트</span></a>
+                            </div>
+                            <div class="count">0</div>
+                        </div>
+                        <div class="box coupon">
+                            <div class="tit">
+                                <a class="linkA" href="/mypage/discount-coupon" title="쿠폰"><span>쿠폰</span></a>
+                                <a class="linkA" href="/mypage/point-list" title="멤버십 포인트"></a>
+                            </div>
+        
+                            <div title="쿠폰 수" class="count"><em>1</em><span>장</span></div>
+                        </div>
+                        <div class="box movieTk">
+                            <div class="tit">
+                                <a class="linkA" href="/mypage/movie-coupon" title="관람권"><span>관람권</span></a>
+                                <a class="linkA" href="/mypage/point-list" title="멤버십 포인트"></a>
+                            </div>
+        
+                            <div title="관람권 수" class="count"><em>0</em><span>장</span></div>
+                        </div>
+                        <div class="box reserve">
+                            <div class="tit">
+                                <a class="linkA" href="/mypage/bookinglist" title="예매내역"><span>예매</span></a>
+                            </div>
+        
+                            <div title="예매 수" class="count"><div class="txt">예매내역이 없어요!</div></div>
+                        </div>
+                        <div class="box buy">
+                            <div class="tit">
+                                <a class="linkA" href="/mypage/bookinglist?tab=02" title="구매내역"><span>구매</span></a>
+                            </div>
+        
+                            <div class="count"><em>0</em><span>건</span></div>
+                        </div>
+	                </div>
+	            </div>
+        	</c:if>
+ 	        <c:if test="${sessionScope.name==null }">
+	        <div class="logout-container">
+                <div class="login-inner">
+                    <div class="wrap">
+                        <div class="txt">영화를 사랑하는 당신을 위한 꼭 맞는 혜택까지 확인해 보세요!</div>
+                        <div class='a-wrap'><a href="javascript:void(0)" id="moveLogin" title="로그인">로그인</a><a href="/join" class="link" title="혹시 아직 회원이 아니신가요?">혹시 아직 회원이 아니신가요?</a></div>
+                    </div>
+                </div>
+	        </div>
+        	</c:if>
             <div class="container">
                 <div class="left">
                     <div class="sup">
@@ -40,7 +107,7 @@
                             <li>
                                 <div class="sup-content">영화</div>
                                 <ul class="sup-list-content">
-                                    <li><a href="#">전체영화</a></li>
+                                    <li><a href="">전체영화</a></li>
                                     <li><a href="#">무비포스트</a></li>
                                 </ul>
                             </li>
@@ -55,7 +122,7 @@
                             <li>
                                 <div class="sup-content">극장</div>
                                 <ul class="sup-list-content">
-                                    <li><a href="#">전체극장</a></li>
+                                    <li><a href="cinema.jsp">전체극장</a></li>
                                     <li><a href="#">특별관</a></li>
                                 </ul>
                             </li>
@@ -66,19 +133,20 @@
                 <div class="right">
                     <div class="sup">
                         <ul class="sup-title">
-                            <li id="login"><a href="javascript:void(0)" >로그인</a></li>
-                            <li><a href="#">회원가입</a></li>
-                            <li><a href="#">빠른예매</a></li>
+                            <c:if test="${sessionScope.name==null }"><li id="login"><a href="javascript:void(0)" >로그인</a></li></c:if>
+                            <c:if test="${sessionScope.name!=null }"><li id="logout"><a href="javascript:void(0)" >로그아웃</a></li></c:if>
+                            <li><a href="${pageContext.request.contextPath }/static/js/main.js">회원가입</a></li>
+                            <li><a href="ticketing.jsp">빠른예매</a></li>
                         </ul>
                         <div class="login-background"></div>
                         <div class="login-box">
                             <div class="title">로그인 <img src="${pageContext.request.contextPath }/static/images/close.svg" id="closeLogin"></div>
                             <div class="login-body">
                                 <div class="left">
-                                    <input type="text" placeholder="아이디">
-                                    <input type="password" placeholder="비밀번호">
+                                    <input type="text" placeholder="아이디" id="id" value="${id }">
+                                    <input type="password" placeholder="비밀번호" id="pw">
                                     <div><label><input type="checkbox" name="" id="chk"><span>아이디 저장</span></label></div>
-                                    <button>로그인</button>
+                                    <button onclick="login()">로그인</button>
                                     <div class="link">
                                         <div class="id-find">ID/PW 찾기</div>
                                         <div class="sign-up">회원가입</div>
@@ -117,7 +185,7 @@
                                 </ul>
                             </li>
                             <li><img src="${pageContext.request.contextPath }/static/images/calendar.svg" onclick="location.href='${pageContext.request.contextPath}/main/timetable.jsp'" alt=""></li>
-                            <li><img src="${pageContext.request.contextPath }/static/images/user.svg" alt=""></li>
+                            <li><img src="${pageContext.request.contextPath }/static/images/user.svg" id="userLogin" alt=""></li>
                         </ul>
                     </div>
                 </div>
@@ -266,68 +334,26 @@
                 </div>
                 <div class="main-middle">
                     <div class="main-wrapper">
-                        <div class="main-item">
-                            <div class="main-img">
-                                <img src="https://img.megabox.co.kr/SharedImg/2024/07/04/yKz9lWmAB90In1nFsSBsNXaPVOAoWgha_420.jpg" alt="">
-                                <div class="movie_hidden">
-                                    <div class="text"></div>
-                                    <div class="sub-text"></div>
-                                    <div class="rate">관람평</div>
-                                </div>
-                            </div>
-                            <div class="movie_button">
-                                <button type="button" class="btn btn-dark movie_like"><img src="${pageContext.request.contextPath }/static/images/favorite.svg" alt="">692</button>
-                                <button class="movie_reserve btn2 ">예매</button>
-                            </div>
-                        </div>
-                        <div class="main-item">
-                            <div class="main-img">
-                                <img src="https://img.megabox.co.kr/SharedImg/2024/06/25/COGR3h5aH0NDkkBkPqYbTbI1nouC3nAG_420.jpg" alt="">
-                                <div class="movie_hidden">
-                                    <div class="text">하루아침에 인생추락한 스타파일럿 <br> 제 2의 인생 이륙준비중! </div>
-                                    <div class="sub-text"> 최고의 비행실력을 갖춘 스타파일럿이자 <br> 뜨거운인기로 
-                                        유명 TV쇼에도 출연
-                                    </div>
-                                    <div class="rate">관람평</div>
-                                </div>
-                            </div>
-                            <div class="movie_button">
-                                <button type="button" class="btn btn-dark movie_like"><img src="${pageContext.request.contextPath }/static/images/favorite.svg" alt="">1.6k</button>
-                                <button class="movie_reserve btn2 ">예매</button>
-                            </div>
-                        </div>
-                        <div class="main-item">
-                            <div class="main-img">
-                                <img src="https://img.megabox.co.kr/SharedImg/2024/07/18/IN73hLKMuFhTPdjN2cywdmA3lkehTkye_420.jpg" alt="">
-                                <div class="movie_hidden">
-                                    <div class="text">하루아침에 인생추락한 스타파일럿 <br> 제 2의 인생 이륙준비중! </div>
-                                    <div class="sub-text"> 최고의 비행실력을 갖춘 스타파일럿이자 <br> 뜨거운인기로 
-                                        유명 TV쇼에도 출연
-                                    </div>
-                                    <div class="rate">관람평</div>
-                                </div>
-                            </div>
-                            <div class="movie_button">
-                                <button type="button" class="btn btn-dark movie_like"><img src="${pageContext.request.contextPath }/static/images/favorite.svg" alt="">1.8k</button>
-                                <button class="movie_reserve btn2 ">예매</button>
-                            </div>
-                        </div>
-                        <div class="main-item">
-                            <div class="main-img">
-                                <img src="https://img.megabox.co.kr/SharedImg/2024/07/08/HAHzCSec2Il5sMd4kcfMonbhCiHbEu2f_420.jpg" alt="">
-                                <div class="movie_hidden">
-                                    <div class="text">하루아침에 인생추락한 스타파일럿 <br> 제 2의 인생 이륙준비중! </div>
-                                    <div class="sub-text"> 최고의 비행실력을 갖춘 스타파일럿이자 <br> 뜨거운인기로 
-                                        유명 TV쇼에도 출연
-                                    </div>
-                                    <div class="rate">관람평</div>
-                                </div>
-                            </div>
-                            <div class="movie_button">
-                                <button type="button" class="btn btn-dark movie_like"><img src="${pageContext.request.contextPath }/static/images/favorite.svg" alt="">566</button>
-                                <button class="movie_reserve btn2 ">예매</button>
-                            </div>
-                        </div>
+	                    <c:forEach var="vo" items="${movie }" begin="0" end="3" step="1">
+	                    	<div class="main-item">
+	                            <div class="main-img">
+	                                <img src="${vo.image }" alt="">
+	                                <div class="movie_hidden">
+	                                    <div class="text"></div>
+	                                    <div class="sub-text">${vo.content }</div>
+	                                    <div class="rate">관람평 <span class="movieRate">
+	                                    <c:if test="${vo.movieRate==0 }">0</c:if>
+	                                    <c:if test="${vo.movieRate>0}"><fmt:formatNumber value="${vo.movieRate }" pattern=".0" /></c:if>  
+	                                    </span></div>
+	                                </div>
+	                            </div>
+	                            <div class="movie_button">
+	                                <button type="button" class="btn btn-dark movie_like"><img src="${pageContext.request.contextPath }/static/images/favorite.svg" alt="">${vo.movieLike }</button>
+	                                <button class="movie_reserve btn2 ">예매</button>
+	                            </div>
+                       		</div>
+	                    </c:forEach>
+	                    
                     </div>
                 </div>
                 <script>

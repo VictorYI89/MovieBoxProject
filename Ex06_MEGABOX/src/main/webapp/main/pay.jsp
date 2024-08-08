@@ -1,5 +1,10 @@
+<%@page import="com.google.gson.reflect.TypeToken"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="com.google.gson.Gson"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri = "jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri = "jakarta.tags.fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,24 +25,38 @@
     <script defer src="../static/js/pay.js"></script>
 </head>
 <body>
-   	<%@ include file="../include/header.jsp" %> 
+<%
+	Gson gson = new Gson();
+	HashMap<String,Object> map = gson.fromJson(gson.toJson(session.getAttribute("map")), new TypeToken<HashMap<String,Object>>(){}.getType());
+	List<MovieDTO> vo = MovieServiceImpl.getInstance().selectMovieName(map.get("movieName").toString());
+	request.setAttribute("mv", vo);
+%>
+    <%@ include file="../include/header.jsp" %>
     <main>
         <div class="container">
             <h1>결제하기</h1>
             <div class="ticket-info">
                 <div class="ticket-container">
                     <h1>예매정보</h1>
-                    <img src="https://www.megabox.co.kr/SharedImg/2024/08/01/BUsWispT4T7lkUapLBCGyK17FuX5kKk6_150.jpg" alt="영화이미지">
-                    <p>파일럿</p>
+                    <img src="${mv[0].image }" alt="영화이미지">
+                    <p>${mv[0].name }</p>
                     <div class="movie-date">
-                        <p>2024.08.05(월)</p>
+                        <p><fmt:formatDate value="${mv[0].openingDate }" pattern="yyyy.MM.dd"/> </p>
                         <p>10:00~12:01</p>
                     </div>
                     <div class="movie-area">
                         <p>군자/9관&bullet;2D</p>
                     </div>
                     <div class="select-people">
-                        <p>경로 1</p>
+                    	<c:if test="${map['adultNumber']>0 }">
+                    		성인  <fmt:formatNumber value=" ${map['adultNumber'] }" pattern="#" />  &nbsp;
+                    	</c:if>
+                    	<c:if test="${map['teenagerNumber']>0 }">
+                    		청소년 <fmt:formatNumber value="${map['teenagerNumber'] }"/>  &nbsp;
+                    	</c:if>
+                    	<c:if test="${map['routeNumber']>0 }">
+                    		경로 <fmt:formatNumber value="${map['routeNumber'] }" />
+                    	</c:if>
                     </div>
                 </div>
             </div>
@@ -258,25 +277,30 @@
                 <h1>결제금액</h1>
                 <div class="money-info">
                     <div class="people-type">
-                        <p>성인</p>
-                        <p>12000</p>
+                    	<c:if test="${map['adultNumber']>0 }">
+	                        <p>성인</p>
+	                        <p> <fmt:formatNumber value="${map['adultNumber']*12000 }" pattern="#,###" />  </p>
+                    	</c:if>
                     </div>
                     <div class="people-type">
-                        <p>청소년</p>
-                        <p>9000</p>
+                    	<c:if test="${map['teenagerNumber']>0 }">
+	                        <p>청소년</p>
+	                        <p><fmt:formatNumber value="${map['teenagerNumber']*9000 }" pattern="#,###" /></p>
+                    	</c:if>
                     </div>
                     <div class="people-type">
-                        <p>경로</p>
-                        <p>5000</p>
+                    	<c:if test="${map['routeNumber']>0 }">
+	                        <p>경로</p>
+	                        <p><fmt:formatNumber value="${map['routeNumber']*5000 }" pattern="#,###" /></p>
+                    	</c:if>
                     </div>
                     <div class="people-type">
-                        <p>우대</p>
-                        <p>3000</p>
+                        
                     </div>
                     <div class="line"></div>
                     <div class="money">
                         <p>금액</p>
-                        <p>25,000원</p>
+                        <p><fmt:formatNumber value="${map['adultNumber']*12000+map['teenagerNumber']*9000+map['routeNumber']*3000 }" pattern="#,###" /></p>
                     </div>
                 </div>
                 <div class="subtract">
@@ -292,7 +316,7 @@
                 </div>
                 <div class="final-payment">
                     <p>최종결제금액</p>
-                    <p>50,000원</p>
+                    <p><fmt:formatNumber value="${map['adultNumber']*12000+map['teenagerNumber']*9000+map['routeNumber']*3000 }" pattern="#,###" />원</p>
                 </div>
                 <div class="line"></div>
                 <div class="pay-method">
@@ -300,11 +324,11 @@
                     <p>신용/체크카드</p>
                 </div>
                 <div class="prev-next">
-                    <div class="prev">
-                        <a href="#">이전</a>
+                    <div class="prev" onclick="javascript:history.back()">
+                        <a href="javascript:void(0)">이전</a>
                     </div>
                     <div class="next">
-                        <a onclick="payComplete()" href="./megaBox-allMovie.html">결제</a>
+                        <a href="javascript:void(0)" onclick="payment()">결제</a>
                     </div>
                 </div>
             </div>
@@ -323,6 +347,6 @@
             </div>
         </div>
     </main>
-   <%@ include file="../include/footer.jsp" %> 
+    <%@ include file="../include/footer.jsp" %>
 </body>
 </html>

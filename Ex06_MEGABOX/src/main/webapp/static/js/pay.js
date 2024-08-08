@@ -215,6 +215,8 @@ function bankPay() {
     }
 }
 
-function payComplete() {
-    alert('결제가 완료되었습니다');
+
+function payment(){
+	alert("결제가 완료되었습니다.");
+	location.href="main.jsp";
 }
