@@ -10,13 +10,17 @@ let swiper = new Swiper(".boutiqueSwiper", {
   },
 });
 
-let movieSwiper = new Swiper(".movieSwiper", {
-  slidesPerView: 5,
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-});
+document.addEventListener("DOMContentLoaded", function() {
+        const swiper = new Swiper('.movieSwiper', {
+            navigation: {
+                nextEl: '.swiper-button-next.movie',
+                prevEl: '.swiper-button-prev.movie',
+            },
+            slidesPerView: 5,
+            spaceBetween: 10,
+            loop: true,
+        });
+    });
 
 const slide = document.querySelectorAll(".swiper-slide.calendar");
 let slideIdx=0;

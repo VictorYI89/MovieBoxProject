@@ -114,9 +114,9 @@
                         <li>
                             <div class="sup-content">예매</div>
                             <ul class="sup-list-content">
-                                <li><a href="../main/ticketing.jsp">빠른예매</a></li>
+                                <li><a href="../main/ticketing2.jsp">빠른예매</a></li>
                                 <li><a href="../main/timetable.jsp">상영시간표</a></li>
-                                <li><a href="#">더 부티크 프라이빗 예매</a></li>
+                                <li><a href="./boutique.jsp">더 부티크 프라이빗 예매</a></li>
                             </ul>
                         </li>
                         <li>
@@ -136,7 +136,7 @@
                         <c:if test="${sessionScope.name==null }"><li id="login"><a href="javascript:void(0)" >로그인</a></li></c:if>
                         <c:if test="${sessionScope.name!=null }"><li id="logout"><a href="javascript:void(0)" >로그아웃</a></li></c:if>
                         <li><a href="#">회원가입</a></li>
-                        <li><a href="ticketing.jsp">빠른예매</a></li>
+                        <li><a href="ticketing2.jsp">빠른예매</a></li>
                     </ul>
                     <div class="login-background"></div>
                     <div class="login-box">

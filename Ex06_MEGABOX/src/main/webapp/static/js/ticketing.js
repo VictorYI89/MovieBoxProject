@@ -533,17 +533,17 @@ document.querySelectorAll('.theater-menu .sub-middleSecond-menu .first-menu-item
 let theaterSecondMaxNumber = 0;
 
 const timeMenuEl = document.querySelector('.time-menu-bottom .movie-time');
+const bottomMenuEl = document.querySelector('.time-menu-bottom .bottom-menu');
 
 document.querySelectorAll('.theater-menu .sub-middle-menu .second-menu-item').forEach(function(item) {
     item.addEventListener('click', function() {
         var computedStyle = getComputedStyle(item);
         if (computedStyle.backgroundColor === 'rgb(51, 51, 51)') {
             item.classList.remove('selected');
-            theaterSecondMaxNumber--;
+            theaterSecondMaxNumber -= 1;
             console.log('theaterSecondMaxNumber after deselection: ' + theaterSecondMaxNumber);
-            return;
         }
-        if (theaterSecondMaxNumber < 3) {
+        else if (theaterSecondMaxNumber < 3) {
             item.classList.add('selected');
             theaterSecondMaxNumber++;
             console.log('theaterSecondMaxNumber after selection: ' + theaterSecondMaxNumber);
@@ -552,8 +552,10 @@ document.querySelectorAll('.theater-menu .sub-middle-menu .second-menu-item').fo
         }
         if(theaterSecondMaxNumber == 0) {
             timeMenuEl.style.display = 'none';
+            bottomMenuEl.style.display = 'block'
         } else {
             timeMenuEl.style.display = 'block';
+            bottomMenuEl.style.display = 'none'
         }
     });
 });
@@ -563,25 +565,32 @@ document.querySelectorAll('.theater-menu .sub-middleSecond-menu .second-menu-ite
         var computedStyle = getComputedStyle(item);
         if(computedStyle.backgroundColor === 'rgb(51, 51, 51)') {
             item.classList.remove('selected');
-            theaterSecondMaxNumber--;
+            theaterSecondMaxNumber -= 1;
             console.log('theaterSecondMaxNumber after deselection: ' + theaterSecondMaxNumber);
-            return;
         }
-        if(theaterSecondMaxNumber < 3) {
+        else if(theaterSecondMaxNumber < 3) {
             item.classList.add('selected');
             theaterSecondMaxNumber++
             console.log('theaterSecondMaxNumber: ' + theaterSecondMaxNumber);
         } else {
             alert('최대개수를 선택하였습니다');
         }
-        if(theaterSecondMaxNumber == 0) {
+       	if(theaterSecondMaxNumber == 0) {
             timeMenuEl.style.display = 'none';
+            bottomMenuEl.style.display = 'block'
         } else {
             timeMenuEl.style.display = 'block';
+            bottomMenuEl.style.display = 'none'
         }
     })
 });
 
+window.addEventListener('load', function() {
+            const timeMenuEl = document.querySelector('.time-menu-bottom .movie-time');
+            if (timeMenuEl) {
+                timeMenuEl.style.display = 'none';
+            }
+        });
 
 
 function selectFunction(name){
@@ -599,3 +608,7 @@ document.addEventListener("DOMContentLoaded",function(){
 		sessionStorage.setItem("movieName",div.children[0].textContent);		
 	}
 })
+
+function payMenu() {
+	location.href="./select.jsp";
+}

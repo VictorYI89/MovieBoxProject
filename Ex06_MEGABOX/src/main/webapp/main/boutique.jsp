@@ -87,33 +87,32 @@ pageContext.setAttribute("calendar", calendar);
 					<div class="item">21:00</div>
 				</div>
 			</div>
-			<%
+			<div class="reserve-movie">
+				<div class="reserve-movie-title">영화</div>
+				<div class="swiper movieSwiper">
+					<div class="swiper-wrapper">
+					<%
 				Connection conn = dbManager.getDBConnection();
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
 				
 				try{
+					String selectSql = "SELECT NAME, IMAGE FROM MOVIE WHERE MOVIEIDX < 6";
+					pstmt = conn.prepareStatement(selectSql);
+					
+					rs = pstmt.executeQuery();
 					
 					
-				}catch (Exception e) {
-					e.printStackTrace();
-				}finally{
-					dbManager.dbClose(conn, pstmt, rs);
-				}
-				
+				while (rs.next()) {
 			%>
-			<div class="reserve-movie">
-				<div class="reserve-movie-title">영화</div>
-				<div class="swiper movieSwiper">
-					<div class="swiper-wrapper">
 						<div class="swiper-slide">
 							<img
-								src="https://www.megabox.co.kr/SharedImg/2024/07/24/ZdrFYK4l97fhIitfIV56O4psYSNiQFIc_420.jpg"
+								src=<%= rs.getString("IMAGE") %>
 								alt="">
-							<div class="movie-title">리볼버</div>
+							<div class="movie-title"><%= rs.getString("NAME") %></div>
 							<button class="reserve-movie-button">선택</button>
 						</div>
-						<div class="swiper-slide">
+						<!-- <div class="swiper-slide">
 							<img
 								src="https://www.megabox.co.kr/SharedImg/2024/07/03/QaslTt607PkNH8mPWm6ZUH3UwDx2bHoH_420.jpg"
 								alt="">
@@ -147,7 +146,15 @@ pageContext.setAttribute("calendar", calendar);
 								alt="">
 							<div class="movie-title">인사이드 아웃2</div>
 							<button class="reserve-movie-button">선택</button>
-						</div>
+						</div> -->
+																<%
+				}
+			}	catch (Exception e) {
+				System.out.println("자료 조회 오류: " + e.getMessage());
+			}	finally {
+				dbManager.dbClose(conn, pstmt, rs);
+			}
+			%>
 					</div>
 					<div class="swiper-button-next movie"></div>
 					<div class="swiper-button-prev movie"></div>

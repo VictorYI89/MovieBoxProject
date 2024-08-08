@@ -62,7 +62,7 @@
                 </div>
                 <div class="select">
                     <input type="submit" value="등록">
-                    <button><a href="#">취소</a></button>
+                    <button><a href="./allMovieIdx.jsp?movieIdx=<%= movieNum %>">취소</a></button>
                     <input type="hidden" name="number" value="<%= number %>">
                 </div>
             </div>
