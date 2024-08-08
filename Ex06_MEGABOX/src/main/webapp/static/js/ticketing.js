@@ -432,37 +432,40 @@ function theaterMegaBoxKids() {
 //const selectedItems = new Set(); - 영화와 지역 둘다 누를 수 있어야 하기 때문에 두개로 나눔
 const selectedMovieItems = new Set();
 const selectedLocationItems = new Set();
+
 const maxSelection = 3;
 
 
 const alertElement = document.querySelector('.alert-message');
 
 /* 이전 코드 (이성근)
+//영화를 클릭하면 백그라운드 색상 변경 및 클릭목록에 추가(이미 클릭되어있으면 색상 지우기 및 클릭목록에 제거)
 document.querySelectorAll('.movie-menu .sub-middle-menu .first-menu-item').forEach(item => {
     item.addEventListener('click', function() {
 		console.log('clicked')*/
 document.querySelector('.movie-menu .sub-middle-menu').addEventListener('click', function(event) {
-// 클릭된 요소를 기준으로 가장 가까운 .first-menu-item 클래스를 가진 조상을 찾음
-const item = event.target.closest('.first-menu-item');
-
-//클릭된 내용 가져오는 테스트코드
-const pElement = item.querySelector('p');
-const pText = pElement ? pElement.textContent : null;
-
-// 만약 클릭된 요소가 .first-menu-item 클래스를 가지지 않은 경우 함수 종료
-if (!item) return; 
-
-// 콘솔에 'clicked' 문자열을 출력하여 클릭 이벤트가 발생했는지 확인
-console.log('clicked : ' + pText);
-    if (selectedMovieItems.has(item)) {
-        selectedMovieItems.delete(item);
+	// 클릭된 요소를 기준으로 가장 가까운 .first-menu-item 클래스를 가진 조상을 찾음
+	const item = event.target.closest('.first-menu-item');
+	const itemText = item.querySelector('p').textContent;
+	
+	//클릭된 내용 가져오는 테스트코드
+	const pElement = item.querySelector('p');
+	const pText = pElement ? pElement.textContent : null;
+	
+	// 만약 클릭된 요소가 .first-menu-item 클래스를 가지지 않은 경우 함수 종료
+	if (!item) return; 
+	
+	// 콘솔에 'clicked' 문자열을 출력하여 클릭 이벤트가 발생했는지 확인
+	console.log('clicked : ' + pText);
+    if (selectedMovieItems.has(itemText)) {
+        selectedMovieItems.delete(itemText);
         item.style.backgroundColor = '';
         item.style.borderWidth = '';
         item.style.borderStyle = '';
         item.style.borderColor = '';
     } else {
         if (selectedMovieItems.size < maxSelection) {
-            selectedMovieItems.add(item);
+            selectedMovieItems.add(itemText);
             item.style.backgroundColor = 'rgb(102, 102, 102)';
         } else {
             //alertElement.style.display = 'block'; 요소를 찾을 수 없어 오류 발생하여 아래의 알림창으로 수정 (이성근)
@@ -471,25 +474,116 @@ console.log('clicked : ' + pText);
     }
 });
 
+//지점 클릭시 해당 지점의 타임테이블 가져옴(영화도 클릭되어 있다면 해당 영화의 타임테이블로 가져옴)
 document.querySelector('.theater-menu .middle-second-menu').addEventListener('click', function(event) {
-// 클릭된 요소를 기준으로 가장 가까운 .first-menu-item 클래스를 가진 조상을 찾음
-const item = event.target.closest('.second-menu-item');
-
-// 만약 클릭된 요소가 .first-menu-item 클래스를 가지지 않은 경우 함수 종료
-if (!item) return; 
-
-// 콘솔에 'clicked' 문자열을 출력하여 클릭 이벤트가 발생했는지 확인
-console.log('clicked');
-    if (selectedLocationItems.has(item)) {
-        selectedLocationItems.delete(item);
+	// 클릭된 요소를 기준으로 가장 가까운 .first-menu-item 클래스를 가진 조상을 찾음
+	const item = event.target.closest('.second-menu-item');
+	const itemText = item.querySelector('p').textContent;
+	
+	// 만약 클릭된 요소가 .first-menu-item 클래스를 가지지 않은 경우 함수 종료
+	if (!item) return; 
+	
+    if (selectedLocationItems.has(itemText)) {
+        selectedLocationItems.delete(itemText);
         item.style.backgroundColor = '';
         item.style.borderWidth = '';
         item.style.borderStyle = '';
         item.style.borderColor = '';
     } else {
         if (selectedLocationItems.size < maxSelection) {
-            selectedLocationItems.add(item);
+            selectedLocationItems.add(itemText);
             item.style.backgroundColor = 'rgb(102, 102, 102)';
+            
+            if(selectedLocationItems.size > 0){
+//				var output = '';
+				
+				$.ajax({
+			        url: 'getMovieTimeTable.jsp',
+			        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',       
+			        type: 'POST',
+			        dataType: 'json',  // 응답 데이터 형식을 JSON으로 설정
+			        data: {
+				        locationList: JSON.stringify(Array.from(selectedLocationItems)),
+				        movieList: JSON.stringify(Array.from(selectedMovieItems))
+					},
+			        success: function(response) {
+						console.log(response); //받아온 데이터 체크용
+												
+						const container = document.querySelector('.movie-time');
+						//새로 받아온 리스트 표기를 위하여 기존 내용들 삭제
+          				container.innerHTML = '';
+          				if(response.length != 0){
+							response.forEach(function(item) {
+			                    var divElement0 = document.createElement('div'); // 새로운 div 요소 생성
+			    				divElement0.classList.add('time-show');
+			                    var divElement1 = document.createElement('div'); // 새로운 div 요소 생성
+			    				divElement1.classList.add('time');
+			                    var pElement1 = document.createElement('p'); // 새로운 p 요소 생성
+			                    pElement1.style.fontSize = 18;
+			                    pElement1.style.fontWeight = 'bold';
+			                   	var stDate = item.startTime;
+			                   	var stTime = stDate.substring(11,16);
+			                    pElement1.textContent = stTime;
+			                    var pElement2 = document.createElement('p'); // 새로운 p 요소 생성
+			                    pElement2.style.fontSize = 15;
+			                    pElement2.style.color = '#808080';
+			                   	var edDate = item.endTime;
+			                   	var edTime = edDate.substring(11,16);
+			                    pElement2.textContent = '~' + edTime;
+			                    divElement1.appendChild(pElement1);
+			                    divElement1.appendChild(pElement2);
+			    
+			                    var divElement2 = document.createElement('div'); // 새로운 div 요소 생성
+			    				divElement2.classList.add('info');
+			                    var pElement3 = document.createElement('p'); // 새로운 p 요소 생성
+			                    pElement3.style.fontWeight = 'bold';
+			                    pElement3.textContent = item.movieName;
+			                    var pElement4 = document.createElement('p'); // 새로운 p 요소 생성
+			                    pElement4.style.fontSize = 13;
+			                    pElement4.textContent = '2D';
+			                    divElement2.appendChild(pElement3);
+			                    divElement2.appendChild(pElement4);
+			                    
+			                    var divElement3 = document.createElement('div'); // 새로운 div 요소 생성
+			    				divElement3.classList.add('area');
+			                    var pElement5 = document.createElement('p'); // 새로운 p 요소 생성
+			                    pElement5.textContent = item.locationName;
+			                    var pElement6 = document.createElement('p'); // 새로운 p 요소 생성
+			                    pElement6.textContent = item.roomLocation + '관';
+			                    var pElement7 = document.createElement('p'); // 새로운 p 요소 생성
+			                    pElement7.textContent = '예약가능';
+			                    divElement3.appendChild(pElement5);
+			                    divElement3.appendChild(pElement6);
+			                    divElement3.appendChild(pElement7);
+			                    
+								divElement0.appendChild(divElement1);
+								divElement0.appendChild(divElement2);
+								divElement0.appendChild(divElement3);
+								container.appendChild(divElement0);
+			                    
+							    console.log(item.startTime);
+							    console.log("processed");
+							    
+						        const timeEl = document.querySelector('.time-menu .bottom-main')
+						        timeEl.style.display = 'none';
+						        const movieEl = document.querySelector('.time-menu .movie-time')
+						        movieEl.style.display = 'flex';
+						        movieEl.style.flexDirection = 'column';
+							});
+						} else {
+							const timeEl = document.querySelector('.time-menu .bottom-main')
+					        timeEl.style.display = 'block';
+					        const movieEl = document.querySelector('.time-menu .movie-time')
+					        movieEl.style.display = 'none';
+						}
+			        },
+			        error: function(jqXHR, textStatus, errorThrown) {
+						
+			        console.error("AJAX error:", textStatus, errorThrown);
+			        console.error("Response text:", jqXHR.responseText); // 응답 본문 확인
+			        }
+			    });
+			}
         } else {
             //alertElement.style.display = 'block'; 요소를 찾을 수 없어 오류 발생하여 아래의 알림창으로 수정 (이성근)
             alert("최대 3개까지만 선택이 가능합니다.");
@@ -556,9 +650,8 @@ document.querySelectorAll('.theater-menu .sub-middle-menu .first-menu-item').for
 
 
 
-
+// 큐레이션탭의 영화 클릭 - 영화 타임테이블 표기
 const alert3Element = document.querySelector('.alert-message'); // 표시할 요소를 선택하세요
-
 document.querySelectorAll('.theater-menu .sub-middle-menu .second-menu-item').forEach(item => {
     item.addEventListener('click', function() {
         if (selectedItems.has(item)) {
@@ -582,8 +675,8 @@ document.querySelectorAll('.theater-menu .sub-middle-menu .second-menu-item').fo
     });
 });
 
+//특별관 클릭 - 영화 타임테이블 표기
 const alert4Element = document.querySelector('.alert-message'); // 표시할 요소를 선택하세요
-
 document.querySelectorAll('.theater-menu .sub-middleSecond-menu .second-menu-item').forEach(item => {
     item.addEventListener('click', function() {
         if (selectedItems.has(item)) {
@@ -686,8 +779,10 @@ location1.forEach(function(checkLocation) {
                 data.forEach(function(item) {
                     var divElement = document.createElement('div'); // 새로운 div 요소 생성
     				divElement.classList.add('second-menu-item');
+    				
     
                     var pElement = document.createElement('p'); // 새로운 p 요소 생성
+    				pElement.classList.add('contry_location');
                     pElement.textContent = item; // p 태그의 텍스트 설정
     
                     // div 요소에 p 태그 추가
@@ -697,7 +792,6 @@ location1.forEach(function(checkLocation) {
                     container.appendChild(divElement);
                 	console.log("Server response:", item);
                 });
-                selectLocation();
                 
             },
             error: function(error) {
@@ -707,54 +801,3 @@ location1.forEach(function(checkLocation) {
         });
     });
 });
-
-// 지점을 클릭할 경우 해당 지점의 타임리스트를 가져와서 표기함
-function selectLocation(){
-	document.querySelectorAll('.second-menu-item.contry_location').forEach(location => {
-		location.addEventListener('click', function() {
-			
-		console.log('contry_location clicked');
-		var locationList = Array.from(selectedLocationItems);
-		var movieList = Array.from(selectedMovieItems);
-	
-			var output = '';
-			$.ajax({
-		        url: 'getMovieTimeTable.jsp',
-		        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',       
-		        type: 'POST',
-		        data: {
-					locationList: locationList,
-					movieList: movieList
-				},
-		        success: function(response) {
-		            console.log('timeList response : ', response);
-		            
-					
-					response.forEach(function(item) {
-					    output += '<div class="time">';
-					    // 각 데이터 항목의 속성을 테이블의 셀로 변환합니다.
-					    // <td> 태그는 테이블의 셀을 나타내며, 데이터 항목의 ID, 이름, 나이, 주소를 각 셀에 넣습니다.
-					    output += '<p>' + item.startTime + '</p>';
-					    output += '<p>' + '~' + item.endTime + '</p>';
-					    output += '</div>';
-					    output += '<div class="info">';
-					    output += '<p>' + item.movieName + '</p>';
-					    output += '<p>' + '2D' + '</p>';
-					    output += '</div>';
-					    output += '<div class="area">';
-					    output += '<p>' + item.locationName + '</p>';
-					    output += '<p>' + item.roomLocation + '</p>';
-					    output += '</div>';
-					});
-					
-					document.querySelector('.movie-time .time-show').innerHTML = output;
-		                
-		        },
-		        error: function(error) {
-		            // 요청 실패 시 처리할 로직을 작성합니다.
-		            console.log("Error:", error);
-		        }
-		    });
-		})
-	})
-}
