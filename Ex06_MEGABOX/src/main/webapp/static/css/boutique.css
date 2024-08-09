@@ -127,32 +127,6 @@
     text-align: center;
     border: 1px solid #e0e0e0;
 }
-.reserve-date-title2{
-    font-size: 1.2em;
-    height: 60px;
-    line-height: 60px;
-    width: 80%;
-    margin: 0 auto;
-    display: none;
-}
-
-.reserve-date-box2{
-	display: none;
-}
-.reserve-date-box2 .item{
-    width: 80%;
-    margin: 0 auto;
-    position: relative;
-    padding: 0;
-    line-height: 68px;
-    width: 80%;
-    height: 58px;
-    font-size: 18px;
-    color: #666;
-    text-align: center;
-    border: 1px solid #e0e0e0;
-    
-}
 .rental-info{
     margin-top: 40px;
 }

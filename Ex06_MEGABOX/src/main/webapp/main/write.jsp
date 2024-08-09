@@ -8,13 +8,11 @@
 <%@ page import = "java.sql.SQLException" %>
 <%@ page import = "com.dbManager.dbManager" %>
 <%
-	//한글 처리
-	request.setCharacterEncoding("UTF-8");
-
+	
     int score = Integer.parseInt(request.getParameter("score"));
     String content = request.getParameter("review");
     int movieIdx = Integer.parseInt(request.getParameter("number"));
-    String name = request.getParameter("name");
+    String name = (String)session.getAttribute("name");
     
     System.out.println(session.getAttribute("name"));
     

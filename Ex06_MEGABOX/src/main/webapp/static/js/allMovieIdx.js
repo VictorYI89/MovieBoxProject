@@ -13,8 +13,8 @@ movieMain.forEach((item,index)=>{
     })
 })
 
-function review_insert(name, movieIdx){
-	if(name==null || name!=""){
+function review_insert(name, movieIdx){console.log('a',name);
+	if(name==null || name==""){
 		alert("로그인후 이용가능합니다.");
 		return false;
 	}

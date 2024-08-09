@@ -594,6 +594,7 @@ main .container .pay-info h1 {
 
 main .container .pay-info .money-info {
     width: 90%;
+    height: 139px;
     background-color: rgb(68, 68, 68);
     position: relative;
     top: 20px;

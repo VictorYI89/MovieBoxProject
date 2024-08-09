@@ -136,3 +136,26 @@ const movieSearch = document.querySelector(".search-container .right");
 movieSearch.children[1].addEventListener("click",function(){
 	location.href='allMovie.jsp?name='+movieSearch.children[0].value;
 })
+
+function kakaoLogin() {
+	 Kakao.init('fbc31d750500b00920a2a7347285caed');
+        Kakao.Auth.login({
+            success: function (response) {
+                Kakao.API.request({
+                    url: '/v2/user/me',
+                    success: function (response) {
+						axios.post('loginAccess.jsp',{
+							'name':response.properties.nickname
+						})
+						.then(()=>location.href="main.jsp");
+                    },
+                    fail: function (error) {
+                        alert(JSON.stringify(error))
+                    },
+                })
+            },
+            fail: function (error) {
+                alert(JSON.stringify(error))
+        },
+    })
+}

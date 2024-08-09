@@ -63,11 +63,11 @@ pageContext.setAttribute("calendar", calendar);
 			<div class="reserve-location">
 				<div class="reserve-location-title">상영관</div>
 				<div onclick="firstShow()" class="room1">
-					<p>프라이빗2호</p>
+					<p>프라이빗 2호</p>
 					(10석)
 				</div>
 				<div onclick="secondShow()" class="room2">
-					<p>프라이빗1호</p>
+					<p>프라이빗 1호</p>
 					(8석)
 				</div>
 			</div>
@@ -78,13 +78,6 @@ pageContext.setAttribute("calendar", calendar);
 					<div class="item">14:00</div>
 					<div class="item">18:00</div>
 					<div class="item">22:00</div>
-				</div>
-				<div class="reserve-date-title2">시간</div>
-				<div class="reserve-date-box2">
-					<div class="item">09:00</div>
-					<div class="item">13:00</div>
-					<div class="item">17:00</div>
-					<div class="item">21:00</div>
 				</div>
 			</div>
 			<div class="reserve-movie">
@@ -372,8 +365,8 @@ pageContext.setAttribute("calendar", calendar);
 						<img id="smallImage" src="" alt="">
 					</div>
 					<ul class="dot_list">
-						<li id="selectTheabNo"><span>극장 </span>코엑스 더 부티크 프라이빗 2호</li>
-						<li id="selectTime"><span>일시 </span>2024. 08. 08(내일) 10:00</li>
+						<li id="selectTheabNo"><span>극장 </span><span>코엑스 더 부티크 프라이빗 2호</span></li>
+						<li id="selectTime"><span>일시 </span><span>원하시는 시간을 선택해 주세요</span></li>
 						<li id="selectMovie"><span>영화 </span><span id="movieTitle">원하시는 영화를 선택해주세요.</span></li>
 					</ul>
 				</div>
@@ -418,7 +411,7 @@ pageContext.setAttribute("calendar", calendar);
 						</ul>
 					</div>
 					<div class="total">
-						최종 결제금액<span><em>600,000</em>원</span>
+						최종 결제금액<span><em>0</em>원</span>
 					</div>
 
 				</div>
