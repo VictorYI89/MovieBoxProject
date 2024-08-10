@@ -41,7 +41,7 @@ document.querySelector("#closeLogin").addEventListener('click', function() {
 const logout = document.querySelector("#logout");
 if (logout) {
 	logout.addEventListener('click', function() {
-		Kakao.init('fbc31d750500b00920a2a7347285caed');
+		Kakao.init('');
 		if (Kakao.Auth.getAccessToken()) {
 			Kakao.API.request({
 				url: '/v1/user/unlink',
@@ -100,7 +100,7 @@ function login() {
 
 function kakaoLogin() {
 	if (!Kakao.isInitialized()) {
-		Kakao.init('fbc31d750500b00920a2a7347285caed');
+		Kakao.init('');
 	}
 
 	Kakao.Auth.login({
