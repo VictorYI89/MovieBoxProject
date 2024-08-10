@@ -35,7 +35,7 @@
                         <div class="box">
                             <div class="mbimg"><img src="https://img.megabox.co.kr/static/pc/images/2023/01/member_WELCOME_2.png" alt="WELCOME"></div>
                             <div class="name">${sessionScope.name}님</div>
-                            <a href="/mypage" class="linkBtn" title="나의  메가박스">나의  메가박스</a>
+                            <a href="./mypage.jsp" class="linkBtn" title="나의  메가박스">나의  메가박스</a>
                         </div>
                         <div class="box">
                             <div class="tit">
