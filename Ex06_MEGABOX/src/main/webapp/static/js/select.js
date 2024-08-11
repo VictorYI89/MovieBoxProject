@@ -436,7 +436,7 @@ areaNumbers.forEach(function(areaNumberEl) {
                 updatePeopleTypeText(); // 사람 유형 텍스트 업데이트
             }
 
-            document.querySelector('.payment-money>div>p').textContent = total;
+            document.querySelector('.payment-money>div>p').textContent = total.toLocaleString();
             
         }
         updateSeatItems(); // 선택된 좌석 업데이트
