@@ -25,8 +25,8 @@
 <%
 	String locationList = request.getParameter("locationList");
 	String movieList = request.getParameter("movieList");
-	StringBuilder jsonBuffer = new StringBuilder();
-	String line;
+// 	StringBuilder jsonBuffer = new StringBuilder();
+// 	String line;
 // 	// JSON 데이터를 문자열로 읽어와서 reader에 저장 후jsonBuffer에 추가
 // 	try (BufferedReader reader = request.getReader()) {
 // 	    while ((line = reader.readLine()) != null) {
@@ -46,7 +46,7 @@
         locations = gson.fromJson(locationList, type);
 
         // 변환된 List<String> 출력
-        System.out.println("Received locationList: " + locations);
+//         System.out.println("Received locationList: " + locations);
 
     } else {
         // locationList 파라미터가 제공되지 않은 경우 처리합니다.
@@ -84,7 +84,7 @@
         movies = gson.fromJson(movieList, type);
 
         // 변환된 List<String> 출력
-        System.out.println("Received locationList: " + movies);
+//         System.out.println("Received MoviesList: " + movies);
 
     } else {
         // locationList 파라미터가 제공되지 않은 경우 처리합니다.
@@ -150,7 +150,7 @@
                 	sqlQuery = "SELECT c.LOCATION_NAME, c.ROOM_LOCATION, m.NAME, t.START_TIME, t.END_TIME FROM cinema c " +
                 			"JOIN movie m ON c.MOVIE_IDX = m.MOVIEIDX JOIN TIMETABLE t ON (c.LOCATION_NAME = t.LOCATION_NAME) and (c.ROOM_LOCATION = t.ROOM_LOCATION) AND (c.MOVIE_IDX = t.MOVIE_IDX) " +
                     		"WHERE c.LOCATION_NAME = ? " +
-                    		"ORDER BY c.LOCATION_NAME, t.START_TIME ASC";
+                    		"ORDER BY t.START_TIME, c.LOCATION_NAME ASC";
                     pstmt = conn.prepareStatement(sqlQuery);
                     pstmt.setString(1, locations.get(0));
                     test++;
@@ -158,7 +158,7 @@
                 	sqlQuery = "SELECT c.LOCATION_NAME, c.ROOM_LOCATION, m.NAME, t.START_TIME, t.END_TIME FROM cinema c " +
                 			"JOIN movie m ON c.MOVIE_IDX = m.MOVIEIDX JOIN TIMETABLE t ON (c.LOCATION_NAME = t.LOCATION_NAME) and (c.ROOM_LOCATION = t.ROOM_LOCATION) AND (c.MOVIE_IDX = t.MOVIE_IDX) " +
                     		"WHERE c.LOCATION_NAME = ? AND m.NAME = ?" +
-                    		"ORDER BY c.LOCATION_NAME, t.START_TIME ASC";
+                    		"ORDER BY t.START_TIME, c.LOCATION_NAME ASC";
                     pstmt = conn.prepareStatement(sqlQuery);
                     pstmt.setString(1, locations.get(0));
                     pstmt.setString(2, movies.get(0));
@@ -167,7 +167,7 @@
                 	sqlQuery = "SELECT c.LOCATION_NAME, c.ROOM_LOCATION, m.NAME, t.START_TIME, t.END_TIME FROM cinema c " +
                 			"JOIN movie m ON c.MOVIE_IDX = m.MOVIEIDX JOIN TIMETABLE t ON (c.LOCATION_NAME = t.LOCATION_NAME) and (c.ROOM_LOCATION = t.ROOM_LOCATION) AND (c.MOVIE_IDX = t.MOVIE_IDX) " +
                     		"WHERE c.LOCATION_NAME = ? AND (m.NAME = ? OR m.NAME = ?)" +
-                    		"ORDER BY c.LOCATION_NAME, t.START_TIME ASC";
+                    		"ORDER BY t.START_TIME, c.LOCATION_NAME ASC";
                     pstmt = conn.prepareStatement(sqlQuery);
                     pstmt.setString(1, locations.get(0));
                     pstmt.setString(2, movies.get(0));
@@ -177,7 +177,7 @@
                 	sqlQuery = "SELECT c.LOCATION_NAME, c.ROOM_LOCATION, m.NAME, t.START_TIME, t.END_TIME FROM cinema c " +
                 			"JOIN movie m ON c.MOVIE_IDX = m.MOVIEIDX JOIN TIMETABLE t ON (c.LOCATION_NAME = t.LOCATION_NAME) and (c.ROOM_LOCATION = t.ROOM_LOCATION) AND (c.MOVIE_IDX = t.MOVIE_IDX) " +
                     		"WHERE c.LOCATION_NAME = ? AND (m.NAME = ? OR m.NAME = ? OR m.NAME = ?)" +
-                    		"ORDER BY c.LOCATION_NAME, t.START_TIME ASC";
+                    		"ORDER BY t.START_TIME, c.LOCATION_NAME ASC";
                     pstmt = conn.prepareStatement(sqlQuery);
                     pstmt.setString(1, locations.get(0));
                     pstmt.setString(2, movies.get(0));
@@ -190,7 +190,7 @@
                 	sqlQuery = "SELECT c.LOCATION_NAME, c.ROOM_LOCATION, m.NAME, t.START_TIME, t.END_TIME FROM cinema c " +
                 			"JOIN movie m ON c.MOVIE_IDX = m.MOVIEIDX JOIN TIMETABLE t ON (c.LOCATION_NAME = t.LOCATION_NAME) and (c.ROOM_LOCATION = t.ROOM_LOCATION) AND (c.MOVIE_IDX = t.MOVIE_IDX) " +
                     		"WHERE (c.LOCATION_NAME = ? OR c.LOCATION_NAME = ?) " +
-                    		"ORDER BY c.LOCATION_NAME, t.START_TIME ASC";
+                    		"ORDER BY t.START_TIME, c.LOCATION_NAME ASC";
                     pstmt = conn.prepareStatement(sqlQuery);
                     pstmt.setString(1, locations.get(0));
                     pstmt.setString(2, locations.get(1));
@@ -199,7 +199,7 @@
                 	sqlQuery = "SELECT c.LOCATION_NAME, c.ROOM_LOCATION, m.NAME, t.START_TIME, t.END_TIME FROM cinema c " +
                 			"JOIN movie m ON c.MOVIE_IDX = m.MOVIEIDX JOIN TIMETABLE t ON (c.LOCATION_NAME = t.LOCATION_NAME) and (c.ROOM_LOCATION = t.ROOM_LOCATION) AND (c.MOVIE_IDX = t.MOVIE_IDX) " +
                     		"WHERE (c.LOCATION_NAME = ? OR c.LOCATION_NAME = ?) AND m.NAME = ?" +
-                    		"ORDER BY c.LOCATION_NAME, t.START_TIME ASC";
+                    		"ORDER BY t.START_TIME, c.LOCATION_NAME ASC";
                     pstmt = conn.prepareStatement(sqlQuery);
                     pstmt.setString(1, locations.get(0));
                     pstmt.setString(2, locations.get(1));
@@ -209,7 +209,7 @@
                 	sqlQuery = "SELECT c.LOCATION_NAME, c.ROOM_LOCATION, m.NAME, t.START_TIME, t.END_TIME FROM cinema c " +
                 			"JOIN movie m ON c.MOVIE_IDX = m.MOVIEIDX JOIN TIMETABLE t ON (c.LOCATION_NAME = t.LOCATION_NAME) and (c.ROOM_LOCATION = t.ROOM_LOCATION) AND (c.MOVIE_IDX = t.MOVIE_IDX) " +
                     		"WHERE (c.LOCATION_NAME = ? OR c.LOCATION_NAME = ?) AND (m.NAME = ? OR m.NAME = ?)" +
-                    		"ORDER BY c.LOCATION_NAME, t.START_TIME ASC";
+                    		"ORDER BY t.START_TIME, c.LOCATION_NAME ASC";
                     pstmt = conn.prepareStatement(sqlQuery);
                     pstmt.setString(1, locations.get(0));
                     pstmt.setString(2, locations.get(1));
@@ -220,7 +220,7 @@
                 	sqlQuery = "SELECT c.LOCATION_NAME, c.ROOM_LOCATION, m.NAME, t.START_TIME, t.END_TIME FROM cinema c " +
                 			"JOIN movie m ON c.MOVIE_IDX = m.MOVIEIDX JOIN TIMETABLE t ON (c.LOCATION_NAME = t.LOCATION_NAME) and (c.ROOM_LOCATION = t.ROOM_LOCATION) AND (c.MOVIE_IDX = t.MOVIE_IDX) " +
                     		"WHERE (c.LOCATION_NAME = ? OR c.LOCATION_NAME = ?) AND (m.NAME = ? OR m.NAME = ? OR m.NAME = ?)" +
-                    		"ORDER BY c.LOCATION_NAME, t.START_TIME ASC";
+                    		"ORDER BY t.START_TIME, c.LOCATION_NAME ASC";
                     pstmt = conn.prepareStatement(sqlQuery);
                     pstmt.setString(1, locations.get(0));
                     pstmt.setString(2, locations.get(1));
@@ -234,7 +234,7 @@
                 	sqlQuery = "SELECT c.LOCATION_NAME, c.ROOM_LOCATION, m.NAME, t.START_TIME, t.END_TIME FROM cinema c " +
                 			"JOIN movie m ON c.MOVIE_IDX = m.MOVIEIDX JOIN TIMETABLE t ON (c.LOCATION_NAME = t.LOCATION_NAME) and (c.ROOM_LOCATION = t.ROOM_LOCATION) AND (c.MOVIE_IDX = t.MOVIE_IDX) " +
                     		"WHERE (c.LOCATION_NAME = ? OR c.LOCATION_NAME = ? OR c.LOCATION_NAME = ?) " +
-                    		"ORDER BY c.LOCATION_NAME, t.START_TIME ASC";
+                    		"ORDER BY t.START_TIME, c.LOCATION_NAME ASC";
                     pstmt = conn.prepareStatement(sqlQuery);
                     pstmt.setString(1, locations.get(0));
                     pstmt.setString(2, locations.get(1));
@@ -244,7 +244,7 @@
                 	sqlQuery = "SELECT c.LOCATION_NAME, c.ROOM_LOCATION, m.NAME, t.START_TIME, t.END_TIME FROM cinema c " +
                 			"JOIN movie m ON c.MOVIE_IDX = m.MOVIEIDX JOIN TIMETABLE t ON (c.LOCATION_NAME = t.LOCATION_NAME) and (c.ROOM_LOCATION = t.ROOM_LOCATION) AND (c.MOVIE_IDX = t.MOVIE_IDX) " +
                     		"WHERE (c.LOCATION_NAME = ? OR c.LOCATION_NAME = ? OR c.LOCATION_NAME = ?) AND m.NAME = ?" +
-                    		"ORDER BY c.LOCATION_NAME, t.START_TIME ASC";
+                    		"ORDER BY t.START_TIME, c.LOCATION_NAME ASC";
                     pstmt = conn.prepareStatement(sqlQuery);
                     pstmt.setString(1, locations.get(0));
                     pstmt.setString(2, locations.get(1));
@@ -255,7 +255,7 @@
                 	sqlQuery = "SELECT c.LOCATION_NAME, c.ROOM_LOCATION, m.NAME, t.START_TIME, t.END_TIME FROM cinema c " +
                 			"JOIN movie m ON c.MOVIE_IDX = m.MOVIEIDX JOIN TIMETABLE t ON (c.LOCATION_NAME = t.LOCATION_NAME) and (c.ROOM_LOCATION = t.ROOM_LOCATION) AND (c.MOVIE_IDX = t.MOVIE_IDX) " +
                     		"WHERE (c.LOCATION_NAME = ? OR c.LOCATION_NAME = ? OR c.LOCATION_NAME = ?) AND (m.NAME = ? OR m.NAME = ?)" +
-                    		"ORDER BY c.LOCATION_NAME, t.START_TIME ASC";
+                    		"ORDER BY t.START_TIME, c.LOCATION_NAME ASC";
                     pstmt = conn.prepareStatement(sqlQuery);
                     pstmt.setString(1, locations.get(0));
                     pstmt.setString(2, locations.get(1));
@@ -267,7 +267,7 @@
                 	sqlQuery = "SELECT c.LOCATION_NAME, c.ROOM_LOCATION, m.NAME, t.START_TIME, t.END_TIME FROM cinema c " +
                 			"JOIN movie m ON c.MOVIE_IDX = m.MOVIEIDX JOIN TIMETABLE t ON (c.LOCATION_NAME = t.LOCATION_NAME) and (c.ROOM_LOCATION = t.ROOM_LOCATION) AND (c.MOVIE_IDX = t.MOVIE_IDX) " +
                     		"WHERE (c.LOCATION_NAME = ? OR c.LOCATION_NAME = ? OR c.LOCATION_NAME = ?) AND (m.NAME = ? OR m.NAME = ? OR m.NAME = ?)" +
-                    		"ORDER BY c.LOCATION_NAME, t.START_TIME ASC";
+                    		"ORDER BY t.START_TIME, c.LOCATION_NAME ASC";
                     pstmt = conn.prepareStatement(sqlQuery);
                     pstmt.setString(1, locations.get(0));
                     pstmt.setString(2, locations.get(1));
@@ -278,18 +278,18 @@
                     test++;
                 }
         	}
-        	System.out.println( "location : " + locations + ", movie : " + movies + " get : " + test);
+//         	System.out.println( "location : " + locations + ", movie : " + movies + " get : " + test);
             rs = pstmt.executeQuery();
             List<Map<String, Object>> list = new ArrayList<>();
             
             while(rs.next()) {
             	
             	//test code
-            	System.out.println(rs.getString("START_TIME"));
-                System.out.println(rs.getString("END_TIME"));
-                System.out.println(rs.getString("LOCATION_NAME"));
-                System.out.println(rs.getString("ROOM_LOCATION"));
-                System.out.println(rs.getString("NAME"));
+//             	System.out.println(rs.getString("START_TIME"));
+//                 System.out.println(rs.getString("END_TIME"));
+//                 System.out.println(rs.getString("LOCATION_NAME"));
+//                 System.out.println(rs.getString("ROOM_LOCATION"));
+//                 System.out.println(rs.getString("NAME"));
 
                 String startTime = rs.getString("START_TIME");
                 String endTime = rs.getString("END_TIME");
@@ -312,13 +312,14 @@
             String jsonData = gson.toJson(list);
             // 클라이언트로 JSON 데이터 전송
             
-            System.out.println("jsonData : " + jsonData);
+            // json 데이터 값 확인용 test code
+//             System.out.println("jsonData : " + jsonData);
             
             response.setContentType("application/json; charset=UTF-8");
             response.getWriter().write(jsonData);
             response.getWriter().flush();
             response.getWriter().close();
-            System.out.println("endProcess");
+//             System.out.println("endProcess");
             
         /* SELECT c.LOCATION_NAME, c.ROOM_LOCATION, m.NAME, t.START_TIME, t.END_TIME FROM cinema c JOIN movie m ON c.MOVIE_IDX = m.MOVIEIDX
         		JOIN TIMETABLE t ON (c.LOCATION_NAME = t.LOCATION_NAME) and (c.ROOM_LOCATION = t.ROOM_LOCATION) AND (c.MOVIE_IDX = t.MOVIE_IDX)
@@ -330,7 +331,6 @@
             /* jsonResponse.put("error", "An error occurred while processing your request."); */
         } finally {
             DBManager.dbClose(conn, pstmt, rs);
-            System.out.println("finalProcess");
         }
     } else {
         /* jsonResponse.put("error", "데이터없음"); */

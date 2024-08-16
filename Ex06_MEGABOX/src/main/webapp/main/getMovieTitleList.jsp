@@ -24,18 +24,26 @@
         String sqlQuery = "SELECT NAME FROM MOVIE ORDER by OPENINGDATE DESC";
         pstmt = conn.prepareStatement(sqlQuery);
         rs = pstmt.executeQuery();
-        
-        while (rs.next()) {
-            movieList.add(rs.getString("NAME"));
-        }
-        
-        // JSON 배열에 결과 추가
         JSONArray jsonArray = new JSONArray();
         
-        for (String movie : movieList) {
-            jsonArray.add(movie);
+//         while (rs.next()) {
+//             movieList.add(rs.getString("NAME"));
+//         }
+//         for (String movie : movieList) {
+//             jsonArray.add(movie);
+//         }
+//         jsonResponse.put("movies", jsonArray);
+        //test code
+//         System.out.println("test : " + jsonArray);
+        
+        
+        //위의 과정을 하나의 while문에서 처리
+		while (rs.next()) {
+			jsonArray.add(rs.getString("NAME"));
         }
         jsonResponse.put("movies", jsonArray);
+        //test code
+//         System.out.println("test : " + jsonArray);
         
     } catch (Exception e) {
         e.printStackTrace();

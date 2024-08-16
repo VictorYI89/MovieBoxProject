@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.css" integrity="sha512-aMup4I6BUl0dG4IBb0/f32270a5XP7H1xplAJ80uVKP6ejYCgZWcBudljdsointfHxn5o302Jbnq1FXsBaMuoQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="../static/js/jquery-3.7.1.js"></script>
     <script defer src="../static/js/ticketing.js"></script>
+    <script> var movieTitle = "${param.title}"; </script>
 </head>
 <body>
     <%@ include file="../include/header.jsp" %>
@@ -40,7 +41,7 @@
                         </div>
                     </div>
                     <div class="swiper-container">
-                        <div class="swiper-wrapper">
+                        <div class="swiper-wrapper day">
                             <div class="swiper-slide">
                                 <p>1&bull;월</p>
                             </div>
@@ -625,7 +626,7 @@
                                 </div>
                             </div>
                             <div class="swiper-container">
-                                <div class="swiper-wrapper">
+                                <div class="swiper-wrapper hour">
                                     <div class="swiper-slide">
                                         <p>00</p>
                                     </div>
@@ -722,12 +723,9 @@
                             </div>
                         </div>
                         <div class="time-menu-bottom">
-
-                            
                             <!-- 영화 예매가능 리스트 표기 -->
                             <div class="movie-time">
-                                <div class="time-show">
-                                
+<!--                                 <div class="time-show"> -->
 <!--                                     <div class="time"> -->
 <!--                                         <p>18:20</p> -->
 <!--                                         <p>~20:37</p> -->
@@ -741,11 +739,8 @@
 <!--                                         <p>1관</p> -->
 <!--                                         <p>236/249</p> -->
 <!--                                     </div> -->
-                                    
-                                </div>
+<!--                                 </div> -->
                             </div>
-
-
                             <div class="bottom-menu">
                                 <div class="bottom-main">
                                     <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-movie-time.png" alt="">

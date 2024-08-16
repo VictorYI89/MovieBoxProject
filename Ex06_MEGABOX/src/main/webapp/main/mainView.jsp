@@ -135,7 +135,7 @@
                         <ul class="sup-title">
                             <c:if test="${sessionScope.name==null }"><li id="login"><a href="javascript:void(0)" >로그인</a></li></c:if>
                             <c:if test="${sessionScope.name!=null }"><li id="logout"><a href="javascript:void(0)" >로그아웃</a></li></c:if>
-                            <li><a href="/Ex06_MEGABOX/member/joinMembership_form.jsp">회원가입</a></li>
+                            <li><a href="${pageContext.request.contextPath}/member/joinMembership_form.jsp">회원가입</a></li>
                             <li><a href="ticketing.jsp">빠른예매</a></li>
                         </ul>
                         <div class="login-background"></div>
@@ -349,7 +349,7 @@
 	                            </div>
 	                            <div class="movie_button">
 	                                <button type="button" class="btn btn-dark movie_like"><img src="${pageContext.request.contextPath }/static/images/favorite.svg" alt="">${vo.movieLike }</button>
-	                                <button class="movie_reserve btn2 ">예매</button>
+	                                <button class="movie_reserve btn2 " onclick="location.href='ticketing.jsp?title=${vo.name}'">예매</button>
 	                            </div>
                        		</div>
 	                    </c:forEach>

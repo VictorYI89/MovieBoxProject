@@ -63,10 +63,15 @@ main .box .ticketing-container .ticketing-select .swiper-container .swiper-wrapp
     display: flex;
 }
 
+main .box .ticketing-container .ticketing-select .swiper-container .swiper-wrapper.day {
+	pointer-events: none;
+}
+
 main .box .ticketing-container .ticketing-select .swiper-container .swiper-wrapper .swiper-slide {
     width: 120px;
     height: 100%;
     display: flex;
+    color: gray;
     justify-content: center;
     align-items: center;
     cursor: pointer;
@@ -80,6 +85,7 @@ main .box .ticketing-container .ticketing-select .swiper-container .swiper-wrapp
 main .box .ticketing-container .ticketing-select .swiper-container .swiper-wrapper .swiper-slide p {
     display: flex;
     align-items: center;
+    pointer-events: none;
 }
 
 main .box .ticketing-container .ticketing-select .swiper-next {
@@ -571,7 +577,7 @@ main .box .ticketing-container .menu .time-menu .time-menu-middle .swiper-contai
 }
 
 main .box .ticketing-container .menu .time-menu .time-menu-middle .swiper-container .swiper-wrapper .swiper-slide p {
-    color: gray
+    color: gray;
 }
 
 main .box .ticketing-container .menu .time-menu .time-menu-middle .swiper-next {

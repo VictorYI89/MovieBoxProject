@@ -14,15 +14,6 @@
     String name = request.getParameter("userName");
     String phonenumber = request.getParameter("userPhonenumber");
     String mail = request.getParameter("userEmail");
-/* 
-   	if (id.trim() == "" || id == null){
-   	} else if (password.trim() == "" || id == null){
-
-   	} else if (name.trim() == "" || id == null){
-   		   		
-   	} else if (mail.trim() == "" || id == null){
-   		
-   	} */
 
     try{
         conn = DBManager.getDBConnection();
